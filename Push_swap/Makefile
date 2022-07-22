@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/07/19 18:40:10 by zharzi           ###   ########.fr        #
+#    Updated: 2022/07/23 00:33:48 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ BINARY = push_swap
 
 SRCSDIR = ./srcs/
 
-SRCS = $(SRCSDIR)ft_.c
+SRCS = $(SRCSDIR)ft_strlen.c
 
 HEADERDIR = includes/
 

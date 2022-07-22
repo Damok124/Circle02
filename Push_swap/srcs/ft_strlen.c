@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pswap.h                                            :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 11:57:27 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/23 00:38:02 by zharzi           ###   ########.fr       */
+/*   Created: 2022/07/23 00:32:16 by zharzi            #+#    #+#             */
+/*   Updated: 2022/07/23 00:37:04 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PSWAP_H
-# define PSWAP_H
+#include <pswap.h>
 
-# include <unistd.h>
+int	ft_strlen(char *str)
+{
+	int	i;
 
-int	ft_strlen(char *str);
-
-#endif
+	i = 0;
+	while (str && str[i])
+		i++;
+	return (i);
+}
