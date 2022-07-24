@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/24 05:07:15 by zharzi           ###   ########.fr       */
+/*   Created: 2022/04/06 13:28:59 by zharzi            #+#    #+#             */
+/*   Updated: 2022/05/11 19:33:38 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pswap.h"
+#include "libft.h"
 
-int	main(int ac, char *av[])
+void	ft_bzero(void *s, size_t n)
 {
-	(void)ac;
-	ft_move_sa(&av[1], &av[0]);
-	ft_move_sb(&av[1], &av[0]);
-	ft_move_ss(&av[1], &av[0]);
-	ft_move_pa(&av[1], &av[0]);
-	ft_move_pb(&av[1], &av[0]);
-	ft_move_ra(&av[1], &av[0]);
-	ft_move_rb(&av[1], &av[0]);
-	ft_move_rr(&av[1], &av[0]);
-	ft_move_rra(&av[1], &av[0]);
-	ft_move_rrb(&av[1], &av[0]);
-	ft_move_rrr(&av[1], &av[0]);
-	return (0);
+	unsigned char	*mem;
+	size_t			i;
+
+	mem = s;
+	i = 0;
+	while (i < n)
+	{
+		mem[i] = '\0';
+		i++;
+	}
 }
+/*
+**SYNOPSIS
+**#include <strings.h>
+**void bzero(void *s, size_t n);
+**DESCRIPTION
+**La fonction bzero() met à 0 (octets contenant « \0 ») les n premiers octets
+**du bloc pointé par s.
+**VALEUR RENVOYÉE
+**Aucune.
+*/

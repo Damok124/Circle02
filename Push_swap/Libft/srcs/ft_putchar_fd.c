@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/24 05:07:15 by zharzi           ###   ########.fr       */
+/*   Created: 2022/04/26 16:45:31 by zharzi            #+#    #+#             */
+/*   Updated: 2022/05/16 10:27:51 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pswap.h"
+#include "libft.h"
 
-int	main(int ac, char *av[])
+void	ft_putchar_fd(char c, int fd)
 {
-	(void)ac;
-	ft_move_sa(&av[1], &av[0]);
-	ft_move_sb(&av[1], &av[0]);
-	ft_move_ss(&av[1], &av[0]);
-	ft_move_pa(&av[1], &av[0]);
-	ft_move_pb(&av[1], &av[0]);
-	ft_move_ra(&av[1], &av[0]);
-	ft_move_rb(&av[1], &av[0]);
-	ft_move_rr(&av[1], &av[0]);
-	ft_move_rra(&av[1], &av[0]);
-	ft_move_rrb(&av[1], &av[0]);
-	ft_move_rrr(&av[1], &av[0]);
-	return (0);
+	write(fd, &c, 1);
 }
+/*
+**Prototype
+**void ft_putchar_fd(char c, int fd);
+**Paramètres
+**c: Le caractère à écrire.
+**fd: Le descripteur de fichier sur lequel écrire.
+**Valeur de retour
+**Aucune
+**Fonctions externes autorisées
+**write
+**Description
+**Écrit le caractère ’c’ sur le descripteur de fichier donné.
+*/
