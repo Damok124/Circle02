@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_true_free.c                                     :+:      :+:    :+:   */
+/*   ft_true_free_tab.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 04:05:07 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/24 17:47:42 by zharzi           ###   ########.fr       */
+/*   Created: 2022/07/24 17:42:37 by zharzi            #+#    #+#             */
+/*   Updated: 2022/07/24 18:14:46 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib.h"
+#include "libft.h"
 
-void	ft_true_free(void *ptr)
+void	ft_true_free_tab(char **strs)
 {
-	if (ptr)
+	int	i;
+
+	i = 0;
+	while (strs[i])
 	{
-		free(ptr);
-		ptr = NULL;
+		ft_true_free(strs[i]);
+		i++;
 	}
+	ft_true_free(strs);
 }

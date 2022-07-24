@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_true_free.c                                     :+:      :+:    :+:   */
+/*   ft_check_int_dup.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 04:05:07 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/24 17:47:42 by zharzi           ###   ########.fr       */
+/*   Created: 2022/07/24 11:36:05 by zharzi            #+#    #+#             */
+/*   Updated: 2022/07/24 13:57:07 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib.h"
+#include "libft.h" /////a mettre dans la libft
 
-void	ft_true_free(void *ptr)
+int	ft_check_int_dup(int **tab)
 {
-	if (ptr)
+	size_t	i;
+	size_t	j;
+	size_t	len;
+
+	i = 0;
+	j = i + 1;
+	len = ft_inttab_len(tab);
+	while (len > 0 && j < len)
 	{
-		free(ptr);
-		ptr = NULL;
+		while (j < len)
+		{
+			if (tab[i] == tab[j])
+				return (0);
+			j++;
+		}
+		i++;
+		j = i + 1;
 	}
+	return (1);
 }

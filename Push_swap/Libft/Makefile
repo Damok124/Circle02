@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/07/24 04:26:14 by zharzi           ###   ########.fr        #
+#    Updated: 2022/07/24 17:46:03 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ $(SRCSDIR)ft_strlcat.c \
 $(SRCSDIR)ft_strnstr.c \
 $(SRCSDIR)ft_atoi.c \
 $(SRCSDIR)ft_calloc.c \
+$(SRCSDIR)ft_check_int.c \
 $(SRCSDIR)ft_strdup.c \
 $(SRCSDIR)ft_substr.c \
 $(SRCSDIR)ft_strjoin.c \
@@ -58,7 +59,15 @@ $(SRCSDIR)ft_lstdelone.c \
 $(SRCSDIR)ft_lstclear.c \
 $(SRCSDIR)ft_lstiter.c \
 $(SRCSDIR)ft_lstmap.c \
-$(SRCSDIR)ft_true_free.c
+$(SRCSDIR)ft_true_free.c \
+$(SRCSDIR)ft_chartab_len.c \
+$(SRCSDIR)ft_inttab_len.c \
+$(SRCSDIR)ft_check_int_dup.c \
+$(SRCSDIR)ft_check_strs_int.c \
+${SRCSDIR}ft_strs_to_tab.c \
+${SRCSDIR}ft_true_free_tab.c
+
+
 
 HEADERDIR = includes/
 

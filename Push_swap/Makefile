@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/07/24 05:09:08 by zharzi           ###   ########.fr        #
+#    Updated: 2022/07/24 17:59:50 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,6 @@ ${SRCSDIR}ft_move_rra.c \
 ${SRCSDIR}ft_move_rrb.c \
 ${SRCSDIR}ft_move_rrr.c
 
-
 HEADERDIR = includes/
 
 HEADER = pswap.h
@@ -37,7 +36,7 @@ OBJ = $(SRCS:.c=.o)
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 IFLAG = -I$(HEADERDIR) -Ift_printf/includes/ -Ilibft/includes/
 
