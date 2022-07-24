@@ -6,21 +6,21 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/07/24 03:56:45 by zharzi           ###   ########.fr        #
+#    Updated: 2022/07/24 01:54:52 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libpswap.a
-
-BINARY = push_swap
+NAME = libft_printf.a
 
 SRCSDIR = ./srcs/
 
-SRCS = $(SRCSDIR)ft_strlen.c
+SRCS = $(SRCSDIR)ft_printf.c \
+$(SRCSDIR)ft_strprintf.c \
+$(SRCSDIR)ft_countnprintf.c
 
 HEADERDIR = includes/
 
-HEADER = pswap.h
+HEADER = ft_printf.h
 
 OBJ = $(SRCS:.c=.o)
 
@@ -28,29 +28,22 @@ CC = gcc
 
 FLAGS = -Wall -Wextra -Werror
 
-IFLAG = -I$(HEADERDIR) -Ift_printf/includes/
+IFLAG = -I$(HEADERDIR)
 
-all : libpswap.a libft_printf.a
-	-@$(CC) $(FLAGS) main.c $(IFLAG) -L. -lpswap -L./ft_printf -lft_printf -o \
-	$(BINARY)
+all : ${NAME}
 
 %.o : %.c
 	-@$(CC) $(FLAGS) $(IFLAG) -o $@ -c $^
 
-libpswap.a : $(OBJ) $(HEADERDIR)$(HEADER)
+libft_printf.a : $(OBJ) $(HEADERDIR)$(HEADER)
 	-@ar -rcs $(NAME) $^
-
-libft_printf.a :
-	-@${MAKE} -C ft_printf/
 
 clean :
 	-@rm -f $(OBJ)
-	-@${MAKE} clean -C ft_printf/
 
 fclean : clean
 	-@rm -f $(NAME)
 	-@rm -f $(BINARY)
-	-@${MAKE} fclean -C ft_printf/
 
 re : fclean all
 

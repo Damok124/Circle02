@@ -6,16 +6,15 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/23 00:38:44 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/07/24 01:48:19 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
-#include <stdio.h>
 
 int	main(int ac, char *av[])
 {
 	(void)ac;
-	printf("%i\n", ft_strlen(av[1]));
+	ft_printf("%i\n", ft_strlen(av[1]));
 	return (0);
 }
