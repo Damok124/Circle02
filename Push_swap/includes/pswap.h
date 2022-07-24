@@ -6,16 +6,15 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 11:57:27 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/24 13:14:40 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/07/24 21:16:08 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PSWAP_H
 # define PSWAP_H
 
-# include <unistd.h>
-# include "ft_printf.h"
 # include "libft.h"
+# include "ft_printf.h"
 
 void	ft_move_sa(char **a, char **b);
 void	ft_move_sb(char **a, char **b);

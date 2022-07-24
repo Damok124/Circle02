@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:33:23 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/24 18:15:51 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/07/25 00:20:52 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ typedef struct s_list
 
 typedef struct s_count
 {
-	ssize_t			i;
 	ssize_t			a;
+	ssize_t			i;
 	ssize_t			j;
 }					t_count;
 
@@ -76,8 +76,9 @@ size_t	ft_chartab_len(char **tab);
 size_t	ft_inttab_len(int **tab);
 int		ft_check_int_dup(int **tab);
 int		ft_check_strs_int(char **str);
-int		**ft_strs_to_tab(char **strs);
-void	ft_true_free_tab(char **strs);
+t_list	**ft_strs_to_tab(int ac, char **av);
+void	ft_ptr_to_null(void *ptr);
+void	ft_show_tab(t_list **par, int fd);
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
