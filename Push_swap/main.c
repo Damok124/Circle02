@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/25 00:31:36 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/07/26 19:37:21 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,15 @@
 
 int	main(int ac, char *av[])
 {
-	t_list	**tab;
-	void	(*del)(void *);
+	t_elem	*list;
+	//int		i;
 
-	del = &ft_ptr_to_null;
+	//i = -1;
 	ac -= 1;
 	av += 1;
-	ft_printf("test int du tab %d\n", ft_check_strs_int(av));
-	//CHANGEMENT DE STRAT ON VA AU PLUS SIMPLE, liste d'int en dur
-	//transformer args en liste chainée
-	tab = ft_strs_to_tab(ac, av);
-	ft_show_tab(tab, 1);
-	//test la ft doublon
+	if (!ft_check_strs_int(av))
+		return (0);
+	list = ft_strs_to_intlst(ac, av);
 	ft_move_sa(&av[1], &av[0]);
 	ft_move_sb(&av[1], &av[0]);
 	ft_move_ss(&av[1], &av[0]);
@@ -37,7 +34,8 @@ int	main(int ac, char *av[])
 	ft_move_rra(&av[1], &av[0]);
 	ft_move_rrb(&av[1], &av[0]);
 	ft_move_rrr(&av[1], &av[0]);
-	ft_lstclear(tab, del);
-	free(tab);
+	//while (++i < ac)
+	//	free(list[i]);
+	free(list);
 	return (0);
 }

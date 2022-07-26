@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strs_to_tab.c                                   :+:      :+:    :+:   */
+/*   ft_strs_to_intlst.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 11:11:42 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/24 23:07:26 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/07/26 19:41:36 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pswap.h"
 
-t_list	**ft_strs_to_tab(int ac, char **av)
+t_elem	*ft_strs_to_intlst(int ac, char **av)
 {
+	t_elem	*current;
+	t_elem	*first;
 	int		i;
-	t_list	**tab;
 
 	i = -1;
-	tab = (t_list **)malloc(sizeof(t_list *) * ac);
-	if (!tab)
-		return (NULL);
+	first = NULL;
 	while (++i < ac)
-		tab[i] = ft_lstnew(av[i]);
-	return (tab);
+	{
+		current = ft_new_elem(ft_atoi(av[i]));
+		ft_lstadd_down(&first, current);
+	}
+	return (first);
 }

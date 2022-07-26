@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ptr_to_null.c                                   :+:      :+:    :+:   */
+/*   ft_new_elem.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 22:43:54 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/24 23:05:45 by zharzi           ###   ########.fr       */
+/*   Created: 2022/05/13 18:11:00 by zharzi            #+#    #+#             */
+/*   Updated: 2022/07/26 19:35:39 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pswap.h"
 
-void	ft_ptr_to_null(void *ptr)
+t_elem	*ft_new_elem(int n)
 {
-	ptr = NULL;
-	(void)ptr;
+	t_elem	*new;
+
+	new = (t_elem *)malloc(sizeof(t_elem));
+	if (!new)
+		return (NULL);
+	new->data = n;
+	new->up = NULL;
+	new->down = NULL;
+	return (new);
 }
