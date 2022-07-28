@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:33:23 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/26 01:38:26 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/07/29 00:13:31 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stddef.h>
 # include <unistd.h>
-# include <stdio.h>
 # include <string.h>
 # include <stdint.h>
 # include <stdlib.h>
@@ -76,6 +75,7 @@ size_t	ft_chartab_len(char **tab);
 size_t	ft_inttab_len(int **tab);
 int		ft_check_int_dup(int **tab);
 int		ft_check_strs_int(char **str);
+int		*ft_strs_to_tab(char **strs);
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);

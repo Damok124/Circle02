@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 11:57:27 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/28 00:35:40 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/07/28 22:39:00 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void	ft_move_rrr(char **a, char **b);
 t_elem	*ft_new_elem(int n);
 void	ft_lstadd_down(t_elem **lst, t_elem *newl);
 t_elem	*ft_strs_to_intlst(int ac, char **av);
+int		*ft_parsing_to_int(char **av);
 
 #endif

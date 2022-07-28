@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/07/26 01:56:51 by zharzi           ###   ########.fr        #
+#    Updated: 2022/07/28 22:37:35 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ ${SRCSDIR}ft_move_rrb.c \
 ${SRCSDIR}ft_move_rrr.c \
 ${SRCSDIR}ft_new_elem.c \
 ${SRCSDIR}ft_lstadd_down.c \
-${SRCSDIR}ft_strs_to_intlst.c
+${SRCSDIR}ft_strs_to_intlst.c \
+${SRCSDIR}ft_parsing_to_int.c
 
 HEADERDIR = includes/
 
