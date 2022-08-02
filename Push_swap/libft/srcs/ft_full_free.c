@@ -1,41 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strs_to_tab.c                                   :+:      :+:    :+:   */
+/*   ft_full_free.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/28 23:45:28 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/02 22:31:55 by zharzi           ###   ########.fr       */
+/*   Created: 2022/08/02 01:23:40 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/02 20:23:24 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-int	*ft_strs_to_tab(char **strs)
+void	ft_full_free(void **tobefreed)
 {
-	int	*tab;
 	int	i;
-	int	x;
 
 	i = -1;
-	x = 0;
-	while (strs[++i])
-		x++;
-	i = -1;
-	tab = (int *)malloc(sizeof(char) * x);
-	while (strs[++i])
-	{
-		if (ft_check_int(strs[i]))
-			tab[i] = ft_atoi(strs[i]);
-		else
-		{
-			if (tab)
-				ft_true_free(tab);
-			return (NULL);
-		}
-	}
-	return (tab);
+	while (tobefreed && tobefreed[++i])
+		ft_true_free(tobefreed[i]);
+	ft_true_free(tobefreed);
 }
-*/

@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 15:53:26 by zharzi            #+#    #+#             */
-/*   Updated: 2022/05/16 10:43:56 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/02 00:50:02 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	str = malloc(sizeof(char) *(k + 1));
 	if (!str)
 		return (NULL);
-	while (s1[i])
+	while (s1 && s1[i])
 	{
 		str[i + j] = s1[i];
 		i++;
 	}
-	while (s2[j])
+	while (s2 && s2[j])
 	{
 		str[i + j] = s2[j];
 		j++;

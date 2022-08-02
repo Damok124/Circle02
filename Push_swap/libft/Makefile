@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/07/29 00:12:33 by zharzi           ###   ########.fr        #
+#    Updated: 2022/08/02 19:50:39 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,12 +59,14 @@ $(SRCSDIR)ft_lstdelone.c \
 $(SRCSDIR)ft_lstclear.c \
 $(SRCSDIR)ft_lstiter.c \
 $(SRCSDIR)ft_lstmap.c \
+$(SRCSDIR)ft_full_free.c \
 $(SRCSDIR)ft_true_free.c \
 $(SRCSDIR)ft_chartab_len.c \
 $(SRCSDIR)ft_inttab_len.c \
 $(SRCSDIR)ft_check_int_dup.c \
 $(SRCSDIR)ft_check_strs_int.c \
-$(SRCSDIR)ft_strs_to_tab.c
+$(SRCSDIR)ft_strs_to_tab.c \
+$(SRCSDIR)ft_atoi_safe.c
 
 HEADERDIR = includes/
 
@@ -74,7 +76,7 @@ OBJ = $(SRCS:.c=.o)
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -ggdb
 
 IFLAG = -I$(HEADERDIR)
 

@@ -6,12 +6,12 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 22:34:37 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/29 01:54:02 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/02 20:28:38 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
-
+/*
 int	*ft_parsing_to_int(char **av)
 {
 	char	*concat;
@@ -40,7 +40,7 @@ int	*ft_parsing_to_int(char **av)
 	ft_true_free(concat);
 	return (tab);
 }
-
+*/
 /*
 int	*ft_parsing_to_int(char **av)
 {

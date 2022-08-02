@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:33:23 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/29 00:13:31 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/02 22:15:36 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,17 @@ typedef struct s_list
 typedef struct s_count
 {
 	ssize_t			a;
+	ssize_t			b;
+	ssize_t			c;
 	ssize_t			i;
 	ssize_t			j;
+	ssize_t			n;
+	ssize_t			x;
+	ssize_t			y;
+	ssize_t			z;
+	ssize_t			ac;
+	ssize_t			len;
+	ssize_t			size;
 }					t_count;
 
 int		ft_atoi(const char *nptr);
@@ -69,13 +78,15 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+void	ft_full_free(void **tobefree);
 void	ft_true_free(void *ptr);
 int		ft_check_int(char *str1);
 size_t	ft_chartab_len(char **tab);
 size_t	ft_inttab_len(int **tab);
 int		ft_check_int_dup(int **tab);
 int		ft_check_strs_int(char **str);
-int		*ft_strs_to_tab(char **strs);
+int		*ft_strs_to_tab(int *ac, char **strs);
+int		ft_atoi_safe(const char *nptr, int *check);
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
