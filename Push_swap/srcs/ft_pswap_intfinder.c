@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_show_tab.c                                      :+:      :+:    :+:   */
+/*   ft_pswap_intfinder.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/25 00:15:20 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/25 00:23:49 by zharzi           ###   ########.fr       */
+/*   Created: 2022/08/04 00:02:21 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/04 00:04:57 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pswap.h"
 
-void	ft_show_tab(t_list **par, int fd)
+int	ft_pswap_intfinder(char **av)
 {
-	int	i;
+	t_count	c;
 
-	i = 0;
-	while (par[i]->content)
+	c.i = -1;
+	c.j = -1;
+	c.x = 0;
+	while (av[++c.i])
 	{
-		ft_putnbr_fd(*(int *)par[i]->content, fd);
-		write(1, "\n", 1);
-		i++;
+		while (av[c.i][++c.j] != '\0')
+			if (ft_isdigit(av[c.i][c.j]))
+				c.x++;
+		if (!c.x)
+			return (0);
+		c.x = 0;
+		c.j = -1;
 	}
+	return (1);
 }

@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_pswap_join.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/04 02:51:34 by zharzi           ###   ########.fr       */
+/*   Created: 2022/08/04 00:02:23 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/04 00:05:54 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-int	main(int ac, char *av[])
+char	*ft_pswap_join(char **av)
 {
-	int	*trueav;
+	t_count	c;
+	char	*full;
+	char	*tmp;
 
-	trueav = ft_pswap_parsing(&ac, av + 1);
-	if (!trueav)
+	c.i = -1;
+	c.a = 0;
+	full = NULL;
+	while (av && av[++c.i])
 	{
-		write(2, "Error\n", 6);
-		return (1);
+		tmp = full;
+		full = ft_strjoin(full, av[c.i]);
+		if (tmp)
+			ft_true_free(tmp);
+		tmp = full;
+		full = ft_strjoin(full, " ");
+		if (tmp)
+			ft_true_free(tmp);
+		c.a++;
 	}
-	ft_sort_int_tab(trueav, ac);
-	if (!ft_find_dup_int(ac, trueav))
-	{
-		ft_true_free(trueav);
-		write(2, "Error\n", 6);
-		return (1);
-	}
-	ft_true_free(trueav);
-	ac++;
-	trueav = ft_pswap_parsing(&ac, av + 1);
-	ft_true_free(trueav);
-	return (0);
+	return (full);
 }

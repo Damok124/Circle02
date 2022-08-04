@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 22:48:01 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/03 01:47:41 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/03 19:16:46 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,24 @@ int	ft_atoi_safe(const char *nptr, int *check)
 
 	i = 0;
 	k = 0;
-	while ((*nptr >= '\t' && *nptr <= '\r') || *nptr == ' ')
-		nptr++;
-	if (*nptr == '-')
-		k = -1;
-	else if (*nptr == '+' || (*nptr >= '0' && *nptr <= '9'))
-		k = 1;
-	if (*nptr == '-' || *nptr == '+')
-		nptr++;
-	while (*nptr && *nptr >= '0' && *nptr <= '9')
+	if (nptr)
 	{
-		i *= 10;
-		i += *nptr - '0';
-		if ((k * i) > INT_MAX || (k * i) < INT_MIN)
-			*check = 0;
-		nptr++;
+		while ((*nptr >= '\t' && *nptr <= '\r') || *nptr == ' ')
+			nptr++;
+		if (*nptr == '-')
+			k = -1;
+		else if (*nptr == '+' || (*nptr >= '0' && *nptr <= '9'))
+			k = 1;
+		if (*nptr == '-' || *nptr == '+')
+			nptr++;
+		while (*nptr && *nptr >= '0' && *nptr <= '9')
+		{
+			i *= 10;
+			i += *nptr - '0';
+			if ((k * i) > INT_MAX || (k * i) < INT_MIN)
+				*check = 0;
+			nptr++;
+		}
 	}
 	return (i * k);
 }

@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:33:23 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/02 22:15:36 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/04 00:42:06 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,14 @@ size_t	ft_chartab_len(char **tab);
 size_t	ft_inttab_len(int **tab);
 int		ft_check_int_dup(int **tab);
 int		ft_check_strs_int(char **str);
-int		*ft_strs_to_tab(int *ac, char **strs);
 int		ft_atoi_safe(const char *nptr, int *check);
+int		ft_find_dup_int(int len, int *tab);
+int		*ft_tabdup(int len, int *src, int *dest);
+void	ft_sort_int_tab(int *tab, int size);
+void	ft_show_tab_fd(int len, int *tab, int fd);
+void	ft_show_strs_fd(char **strs, int fd);
+int		*ft_strs_to_tab(int len, char **strs);
+void	ft_show_contents(t_list **par, int fd);
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);

@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/08/02 19:50:39 by zharzi           ###   ########.fr        #
+#    Updated: 2022/08/04 00:50:25 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,8 +65,14 @@ $(SRCSDIR)ft_chartab_len.c \
 $(SRCSDIR)ft_inttab_len.c \
 $(SRCSDIR)ft_check_int_dup.c \
 $(SRCSDIR)ft_check_strs_int.c \
-$(SRCSDIR)ft_strs_to_tab.c \
-$(SRCSDIR)ft_atoi_safe.c
+$(SRCSDIR)ft_atoi_safe.c \
+$(SRCSDIR)ft_show_contents.c \
+$(SRCSDIR)ft_find_dup_int.c \
+$(SRCSDIR)ft_tabdup.c \
+$(SRCSDIR)ft_sort_int_tab.c \
+$(SRCSDIR)ft_show_tab_fd.c \
+$(SRCSDIR)ft_show_strs_fd.c \
+$(SRCSDIR)ft_strs_to_tab.c
 
 HEADERDIR = includes/
 

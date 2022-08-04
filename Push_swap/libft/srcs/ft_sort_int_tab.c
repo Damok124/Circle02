@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_sort_int_tab.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/04 02:51:34 by zharzi           ###   ########.fr       */
+/*   Created: 2022/08/04 00:25:45 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/04 00:30:11 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pswap.h"
+#include "libft.h"
 
-int	main(int ac, char *av[])
+void	ft_sort_int_tab(int *tab, int size)
 {
-	int	*trueav;
+	int	i;
+	int	n;
 
-	trueav = ft_pswap_parsing(&ac, av + 1);
-	if (!trueav)
+	i = 0;
+	n = 0;
+	size--;
+	while (i + 1 <= size)
 	{
-		write(2, "Error\n", 6);
-		return (1);
+		if (tab[i] > tab[i + 1])
+		{
+			n = tab[i];
+			tab[i] = tab[i + 1];
+			tab [i + 1] = n;
+			i = 0;
+		}
+		else
+			i++;
 	}
-	ft_sort_int_tab(trueav, ac);
-	if (!ft_find_dup_int(ac, trueav))
-	{
-		ft_true_free(trueav);
-		write(2, "Error\n", 6);
-		return (1);
-	}
-	ft_true_free(trueav);
-	ac++;
-	trueav = ft_pswap_parsing(&ac, av + 1);
-	ft_true_free(trueav);
-	return (0);
 }

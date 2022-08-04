@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strs_to_tab.c                                   :+:      :+:    :+:   */
+/*   ft_pswap_parsing.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 00:25:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/04 00:32:51 by zharzi           ###   ########.fr       */
+/*   Created: 2022/08/04 00:02:26 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/04 00:11:26 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pswap.h"
 
-int	*ft_strs_to_tab(int len, char **strs)
+int	*ft_pswap_parsing(int *ac, char **av)
 {
 	t_count	c;
+	char	*full;
+	char	**finalcut;
 	int		*tab;
-	int		tester;
 
 	c.i = -1;
-	tester = 1;
-	tab = (int *)malloc(sizeof(int) * len);
-	if (!tab)
+	tab = NULL;
+	if (*ac < 2 || !av || !ft_pswap_intfinder(av))
 		return (NULL);
-	ft_memset(tab, 0, sizeof(int) * len);
-	while (tester > 0 && strs && strs[++c.i])
-		tab[c.i] = ft_atoi_safe(strs[c.i], &tester);
-	if (tester == 0)
+	while (++c.i < (*ac - 1))
 	{
-		if (tab)
-			ft_true_free(tab);
-		return (NULL);
+		if (av[c.i][0] == '\0')
+			return (NULL);
 	}
+	full = ft_pswap_join(av);
+	if (!full || !ft_pswap_check_args(ac, full))
+		return (NULL);
+	finalcut = ft_split(full, ' ');
+	tab = ft_strs_to_tab(*ac, finalcut);
+	if (full)
+		ft_true_free(full);
+	if (finalcut)
+		ft_full_free((void **)finalcut);
 	return (tab);
 }

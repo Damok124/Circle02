@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strs_to_intlst.c                                :+:      :+:    :+:   */
+/*   ft_show_contents.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 11:11:42 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/29 01:54:00 by zharzi           ###   ########.fr       */
+/*   Created: 2022/07/25 00:15:20 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/04 00:42:29 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pswap.h"
+#include "libft.h"
 
-t_elem	*ft_strs_to_intlst(int ac, char **av)
+void	ft_show_contents(t_list **par, int fd)
 {
-	t_elem	*current;
-	t_elem	*first;
-	int		i;
+	int	i;
 
-	i = -1;
-	first = NULL;
-	while (++i < ac)
+	i = 0;
+	while (par[i]->content)
 	{
-		current = ft_new_elem(ft_atoi(av[i]));
-		ft_lstadd_down(&first, current);
+		ft_putnbr_fd(*(int *)par[i]->content, fd);
+		write(fd, "\n", 1);
+		i++;
 	}
-	return (first);
 }

@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_show_strs_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/04 02:51:34 by zharzi           ###   ########.fr       */
+/*   Created: 2022/08/04 00:25:40 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/04 00:49:01 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pswap.h"
+#include "libft.h"
 
-int	main(int ac, char *av[])
+void	ft_show_strs_fd(char **strs, int fd)
 {
-	int	*trueav;
+	t_count	c;
 
-	trueav = ft_pswap_parsing(&ac, av + 1);
-	if (!trueav)
+	c.i = 0;
+	while (strs && strs[c.i])
 	{
-		write(2, "Error\n", 6);
-		return (1);
+		ft_putstr_fd(strs[c.i], fd);
+		c.i++;
 	}
-	ft_sort_int_tab(trueav, ac);
-	if (!ft_find_dup_int(ac, trueav))
-	{
-		ft_true_free(trueav);
-		write(2, "Error\n", 6);
-		return (1);
-	}
-	ft_true_free(trueav);
-	ac++;
-	trueav = ft_pswap_parsing(&ac, av + 1);
-	ft_true_free(trueav);
-	return (0);
 }
