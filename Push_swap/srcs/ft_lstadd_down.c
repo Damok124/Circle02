@@ -6,12 +6,11 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:02:31 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/26 19:35:38 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/04 03:26:48 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
-#include <stdio.h>
 
 void	ft_lstadd_down(t_elem **lst, t_elem *newl)
 {
@@ -24,7 +23,7 @@ void	ft_lstadd_down(t_elem **lst, t_elem *newl)
 	{
 		while (tmp->down != NULL)
 		{
-			printf("test%d", i++);
+			ft_printf("test%d", i++);
 			tmp = tmp->down;
 		}
 		tmp->down = newl;

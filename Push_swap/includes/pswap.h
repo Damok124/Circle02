@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 11:57:27 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/04 00:25:22 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/04 03:27:08 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ void	ft_move_rr(char **a, char **b);
 void	ft_move_rra(char **a, char **b);
 void	ft_move_rrb(char **a, char **b);
 void	ft_move_rrr(char **a, char **b);
-char	*ft_pswap_join(char **av);
 int		ft_pswap_check_args(int *ac, char *full);
 int		ft_pswap_intfinder(char **av);
+char	*ft_pswap_join(char **av);
 int		*ft_pswap_parsing(int *ac, char **av);
-//t_elem	*ft_new_elem(int n);
-//void	ft_lstadd_down(t_elem **lst, t_elem *newl);
+
+t_elem	*ft_new_elem(int n);
+void	ft_lstadd_down(t_elem **lst, t_elem *newl);
 
 #endif

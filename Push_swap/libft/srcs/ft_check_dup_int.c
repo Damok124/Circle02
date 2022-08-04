@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_strs_int.c                                :+:      :+:    :+:   */
+/*   ft_check_dup_int.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 13:46:22 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/24 13:55:07 by zharzi           ###   ########.fr       */
+/*   Created: 2022/08/04 00:25:52 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/04 03:59:22 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_check_strs_int(char **str)
+int	ft_check_dup_int(int len, int *tab)
 {
-	size_t	i;
-	size_t	len;
+	t_count	c;
 
-	i = 0;
-	len = ft_chartab_len(str);
-	if (len == 0)
-		return (0);
-	while (i < len)
+	c.i = 0;
+	while (tab && c.i < len - 1)
 	{
-		if (!ft_check_int(str[i]))
+		if (tab[c.i] == tab[c.i + 1])
 			return (0);
-		i++;
+		c.i++;
 	}
 	return (1);
 }

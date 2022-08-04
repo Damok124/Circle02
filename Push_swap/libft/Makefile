@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/08/04 00:50:25 by zharzi           ###   ########.fr        #
+#    Updated: 2022/08/04 03:59:17 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,6 @@ $(SRCSDIR)ft_strlcat.c \
 $(SRCSDIR)ft_strnstr.c \
 $(SRCSDIR)ft_atoi.c \
 $(SRCSDIR)ft_calloc.c \
-$(SRCSDIR)ft_check_int.c \
 $(SRCSDIR)ft_strdup.c \
 $(SRCSDIR)ft_substr.c \
 $(SRCSDIR)ft_strjoin.c \
@@ -61,13 +60,9 @@ $(SRCSDIR)ft_lstiter.c \
 $(SRCSDIR)ft_lstmap.c \
 $(SRCSDIR)ft_full_free.c \
 $(SRCSDIR)ft_true_free.c \
-$(SRCSDIR)ft_chartab_len.c \
-$(SRCSDIR)ft_inttab_len.c \
-$(SRCSDIR)ft_check_int_dup.c \
-$(SRCSDIR)ft_check_strs_int.c \
 $(SRCSDIR)ft_atoi_safe.c \
 $(SRCSDIR)ft_show_contents.c \
-$(SRCSDIR)ft_find_dup_int.c \
+$(SRCSDIR)ft_check_dup_int.c \
 $(SRCSDIR)ft_tabdup.c \
 $(SRCSDIR)ft_sort_int_tab.c \
 $(SRCSDIR)ft_show_tab_fd.c \
