@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 18:06:15 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/04 14:34:56 by zharzi           ###   ########.fr       */
+/*   Created: 2022/04/26 16:48:47 by zharzi            #+#    #+#             */
+/*   Updated: 2022/05/16 10:35:23 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+void	ft_putstr_fd(char *s, int fd)
 {
-	del(lst->content);
-	free(lst);
+	int	i;
+
+	i = -1;
+	while (s[++i])
+		ft_putchar_fd(s[i], fd);
 }
 /*
 **Prototype
-**void ft_lstdelone(t_list *lst, void (*del)(void*));
+**void ft_putstr_fd(char *s, int fd);
 **Paramètres
-**lst: L’élément à free
-**del: L’adresse de la fonction permettant de supprimer le contenu de l’élément.
+**s: La chaîne de caractères à écrire.
+**fd: Le descripteur de fichier sur lequel écrire.
 **Valeur de retour
 **Aucune
 **Fonctions externes autorisées
-**free
+**write
 **Description
-**Libère la mémoire de l’élément passé en argument en utilisant la fonction
-**’del’ puis avec free(3). La mémoire de ’next’ ne doit pas être free.
+**Écrit la chaîne de caractères ’s’ sur le descripteur de fichier donné.
 */

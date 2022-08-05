@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 18:06:15 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/04 14:34:56 by zharzi           ###   ########.fr       */
+/*   Created: 2022/05/13 18:02:31 by zharzi            #+#    #+#             */
+/*   Updated: 2022/05/16 09:50:24 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	del(lst->content);
-	free(lst);
+	t_list	*tmp;
+
+	tmp = *lst;
+	if (tmp)
+	{
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
+	}
+	else
+		*lst = new;
 }
 /*
 **Prototype
-**void ft_lstdelone(t_list *lst, void (*del)(void*));
+**void ft_lstadd_back(t_list **lst, t_list *new);
 **Paramètres
-**lst: L’élément à free
-**del: L’adresse de la fonction permettant de supprimer le contenu de l’élément.
+**lst: L’adresse du pointeur vers le premier élément de la liste.
+**new: L’adresse du pointeur vers l’élément à rajouter à la liste.
 **Valeur de retour
 **Aucune
 **Fonctions externes autorisées
-**free
+**Aucune
 **Description
-**Libère la mémoire de l’élément passé en argument en utilisant la fonction
-**’del’ puis avec free(3). La mémoire de ’next’ ne doit pas être free.
+**Ajoute l’élément ’new’ à la fin de la liste.
 */

@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 18:06:15 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/04 14:34:56 by zharzi           ###   ########.fr       */
+/*   Created: 2022/05/13 18:08:24 by zharzi            #+#    #+#             */
+/*   Updated: 2022/05/16 11:08:53 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+t_list	*ft_lstlast(t_list *lst)
 {
-	del(lst->content);
-	free(lst);
+	t_list	*tmp;
+
+	tmp = NULL;
+	while (lst)
+	{
+		tmp = lst;
+		lst = lst->next;
+	}
+	return (tmp);
 }
 /*
 **Prototype
-**void ft_lstdelone(t_list *lst, void (*del)(void*));
+**t_list *ft_lstlast(t_list *lst);
 **Paramètres
-**lst: L’élément à free
-**del: L’adresse de la fonction permettant de supprimer le contenu de l’élément.
+**lst: Le début de la liste.
 **Valeur de retour
-**Aucune
+**Dernier élément de la liste
 **Fonctions externes autorisées
-**free
+**Aucune
 **Description
-**Libère la mémoire de l’élément passé en argument en utilisant la fonction
-**’del’ puis avec free(3). La mémoire de ’next’ ne doit pas être free.
+**Renvoie le dernier élément de la liste.
 */

@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 18:06:15 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/04 14:34:56 by zharzi           ###   ########.fr       */
+/*   Created: 2022/04/26 16:49:55 by zharzi            #+#    #+#             */
+/*   Updated: 2022/05/16 10:28:21 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+void	ft_putendl_fd(char *s, int fd)
 {
-	del(lst->content);
-	free(lst);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }
 /*
 **Prototype
-**void ft_lstdelone(t_list *lst, void (*del)(void*));
+**void ft_putendl_fd(char *s, int fd);
 **Paramètres
-**lst: L’élément à free
-**del: L’adresse de la fonction permettant de supprimer le contenu de l’élément.
+**s: La chaîne de caractères à écrire.
+**fd: Le descripteur de fichier sur lequel écrire.
 **Valeur de retour
 **Aucune
 **Fonctions externes autorisées
-**free
+**write
 **Description
-**Libère la mémoire de l’élément passé en argument en utilisant la fonction
-**’del’ puis avec free(3). La mémoire de ’next’ ne doit pas être free.
+**Écrit La chaîne de caractères ’s’ sur le descripteur de fichier donné suivie
+**d’un retour à la ligne.
 */

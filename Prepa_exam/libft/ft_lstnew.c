@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 18:06:15 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/04 14:34:56 by zharzi           ###   ########.fr       */
+/*   Created: 2022/05/13 18:11:00 by zharzi            #+#    #+#             */
+/*   Updated: 2022/05/16 11:08:52 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+t_list	*ft_lstnew(void *content)
 {
-	del(lst->content);
-	free(lst);
+	t_list	*new;
+
+	new = malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }
 /*
 **Prototype
-**void ft_lstdelone(t_list *lst, void (*del)(void*));
+**t_list *ft_lstnew(void *content);
 **Paramètres
-**lst: L’élément à free
-**del: L’adresse de la fonction permettant de supprimer le contenu de l’élément.
+**content: Le contenu du nouvel élément.
 **Valeur de retour
-**Aucune
+**Le nouvel élément
 **Fonctions externes autorisées
-**free
+**malloc
 **Description
-**Libère la mémoire de l’élément passé en argument en utilisant la fonction
-**’del’ puis avec free(3). La mémoire de ’next’ ne doit pas être free.
+**Alloue (avec malloc(3)) et renvoie un nouvel élément. La variable membre
+**’content’ est initialisée à l’aide de la valeur du paramètre ’content’.
+**La variable ’next’ est initialisée à NULL.
 */

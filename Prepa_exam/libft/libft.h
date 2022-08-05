@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:33:23 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/05 00:33:56 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/05/26 17:19:48 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stddef.h>
 # include <unistd.h>
+# include <stdio.h>
 # include <string.h>
 # include <stdint.h>
 # include <stdlib.h>
@@ -29,18 +30,9 @@ typedef struct s_list
 
 typedef struct s_count
 {
-	ssize_t			a;
-	ssize_t			b;
-	ssize_t			c;
 	ssize_t			i;
+	ssize_t			a;
 	ssize_t			j;
-	ssize_t			n;
-	ssize_t			x;
-	ssize_t			y;
-	ssize_t			z;
-	ssize_t			ac;
-	ssize_t			len;
-	ssize_t			size;
 }					t_count;
 
 int		ft_atoi(const char *nptr);
@@ -78,20 +70,6 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
-void	ft_full_free(void **tobefree);
-void	ft_true_free(void *ptr);
-int		*ft_strs_to_tab(int len, char **strs);
-int		ft_atoi_safe(const char *nptr, int *check);
-int		*ft_tabdup(int len, int *src, int *dest);
-void	ft_sort_int_tab(int *tab, int size);
-int		ft_check_dup_int(int len, int *tab);
-void	ft_show_contents(t_list **par, int fd);
-void	ft_show_tab_fd(int len, int *tab, int fd);
-void	ft_show_strs_fd(char **strs, int fd);
-t_list	**ft_tab_to_lst(int ac, int *tab);
-void	ft_show_lstint(t_list **list, int fd);
-void	ft_memset_lst(t_list **list, void *content);
-void	ft_full_free_lst(t_list **list);
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);

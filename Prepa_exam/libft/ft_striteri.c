@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 18:02:31 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/04 15:30:37 by zharzi           ###   ########.fr       */
+/*   Created: 2022/04/26 16:54:50 by zharzi            #+#    #+#             */
+/*   Updated: 2022/05/16 10:43:16 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	t_list	*tmp;
+	unsigned int	i;
 
-	tmp = *lst;
-	if (tmp)
+	i = 0;
+	while (s[i])
 	{
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = new;
+		f((i), &s[i]);
+		i++;
 	}
-	else
-		*lst = new;
 }
 /*
 **Prototype
-**void ft_lstadd_back(t_list **lst, t_list *new);
+**void ft_striteri(char *s, void (*f)(unsigned int, char*));
 **Paramètres
-**lst: L’adresse du pointeur vers le premier élément de la liste.
-**new: L’adresse du pointeur vers l’élément à rajouter à la liste.
+**s: La chaîne de caractères sur laquelle itérer.
+**f: La fonction à appliquer à chaque caractère.
 **Valeur de retour
 **Aucune
 **Fonctions externes autorisées
 **Aucune
 **Description
-**Ajoute l’élément ’new’ à la fin de la liste.
+**Applique la fonction ’f’ à chaque caractère de la chaîne de caractères
+**transmise comme argument, et en passant son index comme premier argument.
+**Chaque caractère est transmis par adresse à ’f’ afin d’être modifié si
+**nécessaire.
 */
