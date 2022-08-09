@@ -6,21 +6,29 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 00:28:12 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/05 00:35:39 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/06 23:22:41 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pswap.h"
 
-void	ft_show_lstint(t_list **list, int fd)
+void	ft_show_lstint(t_list **list)
 {
 	t_list	*tmp;
+	int		data;
 
-	tmp = *list;
-	while (tmp)
+	if (*list)
 	{
-		ft_putnbr_fd(*(int *)tmp->content, fd);
-		write(fd, "\n", 1);
-		tmp = tmp->next;
+		tmp = *list;
+		while (tmp)
+		{
+			data = *(int *)(tmp->content);
+			ft_printf("[%d]", data);
+			tmp = tmp->next;
+			if (tmp)
+				ft_printf("-");
+			else
+				ft_printf("\n");
+		}
 	}
 }

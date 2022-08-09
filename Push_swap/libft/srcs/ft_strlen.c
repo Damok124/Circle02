@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 14:12:53 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/29 01:47:50 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/08 18:03:26 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,7 @@ size_t	ft_strlen(const char *str)
 	size_t	i;
 
 	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
+	while (str && str[i])
 		i++;
 	return (i);
 }
-/*
-**SYNOPSIS
-**#include <string.h>
-**size_t strlen(const char *s);
-**DESCRIPTION
-**La fonction strlen() calcule la longueur de la chaîne de caractères s,
-**sans compter l'octet nul « \0 » final.
-**VALEUR RENVOYÉE
-**La fonction strlen() renvoie le nombre de caractères dans la chaîne s.
-*/

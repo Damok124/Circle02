@@ -6,20 +6,20 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 15:58:24 by zharzi            #+#    #+#             */
-/*   Updated: 2022/05/17 15:49:37 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/08 19:47:04 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_splitrowcount(const char *s, char c)
+ssize_t	ft_count_strs(const char *s, char c)
 {
-	size_t	n;
-	size_t	i;
+	ssize_t	n;
+	ssize_t	i;
 
 	n = 0;
 	i = 0;
-	while (s[i])
+	while (s && s[i])
 	{
 		while (s[i] && s[i] == c)
 			i++;
@@ -31,48 +31,42 @@ static size_t	ft_splitrowcount(const char *s, char c)
 	return (n);
 }
 
+void	ft_true_split(char const *s, char **strs, char c, ssize_t len)
+{
+	ssize_t	i;
+	ssize_t	j;
+	ssize_t	a;
+
+	a = 0;
+	i = 0;
+	j = 0;
+	while (s[i] && a < len)
+	{
+		while (s[i + j] && s[i + j] == c)
+			i++;
+		while ((s[i + j] && s[i + j] != c))
+			j++;
+		if (s[i + j] == c || s[i + j] == 0)
+			strs[a] = ft_substr(s, i, j);
+		a++;
+		i = i + j;
+		j = 0;
+	}
+}
+
 char	**ft_split(char const *s, char c)
 {
-	char	**tab;
-	t_count	count;
+	char	**strs;
+	ssize_t	len;
 
-	count.a = -1;
-	count.i = -1;
-	count.j = -1;
-	tab = (char **)malloc(sizeof(char *) * (ft_splitrowcount(s, c) + 1));
-	if (!tab)
-		return (NULL);
-	tab[ft_splitrowcount(s, c)] = NULL;
-	while (++count.i < (ssize_t)ft_strlen(s) && \
-	count.a < ((ssize_t)ft_splitrowcount(s, c)))
+	if (s)
 	{
-		if (count.i == 0 || (s[count.i - 1] == c && s[count.i] != c))
-		{
-			while (s[count.i] && s[count.i] == c)
-				count.i++;
-			while (s[count.i + (++count.j)] && s[count.i + count.j] != c)
-				;
-			if (++count.a != (ssize_t)ft_splitrowcount(s, c))
-				tab[count.a] = ft_substr(s, count.i, count.j);
-			count.j = 0;
-		}
+		len = ft_count_strs(s, c);
+		strs = (char **)malloc(sizeof(char *) * (len + 1));
+		if (!strs)
+			return (NULL);
+		strs[len] = NULL;
+		ft_true_split(s, strs, c, len);
 	}
-	return (tab);
+	return (strs);
 }
-/*
-**Prototype
-**char **ft_split(char const *s, char c);
-**Paramètres
-**s: La chaîne de caractères à découper.
-**c: Le caractère délimiteur.
-**Valeur de retour
-**Le tableau de nouvelles chaînes de caractères résultant du découpage.
-**NULL si l’allocation échoue.
-**Fonctions externes autorisées
-**malloc, free
-**Description
-**Alloue (avec malloc(3)) et retourne un tableau de chaînes de caractères
-**obtenu en séparant ’s’ à
-**l’aide du caractère ’c’, utilisé comme délimiteur.
-**Le tableau doit être terminé par NULL.
-*/

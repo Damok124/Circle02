@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 16:39:26 by zharzi            #+#    #+#             */
-/*   Updated: 2022/05/16 11:04:02 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/07 21:22:53 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,3 @@ char	*ft_itoa(int n)
 	a = ft_printitoa(a, n, i);
 	return (a);
 }
-/*
-**Prototype
-**char *ft_itoa(int n);
-**Paramètres
-**n: L’entier à convertir.
-**Valeur de retour
-**La chaîne de caractères représentant l’entier.
-**NULL si l’allocation échoue.
-**Fonctions externes autorisées
-**malloc
-**Description
-**Alloue (avec malloc(3)) et retourne une chaîne de caractères représentant
-**l’entier ’n’ reçu en argument. Les nombres négatifs doivent être gérés.
-*/

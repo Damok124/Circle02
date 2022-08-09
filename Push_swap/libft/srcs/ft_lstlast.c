@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:08:24 by zharzi            #+#    #+#             */
-/*   Updated: 2022/05/16 11:08:53 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/07 21:23:35 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,3 @@ t_list	*ft_lstlast(t_list *lst)
 	}
 	return (tmp);
 }
-/*
-**Prototype
-**t_list *ft_lstlast(t_list *lst);
-**Paramètres
-**lst: Le début de la liste.
-**Valeur de retour
-**Dernier élément de la liste
-**Fonctions externes autorisées
-**Aucune
-**Description
-**Renvoie le dernier élément de la liste.
-*/

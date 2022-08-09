@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_show_contents.c                                 :+:      :+:    :+:   */
+/*   ft_ending_bstack.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/25 00:15:20 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/04 00:42:29 by zharzi           ###   ########.fr       */
+/*   Created: 2022/08/07 17:29:50 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/07 17:51:04 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pswap.h"
 
-void	ft_show_contents(t_list **par, int fd)
+void	ft_ending_bstack(t_list **astack, t_list **bstack)
 {
-	int	i;
-
-	i = 0;
-	while (par[i]->content)
-	{
-		ft_putnbr_fd(*(int *)par[i]->content, fd);
-		write(fd, "\n", 1);
-		i++;
-	}
+	while (*bstack)
+		ft_move_pa(astack, bstack);
 }

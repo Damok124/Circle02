@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 00:02:26 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/04 15:15:32 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/08 19:49:40 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	*ft_pswap_parsing(int *ac, char **av)
 	tab = NULL;
 	if (*ac < 2 || !av || !ft_pswap_intfinder(av))
 		return (NULL);
-	while (++c.i < (*ac - 1))
+	while (++c.i < (ssize_t)(*ac - 1))
 	{
 		if (av[c.i][0] == '\0')
 			return (NULL);
@@ -33,9 +33,7 @@ int	*ft_pswap_parsing(int *ac, char **av)
 		return (NULL);
 	finalcut = ft_split(full, ' ');
 	tab = ft_strs_to_tab(*ac, finalcut);
-	if (full)
-		ft_true_free(full);
-	if (finalcut)
-		ft_full_free((void **)finalcut);
+	ft_true_free(full);
+	ft_full_free((void **)finalcut);
 	return (tab);
 }

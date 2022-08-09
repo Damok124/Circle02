@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:02:31 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/04 15:30:37 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/07 21:23:02 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,3 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	else
 		*lst = new;
 }
-/*
-**Prototype
-**void ft_lstadd_back(t_list **lst, t_list *new);
-**Paramètres
-**lst: L’adresse du pointeur vers le premier élément de la liste.
-**new: L’adresse du pointeur vers l’élément à rajouter à la liste.
-**Valeur de retour
-**Aucune
-**Fonctions externes autorisées
-**Aucune
-**Description
-**Ajoute l’élément ’new’ à la fin de la liste.
-*/

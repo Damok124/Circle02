@@ -6,15 +6,22 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 04:57:16 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/24 05:10:24 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/07 17:48:12 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_move_pa(char **a, char **b)
+void	ft_move_pa(t_list **astack, t_list **bstack)
 {
-	ft_printf("pa\n");
-	(void)a;
-	(void)b;
+	t_list	*tmp1;
+
+	if (*bstack)
+	{
+		tmp1 = *bstack;
+		*bstack = (*bstack)->next;
+		tmp1->next = *astack;
+		*astack = tmp1;
+		ft_printf("pa\n");
+	}
 }

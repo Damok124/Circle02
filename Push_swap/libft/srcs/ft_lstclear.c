@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:03:52 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/24 22:55:45 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/07 21:23:13 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,3 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	}
 	*lst = NULL;
 }
-/*
-**Prototype
-**void ft_lstclear(t_list **lst, void (*del)(void*));
-**Paramètres
-**lst: L’adresse du pointeur vers un élément.
-**del: L’adresse de la fonction permettant de supprimer le contenu
-**d’un élément.
-**Valeur de retour
-**Aucune
-**Fonctions externes autorisées
-**free
-**Description
-**Supprime et libère la mémoire de l’élément passé en paramètre, et de tous
-**les éléments qui suivent, à l’aide de ’del’ et de free(3).
-**Enfin, le pointeur initial doit être mis à NULL.
-*/

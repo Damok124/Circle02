@@ -6,15 +6,28 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 04:59:58 by zharzi            #+#    #+#             */
-/*   Updated: 2022/07/24 05:03:35 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/07 21:13:52 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_move_rrb(char **a, char **b)
+void	ft_move_rrb(t_list **bstack)
 {
-	ft_printf("rrb\n");
-	(void)a;
-	(void)b;
+	t_list	*tmp1;
+	t_list	*tmp2;
+
+	if (*bstack && (*bstack)->next)
+	{
+		tmp2 = *bstack;
+		while (tmp2 && tmp2->next)
+		{
+			tmp1 = tmp2;
+			tmp2 = tmp2->next;
+		}
+		tmp1->next = NULL;
+		tmp2->next = *bstack;
+		*bstack = tmp2;
+		ft_printf("rrb\n");
+	}
 }

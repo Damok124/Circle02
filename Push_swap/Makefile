@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/08/04 00:00:52 by zharzi           ###   ########.fr        #
+#    Updated: 2022/08/07 18:14:36 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,9 @@ ${SRCSDIR}ft_move_rrr.c \
 ${SRCSDIR}ft_pswap_join.c \
 ${SRCSDIR}ft_pswap_check_args.c \
 ${SRCSDIR}ft_pswap_intfinder.c \
-${SRCSDIR}ft_pswap_parsing.c
-#${SRCSDIR}ft_new_elem.c \
-#${SRCSDIR}ft_lstadd_down.c
+${SRCSDIR}ft_pswap_parsing.c \
+$(SRCSDIR)ft_show_lstint.c \
+$(SRCSDIR)ft_ending_bstack.c
 
 HEADERDIR = includes/
 
@@ -47,8 +47,7 @@ FLAGS = -Wall -Wextra -Werror -g
 IFLAG = -I$(HEADERDIR) -Ift_printf/includes/ -Ilibft/includes/
 
 all : libpswap.a libft_printf.a libft.a
-	-@$(CC) $(FLAGS) main.c $(IFLAG) -L. -lpswap -L./ft_printf -lft_printf \
-	-L./libft -lft -o $(BINARY)
+	-@$(CC) $(FLAGS) main.c $(IFLAG) -L. -lpswap -L./libft -lft -L./ft_printf -lft_printf -o $(BINARY)
 
 %.o : %.c
 	-@$(CC) $(FLAGS) $(IFLAG) -o $@ -c $^

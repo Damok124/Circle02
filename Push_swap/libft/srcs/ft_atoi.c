@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 22:48:01 by zharzi            #+#    #+#             */
-/*   Updated: 2022/05/16 09:29:02 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/07 21:21:50 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,3 @@ int	ft_atoi(const char *nptr)
 	}
 	return (i * k);
 }
-/*
-**SYNOPSIS
-**#include <stdlib.h>
-**int atoi(const char *nptr);
-**DESCRIPTION
-**La fonction atoi() convertit le début de la chaîne pointée par nptr
-**en entier de type int . Le résultat est identique à un
-**appel strtol(nptr, (char **) NULL, 10); à la différence que
-**atoi() ne détecte pas d'erreur.
-**VALEUR RENVOYÉE
-**Le résultat de la conversion.
-*/

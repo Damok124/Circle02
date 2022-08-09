@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:10:01 by zharzi            #+#    #+#             */
-/*   Updated: 2022/05/16 10:26:22 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/07 21:24:18 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,3 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-/*
-**SYNOPSIS
-**#include <string.h>
-**void *memcpy(void *dest, const void *src, size_t n);
-**DESCRIPTION
-**La fonction memcpy() copie n octets depuis la zone mémoire src vers la zone
-**mémoire dest. Les deux zones ne doivent pas se chevaucher. Si c'est le cas,
-**utilisez plutôt memmove(3).
-**VALEUR RENVOYÉE
-**La fonction memcpy() renvoie un pointeur sur dest.
-*/

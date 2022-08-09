@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 00:28:23 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/05 00:30:09 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/07 21:21:59 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,14 @@
 void	ft_full_free_lst(t_list **list)
 {
 	t_list	*tmp;
-	t_list	*buf;
 
-	tmp = *list;
-	ft_memset_lst(list, NULL);
-	while (tmp)
+	tmp = NULL;
+	while (*list)
 	{
-		buf = tmp->next;
-		ft_true_free(tmp);
-		tmp = buf;
+		(*list)->content = NULL;
+		tmp = (*list)->next;
+		(*list)->next = NULL;
+		ft_true_free(*list);
+		*list = tmp;
 	}
-	if (list)
-		ft_true_free(list);
 }

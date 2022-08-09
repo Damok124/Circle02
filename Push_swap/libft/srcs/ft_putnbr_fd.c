@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 16:52:00 by zharzi            #+#    #+#             */
-/*   Updated: 2022/05/16 10:34:20 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/07 21:51:37 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,3 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd((n % 10) + '0', fd);
 	}
 }
-/* meilleure fonction
-**void ft_putnbr_fd(int n, int fd)
-**{
-**	char *s;
-**
-**	s = ft_itoa(n);
-**	ft_putstr_fd(s, fd);
-**	free(s);
-**}
-**Prototype
-**void ft_putnbr_fd(int n, int fd);
-**Paramètres
-**n: L’entier à écrire.
-**fd: Le descripteur de fichier sur lequel écrire.
-**Valeur de retour
-**Aucune
-**Fonctions externes autorisées
-**write
-**Description
-**Écrit l’entier ’n’ sur le descripteur de fichier donné.
-*/
