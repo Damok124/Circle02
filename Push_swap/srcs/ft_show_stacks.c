@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_pb.c                                       :+:      :+:    :+:   */
+/*   ft_show_stacks.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 04:57:31 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/10 19:19:54 by zharzi           ###   ########.fr       */
+/*   Created: 2022/08/11 11:21:36 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/11 11:22:04 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_move_pb(t_list **astack, t_list **bstack, t_control *values)
+void	ft_show_stacks(t_list **astack, t_list **bstack)
 {
-	t_list	*tmp1;
-
-	if (*astack)
-	{
-		tmp1 = *astack;
-		*astack = (*astack)->next;
-		tmp1->next = *bstack;
-		*bstack = tmp1;
-		values->pop_a--;
-		values->pop_b++;
-		ft_printf("pb\n");
-	}
+	ft_printf("astack : ");
+	ft_show_lstint(astack);
+	ft_printf("bstack : ");
+	ft_show_lstint(bstack);
 }

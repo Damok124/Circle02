@@ -6,13 +6,13 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 04:58:13 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/07 21:14:01 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/11 07:57:24 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_move_rra(t_list **astack)
+void	ft_rra_details(t_list **astack)
 {
 	t_list	*tmp1;
 	t_list	*tmp2;
@@ -28,6 +28,16 @@ void	ft_move_rra(t_list **astack)
 		tmp1->next = NULL;
 		tmp2->next = *astack;
 		*astack = tmp2;
+	}
+}
+
+void	ft_move_rra(t_list **astack, t_control *values)
+{
+	if (*astack && (*astack)->next)
+	{
+		ft_rra_details(astack);
+		values->pop_a++;
+		values->pop_ea--;
 		ft_printf("rra\n");
 	}
 }

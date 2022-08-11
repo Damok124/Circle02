@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/08/07 18:14:36 by zharzi           ###   ########.fr        #
+#    Updated: 2022/08/11 11:22:21 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,14 @@ ${SRCSDIR}ft_pswap_check_args.c \
 ${SRCSDIR}ft_pswap_intfinder.c \
 ${SRCSDIR}ft_pswap_parsing.c \
 $(SRCSDIR)ft_show_lstint.c \
-$(SRCSDIR)ft_ending_bstack.c
+$(SRCSDIR)ft_ending_bstack.c \
+$(SRCSDIR)ft_fill_controlval.c \
+$(SRCSDIR)ft_pswap_final_test.c \
+$(SRCSDIR)ft_moves_forward.c \
+$(SRCSDIR)ft_moves_backward.c \
+$(SRCSDIR)ft_show_values.c \
+$(SRCSDIR)ft_show_stacks.c
+
 
 HEADERDIR = includes/
 

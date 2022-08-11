@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_pb.c                                       :+:      :+:    :+:   */
+/*   ft_pswap_final_test.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 04:57:31 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/10 19:19:54 by zharzi           ###   ########.fr       */
+/*   Created: 2022/08/11 08:04:40 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/11 08:04:55 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_move_pb(t_list **astack, t_list **bstack, t_control *values)
+int	ft_pswap_final_test(t_list **astack, t_list **bstack)
 {
-	t_list	*tmp1;
+	t_list	*tmp;
+	int		test;
 
-	if (*astack)
+	test = 1;
+	tmp = *bstack;
+	if (tmp)
+		return (0);
+	tmp = *astack;
+	while (tmp)
 	{
-		tmp1 = *astack;
-		*astack = (*astack)->next;
-		tmp1->next = *bstack;
-		*bstack = tmp1;
-		values->pop_a--;
-		values->pop_b++;
-		ft_printf("pb\n");
+		if (tmp->index != test)
+			return (0);
+		test++;
+		tmp = tmp->next;
 	}
+	return (1);
 }

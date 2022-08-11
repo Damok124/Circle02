@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:33:23 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/08 16:58:52 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/10 17:41:54 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 typedef struct s_list
 {
 	void			*content;
+	int				index;
 	struct s_list	*next;
 }					t_list;
 
@@ -92,6 +93,7 @@ void	ft_show_strs_fd(char **strs, int fd);
 t_list	*ft_tab_to_lst(int ac, int *tab);
 void	ft_memset_lst(t_list **list, void *content);
 void	ft_full_free_lst(t_list **list);
+void	ft_index_intlist(t_list **astack, int *sortedav, int ac);
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
