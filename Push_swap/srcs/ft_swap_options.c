@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_rrr.c                                      :+:      :+:    :+:   */
+/*   ft_swap_options.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 05:00:08 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/12 10:51:37 by zharzi           ###   ########.fr       */
+/*   Created: 2022/08/12 11:28:40 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/12 14:36:02 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_move_rrr(t_list **astack, t_list **bstack, t_control *values)
+void	ft_swap_options(t_list **astack, t_list **bstack, t_control *val)
 {
-	if (*astack && (*astack)->next && *bstack && (*bstack)->next)
+	if ((*astack && (*astack)->next) || (*bstack && (*bstack)->next))
 	{
-		ft_rra_details(astack);
-		ft_rrb_details(bstack);
-		if (values->pop_ea)
+
+		//ft_swap_test_top(astack, bstack);
+		if (*astack != ft_lstlast(*astack) && *bstack != ft_lstlast(*bstack))
 		{
-			values->pop_a++;
-			values->pop_ea--;
+			ft_printf("SWAPPP OPTIONS");
+			ft_swap_test_edge(astack, bstack, val);
 		}
-		if (values->pop_eb)
-		{
-			values->pop_b++;
-			values->pop_eb--;
-		}
-		ft_printf("rrr\n");
 	}
 }

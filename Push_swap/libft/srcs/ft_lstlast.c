@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:08:24 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/07 21:23:35 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/12 08:00:44 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,7 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	t_list	*tmp;
-
-	tmp = NULL;
-	while (lst)
-	{
-		tmp = lst;
+	while (lst && lst->next)
 		lst = lst->next;
-	}
-	return (tmp);
+	return (lst);
 }

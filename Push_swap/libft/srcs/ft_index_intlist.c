@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:40:43 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/10 17:41:15 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/12 10:24:44 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ void	ft_index_intlist(t_list **astack, int *sortedav, int ac)
 			i++;
 		}
 		tmp = tmp->next;
+		i = 0;
 	}
 }

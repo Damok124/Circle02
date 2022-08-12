@@ -1,44 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_rb.c                                       :+:      :+:    :+:   */
+/*   ft_swap_test_top.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 04:57:54 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/12 10:48:04 by zharzi           ###   ########.fr       */
+/*   Created: 2022/08/12 11:28:59 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/12 11:29:55 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_rb_details(t_list **bstack)
+void	ft_swap_test_top(t_list **astack, t_list **bstack)
 {
-	t_list	*tmp1;
-	t_list	*tmp2;
+	t_list	*ta1;
+	t_list	*ta2;
+	t_list	*tb1;
+	t_list	*tb2;
 
-	if (*bstack && (*bstack)->next)
+	if (*astack && (*astack)->next)
 	{
-		tmp2 = *bstack;
-		*bstack = (*bstack)->next;
-		tmp2->next = NULL;
-		tmp1 = *bstack;
-		while (tmp1 && tmp1->next)
-			tmp1 = tmp1->next;
-		tmp1->next = tmp2;
+		ta1 = *astack;
+		ta2 = ta1->next;
 	}
-}
-
-void	ft_move_rb(t_list **bstack, t_control *values)
-{
 	if (*bstack && (*bstack)->next)
 	{
-		ft_rb_details(bstack);
-		if (values->pop_b)
-		{
-			values->pop_b--;
-			values->pop_eb++;
-		}
-		ft_printf("rb\n");
+		tb1 = *bstack;
+		tb2 = tb1->next;
+	}
+	if (ta1 && tb1)
+	{
+		if (ta1->index == (ta2->index + 1) && tb1->index == (tb2->index - 1))
+			ft_move_ss(astack, bstack);
+		if (ta1->index == (ta2->index + 1))
+			ft_move_sa(astack);
+		if (tb1->index == (tb2->index - 1))
+			ft_move_sb(bstack);
 	}
 }

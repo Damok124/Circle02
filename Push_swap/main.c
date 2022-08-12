@@ -6,11 +6,28 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/11 11:25:17 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/12 14:58:10 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
+
+void	ft_pswap_distri(t_list **astack, t_list **bstack, t_control *val)
+{
+	while (val->pop_a)
+	{
+		if ((*astack)->index > val->lastthird)
+			ft_push_to_ea(astack, val);
+		else if ((*astack)->index < val->firstthird)
+			ft_push_to_eb(astack, bstack, val);
+		else
+			ft_push_to_b(astack, bstack, val);
+		ft_swap_options(astack, bstack, val);//problem
+		ft_show_values(*val);
+		ft_show_stacks(astack, bstack);
+		ft_printf("-------------------------\n");
+	}
+}
 
 void	ft_push_swap(int ac, t_list **astack, t_list **bstack)
 {
@@ -19,21 +36,9 @@ void	ft_push_swap(int ac, t_list **astack, t_list **bstack)
 	if (ac == 1)
 		return ;
 	values = ft_fill_controlval(ac, astack);
-	(void)values;
-	(void)bstack;
-	//structure de controle reussie, a tester sur echantillon plus petit
-	//commencer l'algo
-	ft_show_values(values);
-	ft_move_pb(astack, bstack, &values);
-	ft_move_pb(astack, bstack, &values);
 	ft_show_values(values);
 	ft_show_stacks(astack, bstack);
-	ft_move_rrb(bstack, &values);
-	ft_show_values(values);
-	ft_show_stacks(astack, bstack);
-	ft_move_rb(bstack, &values);
-	ft_show_stacks(astack, bstack);
-	ft_show_values(values);
+	ft_pswap_distri(astack, bstack, &values);
 
 	ft_ending_bstack(astack, bstack, &values);
 	ft_show_values(values);

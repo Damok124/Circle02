@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 11:57:27 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/11 11:23:48 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/12 14:56:41 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 typedef struct s_control {
 	int	ac;
-	int	min;
-	int	max;
+	int	min;//equivalent 1
+	int	max;//equivalent ac
 	int	firstthird;
 	int	lastthird;
 	int	pop_a;
@@ -42,21 +42,29 @@ void		ft_move_rr(t_list **astack, t_list **bstack, t_control *values);
 void		ft_move_rra(t_list **astack, t_control *values);
 void		ft_move_rrb(t_list **bstack, t_control *values);
 void		ft_move_rrr(t_list **astack, t_list **bstack, t_control *values);
+void		ft_ra_details(t_list **astack);
+void		ft_rb_details(t_list **bstack);
+void		ft_rra_details(t_list **astack);
+void		ft_rrb_details(t_list **bstack);
+/////////////////////////
+//	COMBINED MOVES
+/////////////////////////
 void		ft_push_to_ea(t_list **astack, t_control *values);
 void		ft_push_to_b(t_list **astack, t_list **bstack, t_control *values);
 void		ft_push_to_eb(t_list **astack, t_list **bstack, t_control *values);
 void		ft_get_from_ea(t_list **astack, t_control *values);
 void		ft_get_from_b(t_list **astack, t_list **bstack, t_control *values);
 void		ft_get_from_eb(t_list **astack, t_list **bstack, t_control *values);
-void		ft_rra_details(t_list **astack);
-void		ft_rrb_details(t_list **bstack);
 void		ft_ending_bstack(t_list **astack, t_list **bstack, t_control *val);
+void		ft_swap_test_top(t_list **astack, t_list **bstack);
+void		ft_swap_test_edge(t_list **astack, t_list **bstack, t_control *val);
 /////////////////////////
 //	CONTROL
 /////////////////////////
 int			ft_pswap_check_args(int *ac, char *full);
 int			ft_pswap_intfinder(char **av);
 int			ft_pswap_final_test(t_list **astack, t_list **bstack);
+void		ft_swap_options(t_list **astack, t_list **bstack, t_control *val);
 /////////////////////////
 //	DATAS
 /////////////////////////
