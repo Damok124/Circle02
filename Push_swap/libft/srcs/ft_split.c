@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 15:58:24 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/08 19:47:04 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/13 11:47:11 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ char	**ft_split(char const *s, char c)
 	char	**strs;
 	ssize_t	len;
 
+	strs = NULL;
 	if (s)
 	{
 		len = ft_count_strs(s, c);

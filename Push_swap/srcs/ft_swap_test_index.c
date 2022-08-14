@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap_options.c                                  :+:      :+:    :+:   */
+/*   ft_swap_test_index.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/12 11:28:40 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/12 14:36:02 by zharzi           ###   ########.fr       */
+/*   Created: 2022/08/13 10:25:06 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/13 11:55:47 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_swap_options(t_list **astack, t_list **bstack, t_control *val)
+int	ft_swap_test_index(t_list *tmp1, t_list *tmp2)
 {
-	if ((*astack && (*astack)->next) || (*bstack && (*bstack)->next))
-	{
-
-		//ft_swap_test_top(astack, bstack);
-		if (*astack != ft_lstlast(*astack) && *bstack != ft_lstlast(*bstack))
-		{
-			ft_printf("SWAPPP OPTIONS");
-			ft_swap_test_edge(astack, bstack, val);
-		}
-	}
+	if (tmp1 && tmp1->index == (tmp2->index) - 1)
+		return (-1);
+	if (tmp1 && tmp1->index == (tmp2->index) + 1)
+		return (1);
+	return (0);
 }

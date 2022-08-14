@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 11:57:27 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/12 14:56:41 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/14 12:17:37 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,21 +56,21 @@ void		ft_get_from_ea(t_list **astack, t_control *values);
 void		ft_get_from_b(t_list **astack, t_list **bstack, t_control *values);
 void		ft_get_from_eb(t_list **astack, t_list **bstack, t_control *values);
 void		ft_ending_bstack(t_list **astack, t_list **bstack, t_control *val);
-void		ft_swap_test_top(t_list **astack, t_list **bstack);
-void		ft_swap_test_edge(t_list **astack, t_list **bstack, t_control *val);
+void		ft_swap_top_test(t_list **astack, t_list **bstack);
+void		ft_swap_test(t_list **astack, t_list **bstack, t_control *values);
 /////////////////////////
 //	CONTROL
 /////////////////////////
 int			ft_pswap_check_args(int *ac, char *full);
 int			ft_pswap_intfinder(char **av);
 int			ft_pswap_final_test(t_list **astack, t_list **bstack);
-void		ft_swap_options(t_list **astack, t_list **bstack, t_control *val);
+int			ft_swap_test_index(t_list *tmp1, t_list *tmp2);
 /////////////////////////
 //	DATAS
 /////////////////////////
 char		*ft_pswap_join(char **av);
 int			*ft_pswap_parsing(int *ac, char **av);
-t_control	ft_fill_controlval(int ac, t_list **astack);
+t_control	ft_fill_controlval(int ac);
 /////////////////////////
 //	VIEW
 /////////////////////////
