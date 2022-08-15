@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 11:57:27 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/14 12:17:37 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/15 20:45:46 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ void		ft_get_from_ea(t_list **astack, t_control *values);
 void		ft_get_from_b(t_list **astack, t_list **bstack, t_control *values);
 void		ft_get_from_eb(t_list **astack, t_list **bstack, t_control *values);
 void		ft_ending_bstack(t_list **astack, t_list **bstack, t_control *val);
-void		ft_swap_top_test(t_list **astack, t_list **bstack);
-void		ft_swap_test(t_list **astack, t_list **bstack, t_control *values);
+void		ft_pswap_distri(t_list **astack, t_list **bstack, t_control *val);
 /////////////////////////
 //	CONTROL
 /////////////////////////
@@ -65,17 +64,22 @@ int			ft_pswap_check_args(int *ac, char *full);
 int			ft_pswap_intfinder(char **av);
 int			ft_pswap_final_test(t_list **astack, t_list **bstack);
 int			ft_swap_test_index(t_list *tmp1, t_list *tmp2);
+int			ft_swap_test(t_list **astack, t_list **bstack, t_control *values);
+void		ft_swap_top_test(t_list **astack, t_list **bstack, t_control *val);
+int			ft_pswap_order(t_list **stack, int pop);
 /////////////////////////
 //	DATAS
 /////////////////////////
 char		*ft_pswap_join(char **av);
 int			*ft_pswap_parsing(int *ac, char **av);
 t_control	ft_fill_controlval(int ac);
+t_list		*ft_first_estack(t_list **stack, int pop);
 /////////////////////////
 //	VIEW
 /////////////////////////
-void		ft_show_lstint(t_list **list);
-void		ft_show_stacks(t_list **astack, t_list **bstack);
+void		ft_show_lstint(t_list **list, int pop);
+void		ft_show_stacks(t_list **astack, t_list **bstack, t_control *val);
 void		ft_show_values(t_control values);
+void		ft_show_lstindex(t_list **list);
 
 #endif

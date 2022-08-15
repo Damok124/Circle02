@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/08/13 11:27:23 by zharzi           ###   ########.fr        #
+#    Updated: 2022/08/15 17:01:56 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,12 @@ $(SRCSDIR)ft_show_values.c \
 $(SRCSDIR)ft_show_stacks.c \
 $(SRCSDIR)ft_swap_top_test.c \
 $(SRCSDIR)ft_swap_test.c \
-$(SRCSDIR)ft_swap_test_index.c
+$(SRCSDIR)ft_swap_test_index.c \
+$(SRCSDIR)ft_pswap_order.c \
+$(SRCSDIR)ft_first_estack.c \
+$(SRCSDIR)ft_pswap_distri.c \
+$(SRCSDIR)ft_show_lstindex.c
+
 
 HEADERDIR = includes/
 

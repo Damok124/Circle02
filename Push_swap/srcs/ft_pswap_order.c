@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_show_lstint.c                                   :+:      :+:    :+:   */
+/*   ft_pswap_order.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/05 00:28:12 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/15 17:08:51 by zharzi           ###   ########.fr       */
+/*   Created: 2022/08/15 14:03:43 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/15 14:03:47 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_show_lstint(t_list **list, int pop)
+int	ft_pswap_order(t_list **stack, int pop)
 {
 	t_list	*tmp;
-	//int		data;
+	int		order;
 
-	if (*list)
+	tmp = *stack;
+	order = 0;
+	if (pop == 1)
+		return (2);
+	if (pop > 1)
 	{
-		tmp = *list;
-		while (tmp && pop)
-		{
-		//	data = *(int *)(tmp->content);
-			ft_printf("[{%d}]", tmp->index);
-			tmp = tmp->next;
-			pop--;
-			if (tmp && pop)
-				ft_printf("~");
-		}
+		if (tmp->index + 1 == tmp->next->index)
+			order = 1;
+		else if (tmp->index - 1 == tmp->next->index)
+			order = -1;
 	}
+	while (pop > 1 && order)
+	{
+		if (tmp->index + order != tmp->next->index)
+			order = 0;
+		tmp = tmp->next;
+		pop--;
+	}
+	return (order);
 }

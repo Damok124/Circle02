@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_show_lstint.c                                   :+:      :+:    :+:   */
+/*   ft_show_lstindex.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 00:28:12 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/15 17:08:51 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/15 14:39:51 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_show_lstint(t_list **list, int pop)
+void	ft_show_lstindex(t_list **list)
 {
 	t_list	*tmp;
-	//int		data;
+	int		data;
 
 	if (*list)
 	{
 		tmp = *list;
-		while (tmp && pop)
+		while (tmp)
 		{
-		//	data = *(int *)(tmp->content);
-			ft_printf("[{%d}]", tmp->index);
+			data = tmp->index;
+			ft_printf("{%d}", data);
 			tmp = tmp->next;
-			pop--;
-			if (tmp && pop)
+			if (tmp)
 				ft_printf("~");
 		}
 	}
+	ft_printf("\n");
 }

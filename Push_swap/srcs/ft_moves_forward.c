@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 11:09:03 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/11 11:14:33 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/15 20:55:13 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,12 @@ void	ft_push_to_b(t_list **astack, t_list **bstack, t_control *values)
 void	ft_push_to_eb(t_list **astack, t_list **bstack, t_control *values)
 {
 	ft_move_pb(astack, bstack, values);
-	ft_move_rb(bstack, values);
+	if (*bstack && (*bstack)->next && \
+	(*bstack)->index - 1 != (*bstack)->next->index)
+		ft_move_rb(bstack, values);
+	else
+	{
+		values->pop_b--;
+		values->pop_eb++;
+	}
 }

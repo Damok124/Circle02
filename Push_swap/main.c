@@ -6,28 +6,17 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/14 17:20:11 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/15 20:46:28 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_pswap_distri(t_list **astack, t_list **bstack, t_control *val)
+void	ft_pswap_view(t_list **astack, t_list **bstack, t_control *val)
 {
-	while (val->pop_a)
-	{
-		if ((*astack)->index > val->lastthird)
-			ft_push_to_ea(astack, val);
-		else if ((*astack)->index < val->firstthird)
-			ft_push_to_eb(astack, bstack, val);
-		else
-			ft_push_to_b(astack, bstack, val);
-		ft_swap_test(astack, bstack, val);
-		//ecrire fonction de verif
-		ft_show_values(*val);
-		ft_show_stacks(astack, bstack);
-		ft_printf("-------------------------\n");
-	}
+	ft_show_values(*val);
+	ft_show_stacks(astack, bstack, val);
+	ft_printf("-------------------------\n");
 }
 
 void	ft_push_swap(int ac, t_list **astack, t_list **bstack)
@@ -36,11 +25,18 @@ void	ft_push_swap(int ac, t_list **astack, t_list **bstack)
 
 	if (ac == 1)
 		return ;
-	values = ft_fill_controlval(ac);//problem index
-	ft_show_values(values);
-	ft_show_stacks(astack, bstack);
-	ft_pswap_distri(astack, bstack, &values);
+	values = ft_fill_controlval(ac);
+	while (values.pop_a)
+	{
+		ft_pswap_view(astack, bstack, &values);
+		ft_pswap_distri(astack, bstack, &values);
+		while (ft_swap_test(astack, bstack, &values))
+			;
+	}
+	ft_pswap_view(astack, bstack, &values);
 
+	//rediger les consequences d'une sequence dans l'ordre
+	//verif et modif des regles de swap
 	ft_ending_bstack(astack, bstack, &values);
 	ft_show_values(values);
 }
@@ -51,8 +47,6 @@ int	main(int ac, char *av[])
 	int		*sortedav;
 	t_list	*listav;
 	t_list	*bstack;
-
-
 
 	bstack = NULL;
 	tabav = ft_pswap_parsing(&ac, av + 1);

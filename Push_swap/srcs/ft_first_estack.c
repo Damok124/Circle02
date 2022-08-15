@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_show_lstint.c                                   :+:      :+:    :+:   */
+/*   ft_first_estack.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/05 00:28:12 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/15 17:08:51 by zharzi           ###   ########.fr       */
+/*   Created: 2022/08/15 14:07:02 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/15 14:08:49 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_show_lstint(t_list **list, int pop)
+t_list	*ft_first_estack(t_list **stack, int pop)
 {
 	t_list	*tmp;
-	//int		data;
 
-	if (*list)
+	tmp = *stack;
+	while (pop)
 	{
-		tmp = *list;
-		while (tmp && pop)
-		{
-		//	data = *(int *)(tmp->content);
-			ft_printf("[{%d}]", tmp->index);
-			tmp = tmp->next;
-			pop--;
-			if (tmp && pop)
-				ft_printf("~");
-		}
+		pop--;
+		tmp = tmp->next;
 	}
+	return (tmp);
 }
