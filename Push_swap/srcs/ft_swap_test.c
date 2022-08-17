@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 11:29:03 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/15 20:48:06 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/17 09:23:37 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@ int	ft_swap_test(t_list **astack, t_list **bstack, t_control *values)
 		tb1 = *bstack;
 		tb2 = ft_lstlast(tb1);
 	}
-	if (tb1 && ft_swap_test_index(tb1, tb2) == -1)
+	if (tb1 && ft_test_index(tb1, tb2) == -1)
 	{
+		ft_printf("\tswap test\n");
 		ft_move_rrb(bstack, values);
 		check = 1;
 	}
+	ft_printf("\tswap top test\n");
 	ft_swap_top_test(astack, bstack, values);
 	return (check);
 }

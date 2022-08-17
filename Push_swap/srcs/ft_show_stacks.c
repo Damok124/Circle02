@@ -6,11 +6,26 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 11:21:36 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/15 17:50:48 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/16 14:13:39 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
+
+void	ft_show_masked(t_list **stack, t_control *values)
+{
+	t_list	*tmp;
+	int		pop;
+
+	pop = values->pop_a;
+	tmp = *stack;
+	while (pop)
+	{
+		tmp = tmp->next;
+		pop--;
+	}
+	ft_show_lstint(&tmp, values->lock);
+}
 
 void	ft_show_stacks(t_list **astack, t_list **bstack, t_control *val)
 {
@@ -27,7 +42,12 @@ void	ft_show_stacks(t_list **astack, t_list **bstack, t_control *val)
 	ft_printf("\n");
 	ft_printf("astack : ");
 	ft_show_lstint(astack, val->pop_a);
-	if (val->pop_ea)
+	if (val->lock)
+	{
+		ft_printf("+...+");
+		ft_show_masked(astack, val);
+	}
+	if (val->pop_ea > 0)
 	{
 		ft_printf("+&&&+");
 		tmp = ft_first_estack(astack, val->pop_a);

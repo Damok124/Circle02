@@ -6,41 +6,59 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/15 20:46:28 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/17 22:55:23 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
-
-void	ft_pswap_view(t_list **astack, t_list **bstack, t_control *val)
+/*
+void	ft_pswap_pattern(t_list **astack, t_list **bstack, t_control *val)
 {
-	ft_show_values(*val);
-	ft_show_stacks(astack, bstack, val);
-	ft_printf("-------------------------\n");
+	while (!ft_pswap_final(astack, bstack, val) && val->pop_a)
+	{
+		ft_pswap_view(astack, bstack, val);
+		while (ft_lock_elem(astack, &val))
+			if (ft_pswap_final(astack, bstack, val))
+				return ;
+		while (!ft_pswap_final(astack, bstack, val) && \
+		ft_swap_test(astack, bstack, val))
+		{
+			while (ft_lock_elem(astack, &val))
+				if (ft_pswap_final(astack, bstack, val))
+					return ;
+		}
+		if (ft_pswap_final(astack, bstack, val))
+			return ;
+		ft_pswap_distri(astack, bstack, val);
+		if (ft_pswap_final(astack, bstack, val))
+			return ;
+		while (ft_lock_elem(astack, &val))
+			if (ft_pswap_final(astack, bstack, val))
+				return ;
+	}
 }
-
+*/
 void	ft_push_swap(int ac, t_list **astack, t_list **bstack)
 {
-	t_control	values;
+	t_control	val;
 
 	if (ac == 1)
 		return ;
-	values = ft_fill_controlval(ac);
-	while (values.pop_a)
+	val = ft_fill_controlval(ac);
+	if (val.ac <= 5)/////////////////////////////////////
+		ft_homing_max(astack, bstack, &val);/////////////
+	while (!ft_pswap_final(astack, bstack, &val))
 	{
-		ft_pswap_view(astack, bstack, &values);
-		ft_pswap_distri(astack, bstack, &values);
-		while (ft_swap_test(astack, bstack, &values))
-			;
+		ft_pswap_pattern(astack, bstack, &val);
+		ft_recall_eastack(astack, bstack, &val);
 	}
-	ft_pswap_view(astack, bstack, &values);
-
-	//rediger les consequences d'une sequence dans l'ordre
-	//verif et modif des regles de swap
-	ft_ending_bstack(astack, bstack, &values);
-	ft_show_values(values);
+	ft_ending_bstack(astack, bstack, &val);
+	ft_pswap_view(astack, bstack, &val);
 }
-
+/*
+strategie pour demain : test unitaire du fonctionnement des fonctions,
+tentative de construction de pattern alternatif, au moins pour les plus petits
+*/
 int	main(int ac, char *av[])
 {
 	int		*tabav;

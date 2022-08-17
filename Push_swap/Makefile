@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/08/15 17:01:56 by zharzi           ###   ########.fr        #
+#    Updated: 2022/08/17 22:45:33 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,19 +34,23 @@ ${SRCSDIR}ft_pswap_parsing.c \
 $(SRCSDIR)ft_show_lstint.c \
 $(SRCSDIR)ft_ending_bstack.c \
 $(SRCSDIR)ft_fill_controlval.c \
-$(SRCSDIR)ft_pswap_final_test.c \
+$(SRCSDIR)ft_pswap_final.c \
 $(SRCSDIR)ft_moves_forward.c \
 $(SRCSDIR)ft_moves_backward.c \
 $(SRCSDIR)ft_show_values.c \
 $(SRCSDIR)ft_show_stacks.c \
 $(SRCSDIR)ft_swap_top_test.c \
 $(SRCSDIR)ft_swap_test.c \
-$(SRCSDIR)ft_swap_test_index.c \
+$(SRCSDIR)ft_test_index.c \
 $(SRCSDIR)ft_pswap_order.c \
 $(SRCSDIR)ft_first_estack.c \
+$(SRCSDIR)ft_show_lstindex.c \
+$(SRCSDIR)ft_check_order_all.c \
+$(SRCSDIR)ft_stack_check_order.c \
 $(SRCSDIR)ft_pswap_distri.c \
-$(SRCSDIR)ft_show_lstindex.c
-
+$(SRCSDIR)ft_lock_elem.c \
+$(SRCSDIR)ft_pswap_view.c \
+$(SRCSDIR)ft_manage_ends_a.c
 
 HEADERDIR = includes/
 
