@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 21:36:38 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/24 21:24:51 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/24 21:35:41 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	ft_small(t_list **astack, t_list **bstack, t_control *val)
 		ft_homing_max(astack, bstack, val);
 	while (ft_lock_elem(astack, bstack, &val))
 		;
-	if (!ft_pswap_final(astack, bstack, val))//nouveau
-		ft_rotate_tests(astack, bstack, val);//nouveau
 	if (val->lock && val->pop_ea && !ft_pswap_final(astack, bstack, val))
 		ft_ending_eastack(astack, bstack, val);
 	if (!ft_pswap_final(astack, bstack, val))
 		ft_swap_test_b(astack, bstack, val);
-	if (val->pop_a/* > 1 */&& !ft_pswap_final(astack, bstack, val))//2 au lieu de 1?
+	if (val->ac == 3 && !ft_pswap_final(astack, bstack, val))//nouveau
+		ft_rotate_tests(astack, bstack, val);//nouveau
+	else if (val->pop_a/* > 1 */&& !ft_pswap_final(astack, bstack, val))//2 au lieu de 1?
 	{
 		ft_move_pb(astack, bstack, val);
 		ft_swap_test_b(astack, bstack, val);
