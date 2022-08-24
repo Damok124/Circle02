@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fill_controlval.c                               :+:      :+:    :+:   */
+/*   ft_update_thirds.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/11 08:01:03 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/23 21:35:28 by zharzi           ###   ########.fr       */
+/*   Created: 2022/08/23 14:59:07 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/23 23:00:45 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-t_control	ft_fill_controlval(int ac)
+void	ft_update_thirds(t_control *val, int criteria)
 {
-	t_control	values;
-
-	if (ac)
+	ft_printf("\tupdate thirds a\n");
+	if (criteria == 0)
 	{
-		values.ac = ac;
-		values.min = 1;
-		values.max = ac;
-		values.firstthird = ac / 3;
-		values.lastthird = ac * 2 / 3;
-		values.pop_a = ac;
-		values.lock = 0;
-		values.pop_ea = 0;
-		values.pop_b = 0;
-		values.pop_eb = 0;
-		values.total = 0;
+		val->firstthird = val->lastthird + ((val->ac - val->lastthird) / 3);
+		val->lastthird = val->lastthird + ((val->ac - val->lastthird) / 3 * 2);
 	}
-	return (values);
+	if (criteria == 1)
+	{
+		val->firstthird = (val->max - val->min) / 3;
+		val->lastthird = (val->max - val->min) / 3 * 2;
+	}
 }

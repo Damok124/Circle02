@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/08/12 08:01:05 by zharzi           ###   ########.fr        #
+#    Updated: 2022/08/18 11:35:38 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,8 @@ $(SRCSDIR)ft_strs_to_tab.c \
 $(SRCSDIR)ft_tab_to_lst.c \
 $(SRCSDIR)ft_memset_lst.c \
 $(SRCSDIR)ft_full_free_lst.c \
-$(SRCSDIR)ft_index_intlist.c
+$(SRCSDIR)ft_index_intlist.c \
+$(SRCSDIR)ft_lst_find_one.c
 
 HEADERDIR = includes/
 

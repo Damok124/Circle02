@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fill_controlval.c                               :+:      :+:    :+:   */
+/*   ft_is_lock.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/11 08:01:03 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/23 21:35:28 by zharzi           ###   ########.fr       */
+/*   Created: 2022/08/19 17:31:19 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/19 17:43:00 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-t_control	ft_fill_controlval(int ac)
+int	ft_is_lock(t_list *elem, t_list **astack, t_control *val)
 {
-	t_control	values;
+	t_list	*tmp;
+	int		pop;
 
-	if (ac)
+	pop = val->pop_a;
+	tmp = *astack;
+	if (pop && val->lock && tmp)
 	{
-		values.ac = ac;
-		values.min = 1;
-		values.max = ac;
-		values.firstthird = ac / 3;
-		values.lastthird = ac * 2 / 3;
-		values.pop_a = ac;
-		values.lock = 0;
-		values.pop_ea = 0;
-		values.pop_b = 0;
-		values.pop_eb = 0;
-		values.total = 0;
+		while (tmp && pop--)
+			tmp = tmp->next;
+		pop = val->lock;
+		while (tmp && pop)
+		{
+			if (tmp == elem)
+				return (1);
+			tmp = tmp->next;
+			pop--;
+		}
 	}
-	return (values);
+	return (0);
 }

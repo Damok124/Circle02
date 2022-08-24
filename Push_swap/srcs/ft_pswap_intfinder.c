@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 00:02:21 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/04 00:04:57 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/19 22:31:48 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,22 @@
 
 int	ft_pswap_intfinder(char **av)
 {
-	t_count	c;
+	int	i;
+	int	j;
+	int	x;
 
-	c.i = -1;
-	c.j = -1;
-	c.x = 0;
-	while (av[++c.i])
+	i = -1;
+	j = -1;
+	x = 0;
+	while (av[++i])
 	{
-		while (av[c.i][++c.j] != '\0')
-			if (ft_isdigit(av[c.i][c.j]))
-				c.x++;
-		if (!c.x)
+		while (av[i][++j] != '\0')
+			if (ft_isdigit(av[i][j]))
+				x++;
+		if (!x)
 			return (0);
-		c.x = 0;
-		c.j = -1;
+		x = 0;
+		j = -1;
 	}
 	return (1);
 }

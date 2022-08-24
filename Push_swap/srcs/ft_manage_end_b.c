@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fill_controlval.c                               :+:      :+:    :+:   */
+/*   ft_manage_end_b.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/11 08:01:03 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/23 21:35:28 by zharzi           ###   ########.fr       */
+/*   Created: 2022/08/17 22:22:51 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/22 15:57:55 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-t_control	ft_fill_controlval(int ac)
+void	ft_manage_end_b(t_list **bstack, t_control *val)
 {
-	t_control	values;
+	t_list	*tmp1;
+	t_list	*tmp2;
+	int		test;
 
-	if (ac)
-	{
-		values.ac = ac;
-		values.min = 1;
-		values.max = ac;
-		values.firstthird = ac / 3;
-		values.lastthird = ac * 2 / 3;
-		values.pop_a = ac;
-		values.lock = 0;
-		values.pop_ea = 0;
-		values.pop_b = 0;
-		values.pop_eb = 0;
-		values.total = 0;
-	}
-	return (values);
+	ft_printf("\tmanage end b\n");
+	tmp1 = ft_lstlast(*bstack);
+	tmp2 = ft_lst_find_one(*bstack, val->pop_b + val->pop_eb -1);
+	test = ft_test_index(*bstack, tmp1);
+	if (test || tmp1->index > tmp2->index)
+		ft_move_rrb(bstack, val);
+	if (test == -1 && val->pop_b > 1)
+		ft_move_sb(bstack, val);
 }

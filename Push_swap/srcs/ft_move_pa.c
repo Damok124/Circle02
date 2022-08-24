@@ -6,13 +6,13 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 04:57:16 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/12 10:57:29 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/22 15:54:49 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_move_pa(t_list **astack, t_list **bstack, t_control *values)
+void	ft_move_pa(t_list **astack, t_list **bstack, t_control *val)
 {
 	t_list	*tmp1;
 
@@ -22,11 +22,12 @@ void	ft_move_pa(t_list **astack, t_list **bstack, t_control *values)
 		*bstack = (*bstack)->next;
 		tmp1->next = *astack;
 		*astack = tmp1;
-		if (values->pop_b)
-			values->pop_b--;
+		if (val->pop_b)
+			val->pop_b--;
 		else
-			values->pop_eb--;
-		values->pop_a++;
+			val->pop_eb--;
+		val->pop_a++;
+		val->total++;
 		ft_printf("pa\n");
 	}
 }

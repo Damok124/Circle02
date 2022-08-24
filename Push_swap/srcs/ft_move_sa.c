@@ -6,13 +6,13 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 04:49:14 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/17 08:04:26 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/22 15:56:03 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_move_sa(t_list **astack)
+void	ft_move_sa(t_list **astack, t_control *val)
 {
 	t_list	*elem3;
 	t_list	*elem2;
@@ -25,6 +25,7 @@ void	ft_move_sa(t_list **astack)
 		elem2->next = *astack;
 		(*astack)->next = elem3;
 		*astack = elem2;
+		val->total++;
 		ft_printf("sa\n");
 	}
 }

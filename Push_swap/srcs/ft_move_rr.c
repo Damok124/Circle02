@@ -6,27 +6,28 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 04:58:04 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/12 10:52:59 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/22 15:55:26 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_move_rr(t_list **astack, t_list **bstack, t_control *values)
+void	ft_move_rr(t_list **astack, t_list **bstack, t_control *val)
 {
 	if (*astack && (*astack)->next && *bstack && (*bstack)->next)
 	{
 		ft_ra_details(astack);
 		ft_rb_details(bstack);
-		if (values->pop_a)
+		if (val->pop_a)
 		{
-			values->pop_a--;
-			values->pop_ea++;
+			val->pop_a--;
+			val->pop_ea++;
 		}
-		if (values->pop_b)
+		if (val->pop_b)
 		{
-			values->pop_b--;
-			values->pop_eb++;
+			val->pop_b--;
+			val->pop_eb++;
+			val->total++;
 		}
 		ft_printf("rr\n");
 	}

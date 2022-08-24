@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 04:57:40 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/15 16:36:41 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/22 15:55:07 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,15 @@ void	ft_ra_details(t_list **astack)
 	}
 }
 
-void	ft_move_ra(t_list **astack, t_control *values)
+void	ft_move_ra(t_list **astack, t_control *val)
 {
 	if (*astack && (*astack)->next)
 		ft_ra_details(astack);
-	if (values->pop_a)
+	if (val->pop_a)
 	{
-		values->pop_a--;
-		values->pop_ea++;
+		val->pop_a--;
+		val->pop_ea++;
+		val->total++;
 	}
 	ft_printf("ra\n");
 }

@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fill_controlval.c                               :+:      :+:    :+:   */
+/*   ft_get_back_eb.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/11 08:01:03 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/23 21:35:28 by zharzi           ###   ########.fr       */
+/*   Created: 2022/08/21 12:05:59 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/21 12:06:03 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-t_control	ft_fill_controlval(int ac)
+void	ft_get_back_eb(t_list **astack, t_list **bstack, t_control *val)
 {
-	t_control	values;
+	t_list	*tmp1;
+	t_list	*tmp2;
 
-	if (ac)
+	tmp1 = NULL;
+	tmp2 = NULL;
+	if (val->pop_a && *bstack)
 	{
-		values.ac = ac;
-		values.min = 1;
-		values.max = ac;
-		values.firstthird = ac / 3;
-		values.lastthird = ac * 2 / 3;
-		values.pop_a = ac;
-		values.lock = 0;
-		values.pop_ea = 0;
-		values.pop_b = 0;
-		values.pop_eb = 0;
-		values.total = 0;
+		tmp1 = *astack;
+		tmp2 = ft_lstlast(*bstack);
 	}
-	return (values);
+	if (ft_test_index(tmp1, tmp2))
+	{
+		ft_move_rrb(bstack, val);
+		ft_move_pa(astack, bstack, val);
+		ft_swap_top_test(astack, bstack, val);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 00:02:23 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/04 00:05:54 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/19 22:32:25 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,25 @@
 
 char	*ft_pswap_join(char **av)
 {
-	t_count	c;
+	int		a;
+	int		i;
 	char	*full;
 	char	*tmp;
 
-	c.i = -1;
-	c.a = 0;
+	i = -1;
+	a = 0;
 	full = NULL;
-	while (av && av[++c.i])
+	while (av && av[++i])
 	{
 		tmp = full;
-		full = ft_strjoin(full, av[c.i]);
+		full = ft_strjoin(full, av[i]);
 		if (tmp)
 			ft_true_free(tmp);
 		tmp = full;
 		full = ft_strjoin(full, " ");
 		if (tmp)
 			ft_true_free(tmp);
-		c.a++;
+		a++;
 	}
 	return (full);
 }

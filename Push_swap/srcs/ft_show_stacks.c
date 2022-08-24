@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 11:21:36 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/16 14:13:39 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/20 21:23:51 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_show_masked(t_list **stack, t_control *values)
 		tmp = tmp->next;
 		pop--;
 	}
-	ft_show_lstint(&tmp, values->lock);
+	ft_show_lstindex(&tmp, values->lock);
 }
 
 void	ft_show_stacks(t_list **astack, t_list **bstack, t_control *val)
@@ -32,16 +32,16 @@ void	ft_show_stacks(t_list **astack, t_list **bstack, t_control *val)
 	t_list	*tmp;
 
 	ft_printf("bstack : ");
-	ft_show_lstint(bstack, val->pop_b);
+	ft_show_lstindex(bstack, val->pop_b);
 	if (val->pop_eb)
 	{
 		ft_printf("+&&&+");
 		tmp = ft_first_estack(bstack, val->pop_b);
-		ft_show_lstint(&tmp, val->pop_eb);
+		ft_show_lstindex(&tmp, val->pop_eb);
 	}
 	ft_printf("\n");
 	ft_printf("astack : ");
-	ft_show_lstint(astack, val->pop_a);
+	ft_show_lstindex(astack, val->pop_a);
 	if (val->lock)
 	{
 		ft_printf("+...+");
@@ -50,8 +50,8 @@ void	ft_show_stacks(t_list **astack, t_list **bstack, t_control *val)
 	if (val->pop_ea > 0)
 	{
 		ft_printf("+&&&+");
-		tmp = ft_first_estack(astack, val->pop_a);
-		ft_show_lstint(&tmp, val->pop_ea);
+		tmp = ft_first_estack(astack, val->pop_a + val->lock);
+		ft_show_lstindex(&tmp, val->pop_ea);
 	}
 	ft_printf("\n");
 }

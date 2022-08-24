@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fill_controlval.c                               :+:      :+:    :+:   */
+/*   ft_distri_avg_a.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/11 08:01:03 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/23 21:35:28 by zharzi           ###   ########.fr       */
+/*   Created: 2022/08/20 14:44:32 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/20 14:48:56 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-t_control	ft_fill_controlval(int ac)
+void	ft_distri_avg_a(t_list **astack, t_list **bstack, t_control *val)
 {
-	t_control	values;
+	int	avg;
 
-	if (ac)
+	avg = 0;
+	ft_printf("\tdistri avg a\n");
+	if (val->pop_a)
 	{
-		values.ac = ac;
-		values.min = 1;
-		values.max = ac;
-		values.firstthird = ac / 3;
-		values.lastthird = ac * 2 / 3;
-		values.pop_a = ac;
-		values.lock = 0;
-		values.pop_ea = 0;
-		values.pop_b = 0;
-		values.pop_eb = 0;
-		values.total = 0;
+		avg = ft_find_lstavg(bstack);
+		if ((*astack)->index >= avg)
+			ft_push_to_b(astack, bstack, val);
+		else
+			ft_push_to_eb(astack, bstack, val);
+		ft_swap_top_test(astack, bstack, val);
 	}
-	return (values);
 }

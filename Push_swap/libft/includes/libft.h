@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:33:23 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/14 11:01:21 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/18 11:35:06 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ t_list	*ft_tab_to_lst(int ac, int *tab);
 void	ft_memset_lst(t_list **list, void *content);
 void	ft_full_free_lst(t_list **list);
 void	ft_index_intlist(t_list **astack, int *sortedav, int ac);
+t_list	*ft_lst_find_one(t_list *lst, int position);
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);

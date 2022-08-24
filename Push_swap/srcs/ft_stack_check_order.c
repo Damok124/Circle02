@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 16:33:34 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/16 20:50:52 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/19 16:34:50 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_stack_check_order(t_list *stack, int pop, int order)
 {
 	if (!stack)
-		return (0);
+		return (order);
 	while (stack && pop > 1)
 	{
 		if (ft_test_index(stack, stack->next) != order)
