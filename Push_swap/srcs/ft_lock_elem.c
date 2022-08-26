@@ -6,19 +6,18 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 09:27:43 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/23 21:39:28 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/26 17:54:57 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-int	ft_lock_elem(t_list **astack, t_list **bstack, t_control **val)
+int	ft_lock_elem(t_list **astack, t_control **val)
 {
 	t_list	*tmp1;
 
 	if ((*val)->pop_a && (*val)->lock)
 	{
-		ft_printf("\tlock elem\n");
 		tmp1 = *astack;
 		while (tmp1->next && !ft_is_lock(tmp1->next, astack, *val))
 			tmp1 = tmp1->next;
@@ -33,7 +32,6 @@ int	ft_lock_elem(t_list **astack, t_list **bstack, t_control **val)
 			}
 		}
 	}
-	(void)bstack;
 	return (0);
 }
 

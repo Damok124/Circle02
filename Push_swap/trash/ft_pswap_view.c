@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pswap_order.c                                   :+:      :+:    :+:   */
+/*   ft_pswap_view.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/15 14:03:43 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/15 14:03:47 by zharzi           ###   ########.fr       */
+/*   Created: 2022/08/17 21:27:07 by zharzi            #+#    #+#             */
+/*   Updated: 2022/08/26 16:38:11 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-int	ft_pswap_order(t_list **stack, int pop)
+void	ft_pswap_view(t_list **astack, t_list **bstack, t_control *val)
 {
-	t_list	*tmp;
-	int		order;
+	int	i;
 
-	tmp = *stack;
-	order = 0;
-	if (pop == 1)
-		return (2);
-	if (pop > 1)
+	i = 0;
+	ft_printf("\n");
+	ft_show_values(*val);
+	ft_show_stacks(astack, bstack, val);
+	ft_printf("original : ");
+	while (val->argv[i])
 	{
-		if (tmp->index + 1 == tmp->next->index)
-			order = 1;
-		else if (tmp->index - 1 == tmp->next->index)
-			order = -1;
+		ft_printf("%s ", val->argv[i]);
+		i++;
 	}
-	while (pop > 1 && order)
-	{
-		if (tmp->index + order != tmp->next->index)
-			order = 0;
-		tmp = tmp->next;
-		pop--;
-	}
-	return (order);
+	ft_printf("\n");
+	ft_printf("-------------------------\n");
 }
