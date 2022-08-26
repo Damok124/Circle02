@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 22:43:22 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/24 21:16:58 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/26 13:46:22 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ int	ft_homing_booster(t_list **astack, t_list **bstack, t_control *val)
 		}
 		ft_put_end(astack, val, 1);
 		ft_pswap_view(astack, bstack, val);
-		/*
+
 		if (!val->lock && (*astack)->index == val->max)
 		{
 			ft_move_ra(astack, val);
 			//val->max--;
-		}*/
+		}
 	}
 	return (check);
 }
@@ -56,7 +56,7 @@ void	ft_homing_max(t_list **astack, t_list **bstack, t_control *val)
 	while (tmp && tmp->index != val->max && ++rank)
 		tmp = tmp->next;
 //	buff = *val;
-	if (!val->lock && rank > ft_lstsize(*astack) * 0.4)
+	if (!val->lock && rank >= ft_lstsize(*astack) / 2)
 	{
 		val->pop_a = rank;
 		val->lock++;

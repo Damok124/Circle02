@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 11:28:59 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/24 15:24:20 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/26 12:13:13 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_swap_top_test(t_list **astack, t_list **bstack, t_control *val)
 			ta1 = *astack;
 		if (*bstack && (*bstack)->next)
 			tb1 = *bstack;
-		if (ta1->index == val->ac)//nouveau
+		if (ta1->index == val->ac - 1)//nouveau
 			ft_move_ra(astack, val);
 		else if (ta1 && tb1 && ft_index_comp(ta1, ta1->next) \
 		&& !ft_index_comp(tb1, tb1->next))

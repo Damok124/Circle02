@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 17:29:50 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/23 21:36:54 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/26 13:28:24 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void	ft_ending_bstack(t_list **astack, t_list **bstack, t_control *val)
 			ft_move_rrb(bstack, val);
 		ft_move_pa(astack, bstack, val);
 		ft_swap_top_test(astack, bstack, val);
-		//ft_pswap_view(astack, bstack, val);
+		ft_pswap_view(astack, bstack, val);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:26:41 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/24 17:56:10 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/26 14:41:25 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_put_end(t_list **astack, t_control *val, int position)
 
 	series = ft_series_length(*astack, -1, position);
 	tmp = ft_lst_find_one(*astack, position + series - 2);
-	if (tmp->index == val->ac)
+	if (tmp->index == val->ac - 1 && tmp != ft_lstlast(*astack))
 	{
 		while (series > 0)
 		{

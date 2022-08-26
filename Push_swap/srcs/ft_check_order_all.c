@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 21:58:13 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/17 22:10:16 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/26 16:00:49 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_check_order_a(t_list	*astack, t_control *val)
 		return (0);
 }
 
-int	ft_check_order_ae(t_list *astack, t_control *val)
+int	ft_check_order_ea(t_list *astack, t_control *val)
 {
 	t_list	*tmp;
 

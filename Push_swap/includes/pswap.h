@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 11:57:27 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/24 17:30:09 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/26 13:57:18 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "ft_printf.h"
 
 typedef struct s_control {
+	char	**argv;
 	int	ac;
 	int	min;//equivalent 1
 	int	max;//equivalent ac
@@ -95,7 +96,7 @@ int			ft_index_comp(t_list *elem1, t_list *elem2);
 /////////////////////////
 char		*ft_pswap_join(char **av);
 int			*ft_pswap_parsing(int *ac, char **av);
-t_control	ft_fill_controlval(int ac);
+t_control	ft_fill_controlval(int ac, char **argv);
 t_list		*ft_first_estack(t_list **stack, int pop);
 int			ft_is_lock(t_list *elem, t_list **astack, t_control *val);
 int			ft_find_lstavg(t_list **stack);

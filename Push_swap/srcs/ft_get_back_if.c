@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 12:06:17 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/24 18:23:38 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/26 14:17:30 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	ft_get_back_if(t_list **astack, t_list **bstack, t_control *val)
 		}
 		else if (!ft_test_index(tmp1, tmp2))
 			ft_get_back_eb(astack, bstack, val);
+		else if (tmp2)//nouveau
+			ft_ending_bstack(astack, bstack, val);
 	}
 	else if ((!tmp1 || !val->pop_a) && tmp2)
 	{/*

@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 22:40:36 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/22 18:48:18 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/26 16:03:50 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_ending_eastack(t_list **astack, t_list **bstack, t_control *val)
 	{
 		if (!(*bstack))
 		{
-			if (val->pop_a && ft_index_comp(ft_lstlast(*astack), *astack))
+			if (val->ac > 3 && val->pop_a && ft_index_comp(ft_lstlast(*astack), *astack))
 			{
 				ft_move_pb(astack, bstack, val);
 				while (ft_test_index(*astack, *bstack))//new
