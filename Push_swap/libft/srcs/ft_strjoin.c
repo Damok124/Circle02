@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 15:53:26 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/26 16:38:45 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/30 14:02:23 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,27 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	t_count	c;
-	char	*str;
+	int				i;
+	int				j;
+	unsigned int	k;
+	char			*str;
 
-	c.i = 0;
-	c.j = 0;
-	c.k = (size_t)ft_strlen(s1) + (size_t)ft_strlen(s2);
-	str = (char *)malloc(sizeof(char) *(c.k + 1));
+	i = 0;
+	j = 0;
+	k = ft_strlen(s1) + ft_strlen(s2);
+	str = (char *)malloc(sizeof(char) *(k + 1));
 	if (!str)
 		return (NULL);
-	while (s1 && s1[c.i])
+	while (s1 && s1[i])
 	{
-		str[c.i + c.j] = s1[c.i];
-		c.i++;
+		str[i + j] = s1[i];
+		i++;
 	}
-	while (s2 && s2[c.j])
+	while (s2 && s2[j])
 	{
-		str[c.i + c.j] = s2[c.j];
-		c.j++;
+		str[i + j] = s2[j];
+		j++;
 	}
-	str[c.i + c.j] = '\0';
+	str[i + j] = '\0';
 	return (str);
 }

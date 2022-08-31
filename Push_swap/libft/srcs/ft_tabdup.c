@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 00:25:49 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/26 16:38:28 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/30 13:11:57 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,18 @@ int	*ft_tabdup(int len, int *src, int *dest)
 	int	i;
 
 	i = 0;
-	dest = (int *)malloc(sizeof(int) * len);
-	if (!dest)
-		return (NULL);
-	ft_memset(dest, 0, sizeof(int) * len);
-	while (src && i < len)
+	dest = NULL;
+	if (src)
 	{
-		dest[i] = src[i];
-		i++;
+		dest = (int *)malloc(sizeof(int) * len);
+		if (!dest)
+			return (NULL);
+		ft_memset(dest, 0, sizeof(int) * len);
+		while (src && i < len)
+		{
+			dest[i] = src[i];
+			i++;
+		}
 	}
 	return (dest);
 }

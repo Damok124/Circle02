@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 00:25:45 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/26 16:38:27 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/30 13:12:47 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	*ft_sort_int_tab(int *tab, int size)
 	ret = ft_tabdup(size, tab, ret);
 	i = 0;
 	n = 0;
-	while (i + 1 < size)
+	while (ret && i + 1 < size)
 	{
 		if (ret[i] > ret[i + 1])
 		{

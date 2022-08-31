@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 00:02:18 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/26 16:38:41 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/30 13:04:46 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	ft_pswap_check_args(int *ac, char *full)
 
 	i = 0;
 	*ac = 0;
+	if (!full)
+		return (0);
 	while (full[i])
 	{
 		if (full[i] && (full[i] == ' ' || ((full[i] == '+' || \

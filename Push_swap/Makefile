@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/08/26 17:41:43 by zharzi           ###   ########.fr        #
+#    Updated: 2022/08/30 15:08:10 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,24 +52,6 @@ $(SRCSDIR)ft_index_comp.c \
 $(SRCSDIR)ft_moves_backward.c \
 $(SRCSDIR)ft_series_length.c \
 $(SRCSDIR)ft_put_end.c
-#$(SRCSDIR)ft_pswap_small.c \
-$(SRCSDIR)ft_show_lstindex.c \
-$(SRCSDIR)ft_show_stacks.c \
-$(SRCSDIR)ft_show_values.c \
-$(SRCSDIR)ft_reborn_astack.c \
-$(SRCSDIR)ft_pswap_view.c \
-$(SRCSDIR)ft_show_lstint.c \
-$(SRCSDIR)ft_update_thirds.c \
-$(SRCSDIR)ft_rotate_tests.c \
-$(SRCSDIR)ft_rotate_test_b.c \
-$(SRCSDIR)ft_rotate_anyway.c \
-$(SRCSDIR)ft_find_lstavg.c \
-$(SRCSDIR)ft_pswap_distri.c \
-$(SRCSDIR)ft_pswap_order.c \
-$(SRCSDIR)ft_manage_end_a.c \
-$(SRCSDIR)ft_manage_end_b.c \
-$(SRCSDIR)ft_check_order_all.c \
-$(SRCSDIR)ft_distri_avg_a.c
 
 HEADERDIR = includes/
 

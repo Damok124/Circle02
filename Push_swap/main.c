@@ -6,12 +6,12 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/27 08:05:23 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/30 14:56:43 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
-//voir pswap parsing si cast toujours utile
+
 void	ft_main_pattern(t_list **astack, t_list **bstack, t_control *val)
 {
 	int	i;
@@ -57,6 +57,8 @@ int	main(int ac, char *av[])
 	t_list	*listav;
 	t_list	*bstack;
 
+	if (ac == 1)
+		return (0);
 	bstack = NULL;
 	tabav = ft_pswap_parsing(&ac, av + 1);
 	sortedav = ft_sort_int_tab(tabav, ac);
@@ -73,8 +75,6 @@ int	main(int ac, char *av[])
 	listav = ft_tab_to_lst(ac, tabav);
 	ft_index_intlist(&listav, sortedav, ac);
 	ft_push_swap(ac, &listav, &bstack);
-	ft_true_free(tabav);
-	ft_true_free(sortedav);
-	ft_full_free_lst(&listav);
-	return (0);
+	return (ft_true_free(tabav), ft_true_free(sortedav), \
+		ft_full_free_lst(&listav), 0);
 }
