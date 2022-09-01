@@ -6,13 +6,17 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:33:23 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/30 14:45:44 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/08/31 15:24:03 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 256
+# endif
 
+# include <sys/stat.h>
 # include <stddef.h>
 # include <unistd.h>
 # include <string.h>
@@ -20,6 +24,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdarg.h>
+# include <fcntl.h>
 
 typedef struct s_list
 {
@@ -27,6 +32,19 @@ typedef struct s_list
 	int				index;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct s_tools1 {
+	char	*tmp;
+	char	*line;
+	int		n;
+	int		i;
+}			t_tools1;
+
+typedef struct s_tools2 {
+	char	*buff;
+	char	*ret;
+	int		count;
+}			t_tools2;
 
 /////////////////////////
 //	PRINT
@@ -93,6 +111,7 @@ char	*ft_strdup(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		*ft_tabdup(int len, int *src, int *dest);
+char	*get_next_line(int fd);
 /////////////////////////
 //	SORTING
 /////////////////////////

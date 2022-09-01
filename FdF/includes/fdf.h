@@ -6,18 +6,19 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:48:56 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/31 14:01:35 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/01 16:38:21 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
+# include "mlx.h"
 # include "libft.h"
 # include "ft_printf.h"
 
 /////////////////////////
-//
+//	CATEGORY
 /////////////////////////
 void	ft_test(void);
 
