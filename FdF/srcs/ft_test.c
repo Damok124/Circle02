@@ -6,13 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:59:26 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/01 15:07:18 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/06 19:11:23 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-
-void	ft_test(void)
-{
-	return ;
-}

@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/08/31 14:28:58 by zharzi           ###   ########.fr        #
+#    Updated: 2022/09/06 18:50:23 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,11 @@ $(SRCSDIR)ft_lstmap.c \
 $(SRCSDIR)ft_full_free.c \
 $(SRCSDIR)ft_true_free.c \
 $(SRCSDIR)ft_atoi_safe.c \
+$(SRCSDIR)ft_atol_safe.c \
+$(SRCSDIR)ft_atoll_safe.c \
+$(SRCSDIR)ft_atou_safe.c \
+$(SRCSDIR)ft_atoul_safe.c \
+$(SRCSDIR)ft_atoull_safe.c \
 $(SRCSDIR)ft_check_dup_int.c \
 $(SRCSDIR)ft_tabdup.c \
 $(SRCSDIR)ft_sort_int_tab.c \
@@ -71,7 +76,7 @@ $(SRCSDIR)ft_strs_to_tab.c \
 $(SRCSDIR)ft_tab_to_lst.c \
 $(SRCSDIR)ft_memset_lst.c \
 $(SRCSDIR)ft_full_free_lst.c \
-$(SRCSDIR)ft_index_intlist.c \
+$(SRCSDIR)ft_index_intlst.c \
 $(SRCSDIR)ft_lst_find_one.c \
 $(SRCSDIR)get_next_line.c
 
