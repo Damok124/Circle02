@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/09/06 18:50:23 by zharzi           ###   ########.fr        #
+#    Updated: 2022/09/10 18:55:22 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ $(SRCSDIR)ft_isprint.c \
 $(SRCSDIR)ft_toupper.c \
 $(SRCSDIR)ft_tolower.c \
 $(SRCSDIR)ft_strchr.c \
+$(SRCSDIR)ft_strindex.c \
 $(SRCSDIR)ft_strrchr.c \
 $(SRCSDIR)ft_strncmp.c \
 $(SRCSDIR)ft_strlcpy.c \
@@ -62,6 +63,7 @@ $(SRCSDIR)ft_lstmap.c \
 $(SRCSDIR)ft_full_free.c \
 $(SRCSDIR)ft_true_free.c \
 $(SRCSDIR)ft_atoi_safe.c \
+$(SRCSDIR)ft_atoi_base_safe.c \
 $(SRCSDIR)ft_atol_safe.c \
 $(SRCSDIR)ft_atoll_safe.c \
 $(SRCSDIR)ft_atou_safe.c \

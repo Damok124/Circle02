@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:33:23 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/06 18:48:44 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/10 18:56:06 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ char					*ft_strmapi(char const *s, \
 /////////////////////////
 int						ft_atoi(const char *nptr);
 int						ft_atoi_safe(const char *nptr, int *check);
+int						ft_atoi_base_safe(const char *nptr, int *check, \
+	char *base);
 long					ft_atol_safe1(const char *nptr, int *check);
 long long int			ft_atoll_safe1(const char *nptr, int *check);
 unsigned int			ft_atou_safe(const char *nptr, int *check);
@@ -109,6 +111,7 @@ void					*ft_memchr(const void *s, int c, size_t n);
 char					*ft_strnstr(const char *big, const char *little, \
 	size_t len);
 char					*ft_strrchr(const char *s, int c);
+int						ft_strindex(const char *s, int c);
 /////////////////////////
 //	COPY
 /////////////////////////
