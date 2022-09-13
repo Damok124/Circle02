@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 13:40:41 by zharzi            #+#    #+#              #
-#    Updated: 2022/09/02 21:24:58 by zharzi           ###   ########.fr        #
+#    Updated: 2022/09/12 18:11:38 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,15 @@ BINARY = fdf
 
 SRCSDIR = ./srcs/
 
-SRCS = ${SRCSDIR}ft_test.c
+SRCS = ${SRCSDIR}ft_test.c \
+${SRCSDIR}ft_base_key.c \
+${SRCSDIR}ft_manual_color.c \
+${SRCSDIR}ft_renew_image.c \
+${SRCSDIR}ft_keypress.c \
+${SRCSDIR}ft_click_cross.c \
+${SRCSDIR}ft_end_mlx.c \
+${SRCSDIR}ft_pixel_put.c \
+${SRCSDIR}ft_dot.c
 
 HEADERDIR = includes/
 

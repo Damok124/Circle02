@@ -6,111 +6,322 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:40:17 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/11 17:23:33 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/13 23:51:33 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-char	ft_base_key(int *tab, int key)
+int	ft_frame(t_vars	*vars)
 {
-	int	i;
+	if (vars->addr)
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
+	return (1);
+}
+
+int	ft_get_octant(int x1, int x2, int y1, int y2)
+{
+	int	dx;
+	int	dy;
+	int	octant;
+
+	dx = x2 - x1;
+	dy = y2 - y1;
+	if (dx >= 0 && dy >= 0)
+	{
+		if (dx >= dy)
+			octant = 8;
+		else
+			octant = 7;
+	}
+	else if (dx <= 0 && dy >= 0)
+	{
+		if (-dx >= dy)
+			octant = 5;
+		else
+			octant = 6;
+	}
+	else if (dx < 0 && dy < 0)
+	{
+		if (-dx >= -dy)
+			octant = 4;
+		else
+			octant = 3;
+	}
+	else if (dx > 0 && dy < 0)
+	{
+		if (dx >= -dy)
+			octant = 1;
+		else
+			octant = 2;
+	}
+	return (octant);
+}
+
+void	ft_trace_oct8(t_vars *vars, t_spot *a, t_spot *b)
+{
+	int	dx;
+	int	dy;
 	int	x;
+	int	y;
+	int	eps;
 
-	i = 0;
-	x = 0;
-	while (i < 16)
+	dx = b->x - a->x;
+	dy = b->y - a->y;
+	x = a->x;
+	y = a->y;
+	eps = 0;
+
+	while (x <= b->x)
 	{
-		if (key == tab[i])
-			x = i;
-		i++;
+		ft_pixel_put(vars, x, y, vars->color);
+		eps += dy;
+		if (eps * 2 >= dx)
+		{
+			y++;
+			eps -= dx;
+		}
+		x++;
 	}
-	if (x < 10)
-		return (x + '0');
-	else
-		x %= 10;
-	return (x + 'A');
 }
 
-int	ft_manual_color(t_vars *vars, int key)
+void	ft_trace_oct7(t_vars *vars, t_spot *a, t_spot *b)
 {
-	static int	rank;
-	char		code;
-	int			check;
+	int	dx;
+	int	dy;
+	int	x;
+	int	y;
+	int	eps;
 
-	check = 1;
-	if ((key >= 97 && key <= 102) || (key >= 65429 && key <= 65438))
-		code = ft_base_key((int []){65438, 65436, 65433, 65435, 65430, 65437, \
-			65432, 65429, 65431, 65434, 97, 98, 99, 100, 101, 102}, key);
-	else if ((key >= 48 && key <= 57))
-		code = ft_base_key((int []){48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 0, 0, 0, 0, 0, 0}, \
-			key);
-	vars->hexcolor[rank++ % 6] = code;
-	if (rank % 6 == 0)
+	dx = b->x - a->x;
+	dy = b->y - a->y;
+	x = a->x;
+	y = a->y;
+	eps = 0;
+
+	while (y <= b->y)
 	{
-		ft_printf("actual hexcolor = %s\n", vars->hexcolor);
-		vars->color = ft_atoi_base_safe(vars->hexcolor, &check, "0123456789ABCDEF");
-		vars->hexcolor = ft_memset(vars->hexcolor, '0', 6);
+		ft_pixel_put(vars, x, y, vars->color);
+		eps += dx;
+		if (eps * 2 >= dy)
+		{
+			x++;
+			eps -= dy;
+		}
+		y++;
 	}
+}
+
+void	ft_trace_oct6(t_vars *vars, t_spot *a, t_spot *b)
+{
+	int	dx;
+	int	dy;
+	int	x;
+	int	y;
+	int	eps;
+
+	dx = b->x - a->x;
+	dy = (b->y - a->y) * -1;
+	x = a->x;
+	y = a->y;
+	eps = 0;
+
+	while (y <= b->y)
+	{
+		ft_pixel_put(vars, x, y, vars->color);
+		eps += dx;
+		if (eps * 2 <= dy)
+		{
+			x--;
+			eps -= dy;
+		}
+		y++;
+	}
+}
+
+void	ft_trace_oct5(t_vars *vars, t_spot *a, t_spot *b)
+{
+	int	dx;
+	int	dy;
+	int	x;
+	int	y;
+	int	eps;
+
+	dx = b->x - a->x;
+	dy = (b->y - a->y) * -1;
+	x = a->x;
+	y = a->y;
+	eps = 0;
+
+	while (x >= b->x)
+	{
+		ft_pixel_put(vars, x, y, vars->color);
+		eps += dy;
+		if (eps * 2 <= dx)
+		{
+			y++;
+			eps -= dx;
+		}
+		x--;
+	}
+}
+
+void	ft_trace_oct4(t_vars *vars, t_spot *a, t_spot *b)
+{
+	int	dx;
+	int	dy;
+	int	x;
+	int	y;
+	int	eps;
+
+	dx = b->x - a->x;
+	dy = b->y - a->y;
+	x = a->x;
+	y = a->y;
+	eps = 0;
+
+	while (x <= b->x)
+	{
+		ft_pixel_put(vars, x, y, vars->color);
+		eps += dy;
+		if (eps * 2 >= dx)
+		{
+			y++;
+			eps -= dx;
+		}
+		x++;
+	}
+}
+
+void	ft_trace_oct3(t_vars *vars, t_spot *a, t_spot *b)
+{
+	int	dx;
+	int	dy;
+	int	x;
+	int	y;
+	int	eps;
+
+	dx = b->x - a->x;
+	dy = b->y - a->y;
+	x = a->x;
+	y = a->y;
+	eps = 0;
+
+	while (x <= b->x)
+	{
+		ft_pixel_put(vars, x, y, vars->color);
+		eps += dy;
+		if (eps * 2 >= dx)
+		{
+			y++;
+			eps -= dx;
+		}
+		x++;
+	}
+}
+
+void	ft_trace_oct2(t_vars *vars, t_spot *a, t_spot *b)
+{
+	int	dx;
+	int	dy;
+	int	x;
+	int	y;
+	int	eps;
+
+	dx = b->x - a->x;
+	dy = b->y - a->y;
+	x = a->x;
+	y = a->y;
+	eps = 0;
+
+	while (x <= b->x)
+	{
+		ft_pixel_put(vars, x, y, vars->color);
+		eps += dy;
+		if (eps * 2 >= dx)
+		{
+			y++;
+			eps -= dx;
+		}
+		x++;
+	}
+}
+
+void	ft_trace_oct1(t_vars *vars, t_spot *a, t_spot *b)
+{
+	int	dx;
+	int	dy;
+	int	x;
+	int	y;
+	int	eps;
+
+	dx = b->x - a->x;
+	dy = b->y - a->y;
+	x = a->x;
+	y = a->y;
+	eps = 0;
+
+	while (x <= b->x)
+	{
+		ft_pixel_put(vars, x, y, vars->color);
+		eps += dy;
+		if (eps * 2 >= dx)
+		{
+			y++;
+			eps -= dx;
+		}
+		x++;
+	}
+}
+//mettre en place les octants mirroirs
+int	ft_link(t_vars *vars, t_spot *a, t_spot *b)
+{
+	int	x1;
+	int	x2;
+	int	y1;
+	int	y2;
+	int	octant;
+
+	x1 = a->x;
+	x2 = b->x;
+	y1 = a->y;
+	y2 = b->y;
+	octant = 0;
+	ft_pixel_put(vars, x1, y1, vars->color);
+	ft_pixel_put(vars, x2, y2, vars->color);
+	octant = ft_get_octant(x1, x2, y1, y2);
+	ft_printf("octant actuel : %d\n", octant);
+	if (octant == 8)
+		ft_trace_oct8(vars, a, b);
+	if (octant == 7)
+		ft_trace_oct7(vars, a, b);
+	if (octant == 6)
+		ft_trace_oct6(vars, a, b);
+	if (octant == 5)
+		ft_trace_oct5(vars, a, b);
+	if (octant == 4)
+		ft_trace_oct4(vars, a, b);
+	if (octant == 3)
+		ft_trace_oct3(vars, a, b);
+	if (octant == 2)
+		ft_trace_oct2(vars, a, b);
+	if (octant == 1)
+		ft_trace_oct1(vars, a, b);
 	return (1);
-}
-
-int	ft_renew_image(t_vars *vars)
-{
-	mlx_clear_window(vars->mlx, vars->win);
-	mlx_destroy_image(vars->mlx, vars->img);
-	vars->img = mlx_new_image(vars->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
-	return (1);
-}
-
-int	ft_keypress(int key, t_vars *vars)
-{
-	if (key == 65307)
-		mlx_loop_end(vars->mlx);
-	else if (key == 120)
-		ft_renew_image(vars);
-	else if ((key >= 48 && key <= 57) || (key >= 97 && key <= 102) || (key >= 65429 && key <= 65438))
-		ft_manual_color(vars, key);
-	ft_printf("key : %d\n", key);
-	return (1);
-}
-
-int	ft_click_cross(t_vars *vars)
-{
-	mlx_loop_end(vars->mlx);
-	return (0);
-}
-
-void	ft_end_mlx(t_vars *vars)
-{
-	mlx_destroy_image(vars->mlx, vars->img);
-	mlx_destroy_window(vars->mlx, vars->win);
-	mlx_destroy_display(vars->mlx);
-	free(vars->hexcolor);
-	free(vars->mlx);
-	exit(0);
-}
-
-void	my_mlx_pixel_put(t_vars *vars, int x, int y, unsigned int color)
-{
-	char	*dst;
-
-	dst = vars->addr + (y * vars->line_length + x * (vars->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
-
-int	ft_dot(int button, int x, int y, t_vars *vars)
-{
-	(void)button;
-	my_mlx_pixel_put(vars, x, y, vars->color);
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
-	return (0);
 }
 
 int	main(void)
 {
 	t_vars				vars;
+	t_spot				a;
+	t_spot				b;
 
+	a.x = 300;
+	a.y = 300;
+	a.z = 0;
+	b.x = 150;
+	b.y = 450;
+	b.z = 0;
 	vars.mlx = mlx_init();
 	if (!vars.mlx)
 		return (MLX_ERROR);
@@ -128,17 +339,17 @@ int	main(void)
 	vars.addr = mlx_get_data_addr(vars.img, &vars.bits_per_pixel, \
 		&vars.line_length, &vars.endian);
 	mlx_key_hook(vars.win, ft_keypress, &vars);
-	mlx_mouse_hook(vars.win, ft_dot, &vars);
-	mlx_hook(vars.win, ON_DESTROY, 2L<<0, ft_click_cross, &vars);
+	//mlx_mouse_hook(vars.win, ft_dot, &vars);
+	mlx_hook(vars.win, ON_DESTROY, DestroyAll, ft_click_cross, &vars);
+	mlx_loop_hook(vars.mlx, ft_frame, &vars);
+	ft_link(&vars, &a, &b);
 	mlx_loop(vars.mlx);
 	ft_end_mlx(&vars);
 	return (0);
 }
 
-
-
 /*Votre programme doit afficher une image dans une fenêtre.
-
+(faut-il utiliser le mlx loop hook?)
 https://aurelienbrabant.fr/blog/pixel-drawing-with-the-minilibx
 
 https://aurelienbrabant.fr/blog/managing-events-with-the-minilibx
