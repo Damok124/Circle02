@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 13:40:41 by zharzi            #+#    #+#              #
-#    Updated: 2022/09/12 18:11:38 by zharzi           ###   ########.fr        #
+#    Updated: 2022/09/15 22:29:22 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,15 @@ BINARY = fdf
 SRCSDIR = ./srcs/
 
 SRCS = ${SRCSDIR}ft_test.c \
+${SRCSDIR}ft_fdf_free_matrix.c \
+${SRCSDIR}ft_frame.c \
+${SRCSDIR}ft_fdf_rowcount.c \
+${SRCSDIR}ft_fdf_getlen.c \
+${SRCSDIR}ft_fdf_lencheck.c \
+${SRCSDIR}ft_get_octant.c \
+${SRCSDIR}ft_pix_is_visible.c \
+${SRCSDIR}ft_trace_oct.c \
+${SRCSDIR}ft_link.c \
 ${SRCSDIR}ft_base_key.c \
 ${SRCSDIR}ft_manual_color.c \
 ${SRCSDIR}ft_renew_image.c \

@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:33:23 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/10 18:56:06 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/17 23:23:11 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void					ft_show_strs_fd(char **strs, int fd);
 //	FREE
 /////////////////////////
 void					ft_full_free(void **tobefree);
-void					ft_true_free(void *ptr);
+void					*ft_true_free(void *ptr);
 /////////////////////////
 //	CHECK
 /////////////////////////
@@ -70,6 +70,9 @@ int						ft_isalpha(int c);
 int						ft_isascii(int c);
 int						ft_isdigit(int c);
 int						ft_isprint(int c);
+int						ft_strisalnum(char *str);
+int						ft_strisalpha(char *str);
+int						ft_strisdigit(char *str);
 int						ft_memcmp(const void *s1, const void *s2, size_t n);
 int						ft_strncmp(const char *s1, const char *s2, size_t n);
 int						ft_check_dup_int(int len, int *tab);
@@ -88,13 +91,18 @@ char					*ft_strmapi(char const *s, \
 /////////////////////////
 int						ft_atoi(const char *nptr);
 int						ft_atoi_safe(const char *nptr, int *check);
+int						ft_atoi_base(const char *nptr, char *base);
 int						ft_atoi_base_safe(const char *nptr, int *check, \
 	char *base);
 long					ft_atol_safe1(const char *nptr, int *check);
 long long int			ft_atoll_safe1(const char *nptr, int *check);
 unsigned int			ft_atou_safe(const char *nptr, int *check);
+unsigned int			ft_atou_base(const char *nptr, char *base);
+unsigned int			ft_atou_base_safe(const char *nptr, char *base, \
+	int *check);
 unsigned long int		ft_atoul_safe1(const char *nptr, int *check);
 unsigned long long int	ft_atoull_safe(const char *nptr, int *check);
+unsigned int			ft_btou(const char *nptr, char *base);
 char					*ft_itoa(int n);
 char					**ft_split(char const *s, char c);
 char					*ft_strjoin(char const *s1, char const *s2);

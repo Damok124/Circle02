@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 19:14:22 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/31 15:20:24 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/17 19:37:18 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_check_stash(char *stash)
 	int	i;
 
 	i = 0;
-	while (stash[i])
+	while (stash && stash[i])
 	{
 		if (stash[i] == '\n')
 			return (1);
@@ -32,13 +32,13 @@ char	*ft_make_buff(int fd, char **ret, int *count)
 	char	*tret;
 
 	tret = *ret;
-	tbuff = (char *)malloc(BUFFER_SIZE + 1);
+	tbuff = (char *)ft_calloc(BUFFER_SIZE + 1, 1);
 	if (!tbuff)
 		return (NULL);
 	*count = read(fd, tbuff, BUFFER_SIZE);
 	if (*count == -1)
 	{
-		ft_true_free(tbuff);
+		ft_true_free(&tbuff);
 		return (tret);
 	}
 	tbuff[*count] = '\0';
@@ -55,7 +55,7 @@ char	*ft_next_line(char **stash)
 		x.n++;
 	if (x.tmp[x.n] == '\n')
 		x.n++;
-	x.line = (char *)malloc(sizeof(char) * x.n + 1);
+	x.line = (char *)ft_calloc(sizeof(char) * x.n + 1, 1);
 	if (!x.line)
 		return (NULL);
 	x.i = -1;
@@ -63,7 +63,7 @@ char	*ft_next_line(char **stash)
 		x.line[x.i] = x.tmp[x.i];
 	x.line[x.n] = '\0';
 	stash[0] = ft_strdup((x.tmp) + x.i);
-	ft_true_free(x.tmp);
+	ft_true_free(&x.tmp);
 	return (x.line);
 }
 
@@ -82,16 +82,16 @@ char	*get_next_line(int fd)
 			if (!x.buff)
 				return (x.ret);
 			x.ret = ft_strjoin(stash[fd], x.buff);
-			ft_true_free(x.buff);
+			ft_true_free(&x.buff);
 			if (stash[fd])
-				ft_true_free(stash[fd]);
+				ft_true_free(&stash[fd]);
 			stash[fd] = x.ret;
 			x.ret = NULL;
 		}
 		if (stash[fd][0])
 			x.ret = ft_next_line(&stash[fd]);
 		else if (stash[fd][0] == '\0')
-			ft_true_free(stash[fd]);
+			ft_true_free(&stash[fd]);
 	}
 	return (x.ret);
 }

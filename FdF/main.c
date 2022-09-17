@@ -6,322 +6,53 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:40:17 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/13 23:51:33 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/17 23:49:30 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	ft_frame(t_vars	*vars)
+char	*ft_fdf_buffertrim(char *buffer)
 {
-	if (vars->addr)
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
-	return (1);
+	char	*tmp;
+
+	tmp = ft_strtrim(buffer, "\n");
+	ft_true_free(&buffer);
+	buffer = ft_strtrim(tmp, " ");
+	ft_true_free(&tmp);
+	return (buffer);
 }
 
-int	ft_get_octant(int x1, int x2, int y1, int y2)
+t_spot	ft_fdf_setup_dot(char *buffer, int x, int y)
 {
-	int	dx;
-	int	dy;
-	int	octant;
+	t_spot			dot;
+	char			**sequence;
+	char			*color;
+	unsigned int	col;
 
-	dx = x2 - x1;
-	dy = y2 - y1;
-	if (dx >= 0 && dy >= 0)
-	{
-		if (dx >= dy)
-			octant = 8;
-		else
-			octant = 7;
-	}
-	else if (dx <= 0 && dy >= 0)
-	{
-		if (-dx >= dy)
-			octant = 5;
-		else
-			octant = 6;
-	}
-	else if (dx < 0 && dy < 0)
-	{
-		if (-dx >= -dy)
-			octant = 4;
-		else
-			octant = 3;
-	}
-	else if (dx > 0 && dy < 0)
-	{
-		if (dx >= -dy)
-			octant = 1;
-		else
-			octant = 2;
-	}
-	return (octant);
-}
+	dot.x = x;
+	dot.y = y;
+	sequence = ft_split(buffer, ' ');
+	dot.z = ft_atoi(sequence[x]);
+	if (ft_strchr(sequence[x], ','))
+		color = ft_strchr(sequence[x], 'x') + 1;
+	col = ft_btou(color, "0123456789ABCDEF");
+	dot.blue = col & 0xFF;
+	dot.green = (col >> 8) & 0xFF;
+	dot.red = (col >> 16) & 0xFF;
+	ft_full_free((void **)sequence);
+	return (dot);
+}///////////
 
-void	ft_trace_oct8(t_vars *vars, t_spot *a, t_spot *b)
+int	main(int ac, char **argv)
 {
-	int	dx;
-	int	dy;
-	int	x;
-	int	y;
-	int	eps;
+	t_vars	vars;
+	t_spot	dot;
+	int		fd;
+	int		x;
+	char	*buffer;
 
-	dx = b->x - a->x;
-	dy = b->y - a->y;
-	x = a->x;
-	y = a->y;
-	eps = 0;
-
-	while (x <= b->x)
-	{
-		ft_pixel_put(vars, x, y, vars->color);
-		eps += dy;
-		if (eps * 2 >= dx)
-		{
-			y++;
-			eps -= dx;
-		}
-		x++;
-	}
-}
-
-void	ft_trace_oct7(t_vars *vars, t_spot *a, t_spot *b)
-{
-	int	dx;
-	int	dy;
-	int	x;
-	int	y;
-	int	eps;
-
-	dx = b->x - a->x;
-	dy = b->y - a->y;
-	x = a->x;
-	y = a->y;
-	eps = 0;
-
-	while (y <= b->y)
-	{
-		ft_pixel_put(vars, x, y, vars->color);
-		eps += dx;
-		if (eps * 2 >= dy)
-		{
-			x++;
-			eps -= dy;
-		}
-		y++;
-	}
-}
-
-void	ft_trace_oct6(t_vars *vars, t_spot *a, t_spot *b)
-{
-	int	dx;
-	int	dy;
-	int	x;
-	int	y;
-	int	eps;
-
-	dx = b->x - a->x;
-	dy = (b->y - a->y) * -1;
-	x = a->x;
-	y = a->y;
-	eps = 0;
-
-	while (y <= b->y)
-	{
-		ft_pixel_put(vars, x, y, vars->color);
-		eps += dx;
-		if (eps * 2 <= dy)
-		{
-			x--;
-			eps -= dy;
-		}
-		y++;
-	}
-}
-
-void	ft_trace_oct5(t_vars *vars, t_spot *a, t_spot *b)
-{
-	int	dx;
-	int	dy;
-	int	x;
-	int	y;
-	int	eps;
-
-	dx = b->x - a->x;
-	dy = (b->y - a->y) * -1;
-	x = a->x;
-	y = a->y;
-	eps = 0;
-
-	while (x >= b->x)
-	{
-		ft_pixel_put(vars, x, y, vars->color);
-		eps += dy;
-		if (eps * 2 <= dx)
-		{
-			y++;
-			eps -= dx;
-		}
-		x--;
-	}
-}
-
-void	ft_trace_oct4(t_vars *vars, t_spot *a, t_spot *b)
-{
-	int	dx;
-	int	dy;
-	int	x;
-	int	y;
-	int	eps;
-
-	dx = b->x - a->x;
-	dy = b->y - a->y;
-	x = a->x;
-	y = a->y;
-	eps = 0;
-
-	while (x <= b->x)
-	{
-		ft_pixel_put(vars, x, y, vars->color);
-		eps += dy;
-		if (eps * 2 >= dx)
-		{
-			y++;
-			eps -= dx;
-		}
-		x++;
-	}
-}
-
-void	ft_trace_oct3(t_vars *vars, t_spot *a, t_spot *b)
-{
-	int	dx;
-	int	dy;
-	int	x;
-	int	y;
-	int	eps;
-
-	dx = b->x - a->x;
-	dy = b->y - a->y;
-	x = a->x;
-	y = a->y;
-	eps = 0;
-
-	while (x <= b->x)
-	{
-		ft_pixel_put(vars, x, y, vars->color);
-		eps += dy;
-		if (eps * 2 >= dx)
-		{
-			y++;
-			eps -= dx;
-		}
-		x++;
-	}
-}
-
-void	ft_trace_oct2(t_vars *vars, t_spot *a, t_spot *b)
-{
-	int	dx;
-	int	dy;
-	int	x;
-	int	y;
-	int	eps;
-
-	dx = b->x - a->x;
-	dy = b->y - a->y;
-	x = a->x;
-	y = a->y;
-	eps = 0;
-
-	while (x <= b->x)
-	{
-		ft_pixel_put(vars, x, y, vars->color);
-		eps += dy;
-		if (eps * 2 >= dx)
-		{
-			y++;
-			eps -= dx;
-		}
-		x++;
-	}
-}
-
-void	ft_trace_oct1(t_vars *vars, t_spot *a, t_spot *b)
-{
-	int	dx;
-	int	dy;
-	int	x;
-	int	y;
-	int	eps;
-
-	dx = b->x - a->x;
-	dy = b->y - a->y;
-	x = a->x;
-	y = a->y;
-	eps = 0;
-
-	while (x <= b->x)
-	{
-		ft_pixel_put(vars, x, y, vars->color);
-		eps += dy;
-		if (eps * 2 >= dx)
-		{
-			y++;
-			eps -= dx;
-		}
-		x++;
-	}
-}
-//mettre en place les octants mirroirs
-int	ft_link(t_vars *vars, t_spot *a, t_spot *b)
-{
-	int	x1;
-	int	x2;
-	int	y1;
-	int	y2;
-	int	octant;
-
-	x1 = a->x;
-	x2 = b->x;
-	y1 = a->y;
-	y2 = b->y;
-	octant = 0;
-	ft_pixel_put(vars, x1, y1, vars->color);
-	ft_pixel_put(vars, x2, y2, vars->color);
-	octant = ft_get_octant(x1, x2, y1, y2);
-	ft_printf("octant actuel : %d\n", octant);
-	if (octant == 8)
-		ft_trace_oct8(vars, a, b);
-	if (octant == 7)
-		ft_trace_oct7(vars, a, b);
-	if (octant == 6)
-		ft_trace_oct6(vars, a, b);
-	if (octant == 5)
-		ft_trace_oct5(vars, a, b);
-	if (octant == 4)
-		ft_trace_oct4(vars, a, b);
-	if (octant == 3)
-		ft_trace_oct3(vars, a, b);
-	if (octant == 2)
-		ft_trace_oct2(vars, a, b);
-	if (octant == 1)
-		ft_trace_oct1(vars, a, b);
-	return (1);
-}
-
-int	main(void)
-{
-	t_vars				vars;
-	t_spot				a;
-	t_spot				b;
-
-	a.x = 300;
-	a.y = 300;
-	a.z = 0;
-	b.x = 150;
-	b.y = 450;
-	b.z = 0;
+	fd = open(argv[ac - 1], O_RDONLY);
 	vars.mlx = mlx_init();
 	if (!vars.mlx)
 		return (MLX_ERROR);
@@ -339,11 +70,23 @@ int	main(void)
 	vars.addr = mlx_get_data_addr(vars.img, &vars.bits_per_pixel, \
 		&vars.line_length, &vars.endian);
 	mlx_key_hook(vars.win, ft_keypress, &vars);
-	//mlx_mouse_hook(vars.win, ft_dot, &vars);
 	mlx_hook(vars.win, ON_DESTROY, DestroyAll, ft_click_cross, &vars);
 	mlx_loop_hook(vars.mlx, ft_frame, &vars);
-	ft_link(&vars, &a, &b);
-	mlx_loop(vars.mlx);
+	vars.rows = ft_fdf_rowcount(argv[ac - 1]);
+	ft_fdf_lencheck(&vars, argv[ac - 1]);
+	buffer = get_next_line(fd);
+	x = 1;
+	buffer = ft_fdf_buffertrim(buffer);
+	dot = ft_fdf_setup_dot(buffer, x);
+	(void)dot;
+	while (buffer)
+	{
+		ft_true_free(&buffer);
+		buffer = get_next_line(fd);
+	}
+	//ft_standard(&vars, argv[ac - 1]);
+	//mlx_loop(vars.mlx);
+	close(fd);
 	ft_end_mlx(&vars);
 	return (0);
 }
@@ -373,4 +116,266 @@ Chaque nombre représente un point dans l’espace :
 • La position horizontale correspond à son abscisse.
 • La position verticale correspond à son ordonnée.
 • La valeur correspond à son altitude.
+*/
+/*
+
+char	*ft_fdf_buffertrim(char *buffer)
+{
+	char	*tmp;
+
+	tmp = ft_strtrim(buffer, "\n");
+	buffer = ft_true_free(buffer);
+	buffer = ft_strtrim(tmp, " ");
+	tmp = ft_true_free(tmp);
+	return (buffer);
+}
+
+t_spot	*ft_fdf_init_row(char **sequence, t_spot *row)
+{
+	int	i;
+
+	i = 0;
+	while (sequence && sequence[i])
+	{
+		row[i].str = ft_strdup(sequence[i]);
+		i++;
+	}
+	return (row);
+}
+
+
+t_spot	*ft_fdf_init_row(char **sequence, t_spot *row)
+{
+	int	i;
+
+	i = 0;
+	while (sequence && sequence[i])
+	{
+		row[i].str = ft_strdup(sequence[i]);
+		i++;
+	}
+	return (row);
+}
+
+
+void	ft_standard(t_vars *vars, char *filename)
+{
+	int		fd;
+	char	*buffer;
+	char	**sequence;
+char	*ft_fdf_buffertrim(char *buffer)
+{
+	char	*tmp;
+
+	tmp = ft_strtrim(buffer, "\n");
+	buffer = ft_true_free(buffer);
+	buffer = ft_strtrim(tmp, " ");
+	tmp = ft_true_free(tmp);
+	return (buffer);
+}
+
+t_spot	*ft_fdf_init_row(char **sequence, t_spot *row)
+{
+	int	i;
+
+	i = 0;
+	while (sequence && sequence[i])
+	{
+		row[i].str = ft_strdup(sequence[i]);
+		i++;
+	}
+	return (row);
+}
+
+
+t_spot	*ft_fdf_init_row(char **sequence, t_spot *row)
+{
+	int	i;
+
+	i = 0;
+	while (sequence && sequence[i])
+	{
+		row[i].str = ft_strdup(sequence[i]);
+		i++;
+	}
+	return (row);
+}
+
+
+void	ft_standard(t_vars *vars, char *filename)
+{
+	int		fd;
+	char	*buffer;
+	char	**sequence;
+	t_spot	*row;
+	t_spot	**matrix;
+
+	row = (t_spot *)malloc(sizeof(t_spot) * vars->len);
+	matrix = (t_spot **)malloc(sizeof(row) * vars->rows);
+	(void)vars;
+	fd = open(filename, O_RDONLY);
+	buffer = get_next_line(fd);
+	while (buffer)
+	{
+		buffer = ft_fdf_buffertrim(buffer);
+		sequence = ft_split(buffer, ' ');
+		row = ft_fdf_init_row(sequence, row);
+		free(sequence);
+		matrix = ft_fdf_matrix(matrix, row);
+		buffer = ft_true_free(buffer);
+		buffer = get_next_line(fd);
+	}
+	close(fd);
+}
+
+int	ft_fdf_get_z(int x, char *buffer)
+{
+	char	**sequence;
+	int		ret;
+
+	sequence = ft_split(buffer, ' ');
+	ret = ft_atoi(sequence[x]);
+	free(sequence);
+	sequence = NULL;
+	return (ret);
+}
+
+unsigned int	ft_fdf_getcol(int x, char *buffer)
+{
+	char			**sequence;
+	char			**section;
+	unsigned int	ret;
+
+	ret = 0x00FFFFFF;
+	sequence = ft_split(buffer, ' ');
+	if (ft_strchr(sequence[x], ','))
+	{
+		section = ft_split(sequence[x], ',');
+		ret = ft_atou_base(section[1], "0123456789ABCDEF");
+		free(section);
+		section = NULL;
+	}
+	free(sequence);
+	sequence = NULL;
+	return (ret);
+}
+
+t_spot	ft_fdf_setup_dot(t_spot *row, t_spot dot, char *buffer)
+{
+	row->x = dot.x;
+	row->y = dot.y;
+	row->z = ft_fdf_get_z(dot.x, buffer);
+	row->pixcolor = ft_fdf_getcol(dot.x, buffer);
+	return (*row);
+}
+
+t_spot	**ft_fdf_matrix(t_vars *vars, int fd)
+{
+	t_spot	**matrix;
+	t_spot	*row;
+	t_spot	dot;
+	char	*buffer;
+
+	dot.x = 0;
+	dot.y = 0;
+	matrix = (t_spot **)malloc(sizeof(t_spot *) * vars->rows);
+	while (dot.y < vars->rows)
+	{
+		row = (t_spot *)malloc(sizeof(t_spot) * vars->len);
+		buffer = get_next_line(fd);
+		buffer = ft_fdf_buffertrim(buffer);
+		while (dot.x < vars->len)
+		{
+			row[dot.x] = ft_fdf_setup_dot(&row[dot.x], dot, buffer);
+			dot.x++;
+		}
+		buffer = ft_true_free(buffer);
+		dot.x = 0;
+		dot.y++;
+	}
+	return (matrix);
+}
+
+	fd = open(filename, O_RDONLY);
+	buffer = get_next_line(fd);
+	while (buffer)
+	{
+		buffer = ft_fdf_buffertrim(buffer);
+		sequence = ft_split(buffer, ' ');
+		row = ft_fdf_init_row(sequence, row);
+		free(sequence);
+		matrix = ft_fdf_matrix(matrix, row);
+		buffer = ft_true_free(buffer);
+		buffer = get_next_line(fd);
+	}
+	close(fd);
+}
+
+int	ft_fdf_get_z(int x, char *buffer)
+{
+	char	**sequence;
+	int		ret;
+
+	sequence = ft_split(buffer, ' ');
+	ret = ft_atoi(sequence[x]);
+	free(sequence);
+	sequence = NULL;
+	return (ret);
+}
+
+unsigned int	ft_fdf_getcol(int x, char *buffer)
+{
+	char			**sequence;
+	char			**section;
+	unsigned int	ret;
+
+	ret = 0x00FFFFFF;
+	sequence = ft_split(buffer, ' ');
+	if (ft_strchr(sequence[x], ','))
+	{
+		section = ft_split(sequence[x], ',');
+		ret = ft_atou_base(section[1], "0123456789ABCDEF");
+		free(section);
+		section = NULL;
+	}
+	free(sequence);
+	sequence = NULL;
+	return (ret);
+}
+
+t_spot	ft_fdf_setup_dot(t_spot *row, t_spot dot, char *buffer)
+{
+	row->x = dot.x;
+	row->y = dot.y;
+	row->z = ft_fdf_get_z(dot.x, buffer);
+	row->pixcolor = ft_fdf_getcol(dot.x, buffer);
+	return (*row);
+}
+
+t_spot	**ft_fdf_matrix(t_vars *vars, int fd)
+{
+	t_spot	**matrix;
+	t_spot	*row;
+	t_spot	dot;
+	char	*buffer;
+
+	dot.x = 0;
+	dot.y = 0;
+	matrix = (t_spot **)malloc(sizeof(t_spot *) * vars->rows);
+	while (dot.y < vars->rows)
+	{
+		row = (t_spot *)malloc(sizeof(t_spot) * vars->len);
+		buffer = get_next_line(fd);
+		buffer = ft_fdf_buffertrim(buffer);
+		while (dot.x < vars->len)
+		{
+			row[dot.x] = ft_fdf_setup_dot(&row[dot.x], dot, buffer);
+			dot.x++;
+		}
+		buffer = ft_true_free(buffer);
+		dot.x = 0;
+		dot.y++;
+	}
+	return (matrix);
+}
 */

@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_true_free.c                                     :+:      :+:    :+:   */
+/*   ft_frame.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 04:05:07 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/17 19:36:58 by zharzi           ###   ########.fr       */
+/*   Created: 2022/09/14 13:19:06 by zharzi            #+#    #+#             */
+/*   Updated: 2022/09/14 13:19:10 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib.h"
+#include "fdf.h"
 
-void	ft_true_free(void **ptr)
+int	ft_frame(t_vars	*vars)
 {
-	if (*ptr)
-	{
-		free(*ptr);
-		*ptr = NULL;
-	}
+	if (vars->addr)
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
+	return (1);
 }

@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_true_free.c                                     :+:      :+:    :+:   */
+/*   ft_fdf_rowcount.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 04:05:07 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/17 19:36:58 by zharzi           ###   ########.fr       */
+/*   Created: 2022/09/15 18:47:40 by zharzi            #+#    #+#             */
+/*   Updated: 2022/09/17 19:39:11 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib.h"
+#include "fdf.h"
 
-void	ft_true_free(void **ptr)
+int	ft_fdf_rowcount(char *filename)
 {
-	if (*ptr)
+	int		fd;
+	char	*buffer;
+	int		len;
+
+	fd = 0;
+	fd = open(filename, O_RDONLY);
+	buffer = get_next_line(fd);
+	len = 0;
+	while (buffer)
 	{
-		free(*ptr);
-		*ptr = NULL;
+		len++;
+		ft_true_free(&buffer);
+		buffer = get_next_line(fd);
 	}
+	close(fd);
+	return (len);
 }

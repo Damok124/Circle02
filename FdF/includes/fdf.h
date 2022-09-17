@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:48:56 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/13 17:49:39 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/17 22:54:14 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,18 @@ typedef struct s_vars {
 	int				endian;
 	char			*hexcolor;
 	unsigned int	color;
-}			t_vars;
+	int				rows;
+	int				len;
+}					t_vars;
 
 typedef struct s_spot {
-	int	x;
-	int	y;
-	int	z;
-}			t_spot;
+	int				x;
+	int				y;
+	int				z;
+	int				red;
+	int				green;
+	int				blue;
+}					t_spot;
 
 void	ft_test(void);
 /////////////////////////
@@ -63,5 +68,18 @@ int		ft_click_cross(t_vars *vars);
 void	ft_end_mlx(t_vars *vars);
 void	ft_pixel_put(t_vars *vars, int x, int y, unsigned int color);
 int		ft_dot(int button, int x, int y, t_vars *vars);
+int		ft_frame(t_vars	*vars);
+int		ft_get_octant(int x1, int x2, int y1, int y2);
+int		ft_get_octant2(int x1, int x2, int y1, int y2);
+void	ft_trace_oct8(t_vars *vars, t_spot *a, t_spot *b);
+void	ft_trace_oct7(t_vars *vars, t_spot *a, t_spot *b);
+void	ft_trace_oct6(t_vars *vars, t_spot *a, t_spot *b);
+void	ft_trace_oct5(t_vars *vars, t_spot *a, t_spot *b);
+int		ft_pix_is_visible(int x, int y);
+int		ft_link(t_vars *vars, t_spot *a, t_spot *b);
+int		ft_fdf_rowcount(char *filename);
+int		ft_fdf_getlen(char *str);
+int		ft_fdf_lencheck(t_vars *vars, char *str);
+void	ft_fdf_free_matrix(t_vars *vars, t_spot **matrix);
 
 #endif

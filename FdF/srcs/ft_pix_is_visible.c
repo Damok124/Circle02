@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_true_free.c                                     :+:      :+:    :+:   */
+/*   ft_pix_is_visible.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 04:05:07 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/17 19:36:58 by zharzi           ###   ########.fr       */
+/*   Created: 2022/09/14 13:43:40 by zharzi            #+#    #+#             */
+/*   Updated: 2022/09/14 13:45:53 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib.h"
+#include "fdf.h"
 
-void	ft_true_free(void **ptr)
+int	ft_pix_is_visible(int x, int y)
 {
-	if (*ptr)
-	{
-		free(*ptr);
-		*ptr = NULL;
-	}
+	if (x < 0 || x > WINDOW_WIDTH || y < 0 || y > WINDOW_HEIGHT)
+		return (0);
+	return (1);
 }

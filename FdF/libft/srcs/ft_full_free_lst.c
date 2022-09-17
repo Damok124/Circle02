@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 00:28:23 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/26 16:41:51 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/15 17:52:18 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_full_free_lst(t_list **list)
 		(*list)->content = NULL;
 		tmp = (*list)->next;
 		(*list)->next = NULL;
-		ft_true_free(*list);
+		ft_true_free((void **)list);
 		*list = tmp;
 	}
 }

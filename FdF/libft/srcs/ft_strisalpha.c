@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_true_free.c                                     :+:      :+:    :+:   */
+/*   ft_strisalpha.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 04:05:07 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/17 19:36:58 by zharzi           ###   ########.fr       */
+/*   Created: 2022/04/04 14:35:55 by zharzi            #+#    #+#             */
+/*   Updated: 2022/09/16 22:29:13 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib.h"
+#include "libft.h"
 
-void	ft_true_free(void **ptr)
+int	ft_strisalpha(char *str)
 {
-	if (*ptr)
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str && str[i])
 	{
-		free(*ptr);
-		*ptr = NULL;
+		if (!ft_isalpha(str[i]))
+			return (0);
+		i++;
 	}
+	return (1);
 }

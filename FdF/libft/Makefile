@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/09/10 18:55:22 by zharzi           ###   ########.fr        #
+#    Updated: 2022/09/17 23:26:59 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,9 @@ $(SRCSDIR)ft_strlen.c \
 $(SRCSDIR)ft_isalpha.c \
 $(SRCSDIR)ft_isdigit.c \
 $(SRCSDIR)ft_isalnum.c \
+$(SRCSDIR)ft_strisalpha.c \
+$(SRCSDIR)ft_strisdigit.c \
+$(SRCSDIR)ft_strisalnum.c \
 $(SRCSDIR)ft_isascii.c \
 $(SRCSDIR)ft_isprint.c \
 $(SRCSDIR)ft_toupper.c \
@@ -36,6 +39,7 @@ $(SRCSDIR)ft_strlcpy.c \
 $(SRCSDIR)ft_strlcat.c \
 $(SRCSDIR)ft_strnstr.c \
 $(SRCSDIR)ft_atoi.c \
+$(SRCSDIR)ft_atoi_base.c \
 $(SRCSDIR)ft_calloc.c \
 $(SRCSDIR)ft_strdup.c \
 $(SRCSDIR)ft_substr.c \
@@ -67,6 +71,9 @@ $(SRCSDIR)ft_atoi_base_safe.c \
 $(SRCSDIR)ft_atol_safe.c \
 $(SRCSDIR)ft_atoll_safe.c \
 $(SRCSDIR)ft_atou_safe.c \
+$(SRCSDIR)ft_btou.c \
+$(SRCSDIR)ft_atou_base.c \
+$(SRCSDIR)ft_atou_base_safe.c \
 $(SRCSDIR)ft_atoul_safe.c \
 $(SRCSDIR)ft_atoull_safe.c \
 $(SRCSDIR)ft_check_dup_int.c \

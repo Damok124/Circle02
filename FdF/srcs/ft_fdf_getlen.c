@@ -1,22 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_true_free.c                                     :+:      :+:    :+:   */
+/*   ft_fdf_getlen.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 04:05:07 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/17 19:36:58 by zharzi           ###   ########.fr       */
+/*   Created: 2022/09/15 21:02:59 by zharzi            #+#    #+#             */
+/*   Updated: 2022/09/17 19:39:44 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib.h"
+#include "fdf.h"
 
-void	ft_true_free(void **ptr)
+int	ft_fdf_getlen(char *str)
 {
-	if (*ptr)
+	char	*tmp;
+	int		i;
+	int		total;
+
+	i = 0;
+	total = 0;
+	tmp = ft_strtrim(str, "\n");
+	str = ft_strtrim(tmp, " ");
+	ft_true_free(&tmp);
+	while (str && str[i])
 	{
-		free(*ptr);
-		*ptr = NULL;
+		if (str && str[i] == ' ')
+			total++;
+		while (str && str[i] == ' ')
+			i++;
+		i++;
 	}
+	if (total)
+		total++;
+	ft_true_free(&str);
+	return (total);
 }
