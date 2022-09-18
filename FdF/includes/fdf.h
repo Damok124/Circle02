@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:48:56 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/18 15:06:19 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/18 18:53:42 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FDF_H
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
-# define MLX_ERROR 1
 
 # include "X11/keysym.h"
 # include "X11/X.h"
@@ -45,6 +44,7 @@ typedef struct s_vars {
 	unsigned int	color;
 	int				rows;
 	int				len;
+	int				spacing;
 }					t_vars;
 
 typedef struct s_spot {
@@ -65,7 +65,7 @@ int		ft_manual_color(t_vars *vars, int key);
 int		ft_renew_image(t_vars *vars);
 int		ft_keypress(int key, t_vars *vars);
 int		ft_click_cross(t_vars *vars);
-void	ft_end_mlx(t_vars *vars);
+void	ft_end_mlx(t_vars **vars);
 void	ft_pixel_put(t_vars *vars, int x, int y, unsigned int color);
 int		ft_dot(int button, int x, int y, t_vars *vars);
 int		ft_frame(t_vars	*vars);
@@ -82,5 +82,13 @@ int		ft_fdf_getlen(char *str);
 int		ft_fdf_lencheck(t_vars *vars, char *str);
 char	*ft_fdf_initcol(void);
 void	ft_fdf_free_matrix(t_spot **matrix, t_vars *vars);
+char	*ft_fdf_buffertrim(char *buffer);
+t_spot	ft_fdf_setup_dot(char *buffer, int x, int y, t_vars *vars);
+t_spot	*ft_fdf_init_rows(char *buffer, t_vars *vars, int y);
+void	ft_print_matrix(t_spot **matrix, t_vars *vars);
+void	ft_print_dot(t_spot	dot);
+t_spot	**ft_map_to_matrix(t_vars *vars, char *filename);
+int		ft_fdf_spacing(t_vars *vars);
+t_vars	*ft_fdf_initvars(char *filename);
 
 #endif

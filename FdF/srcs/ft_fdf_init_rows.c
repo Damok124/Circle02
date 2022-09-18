@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_end_mlx.c                                       :+:      :+:    :+:   */
+/*   ft_fdf_init_rows.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/12 17:59:58 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/18 17:10:03 by zharzi           ###   ########.fr       */
+/*   Created: 2022/09/18 18:16:45 by zharzi            #+#    #+#             */
+/*   Updated: 2022/09/18 18:16:48 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_end_mlx(t_vars **state)
+t_spot	*ft_fdf_init_rows(char *buffer, t_vars *vars, int y)
 {
-	t_vars	*vars;
+	t_spot	*row;
+	int		x;
 
-	vars = *state;
-	mlx_destroy_image(vars->mlx, vars->img);
-	mlx_destroy_window(vars->mlx, vars->win);
-	mlx_destroy_display(vars->mlx);
-	free(vars->hexcolor);
-	free(vars->mlx);
-	free(vars);
-	exit(0);
+	x = 0;
+	row = (t_spot *)malloc(sizeof(t_spot) * vars->len);
+	while (x < vars->len)
+	{
+		row[x] = ft_fdf_setup_dot(buffer, x, y, vars);
+		x++;
+	}
+	return (row);
 }

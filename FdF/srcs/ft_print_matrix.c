@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_end_mlx.c                                       :+:      :+:    :+:   */
+/*   ft_print_matrix.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/12 17:59:58 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/18 17:10:03 by zharzi           ###   ########.fr       */
+/*   Created: 2022/09/18 18:19:05 by zharzi            #+#    #+#             */
+/*   Updated: 2022/09/18 18:19:24 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_end_mlx(t_vars **state)
+void	ft_print_matrix(t_spot **matrix, t_vars *vars)
 {
-	t_vars	*vars;
+	int	x;
+	int	y;
 
-	vars = *state;
-	mlx_destroy_image(vars->mlx, vars->img);
-	mlx_destroy_window(vars->mlx, vars->win);
-	mlx_destroy_display(vars->mlx);
-	free(vars->hexcolor);
-	free(vars->mlx);
-	free(vars);
-	exit(0);
+	x = 0;
+	y = 0;
+	while (y < vars->rows)
+	{
+		while (x < vars->len)
+		{
+			ft_print_dot(matrix[y][x]);
+			x++;
+		}
+		x = 0;
+		y++;
+	}
 }
