@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fdf_free_matrix.c                               :+:      :+:    :+:   */
+/*   ft_fdf_initcol.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 21:52:57 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/18 15:05:47 by zharzi           ###   ########.fr       */
+/*   Created: 2022/09/18 14:47:48 by zharzi            #+#    #+#             */
+/*   Updated: 2022/09/18 14:48:05 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_fdf_free_matrix(t_spot **matrix, t_vars *vars)
+char	*ft_fdf_initcol(void)
 {
-	int	i;
+	char	*color;
 
-	i = 0;
-	while (i < vars->len)
-	{
-		free(matrix[i]);
-		matrix[i] = NULL;
-		i++;
-	}
-	free(matrix);
-	matrix = NULL;
+	color = (char *)malloc(sizeof(char) * 11);
+	color = ft_memset(color, 'F', 10);
+	color[0] = '0';
+	color[1] = 'x';
+	color[2] = '0';
+	color[3] = '0';
+	color[10] = '\0';
+	return (color);
 }

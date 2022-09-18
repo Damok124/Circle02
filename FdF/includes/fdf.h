@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:48:56 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/17 22:54:14 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/18 15:06:19 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int		ft_link(t_vars *vars, t_spot *a, t_spot *b);
 int		ft_fdf_rowcount(char *filename);
 int		ft_fdf_getlen(char *str);
 int		ft_fdf_lencheck(t_vars *vars, char *str);
-void	ft_fdf_free_matrix(t_vars *vars, t_spot **matrix);
+char	*ft_fdf_initcol(void);
+void	ft_fdf_free_matrix(t_spot **matrix, t_vars *vars);
 
 #endif

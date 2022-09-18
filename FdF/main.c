@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:40:17 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/17 23:49:30 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/18 16:39:21 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_fdf_buffertrim(char *buffer)
 	return (buffer);
 }
 
-t_spot	ft_fdf_setup_dot(char *buffer, int x, int y)
+t_spot	ft_fdf_setup_dot(char *buffer, int x, int y, t_vars *vars)
 {
 	t_spot			dot;
 	char			**sequence;
@@ -36,23 +36,87 @@ t_spot	ft_fdf_setup_dot(char *buffer, int x, int y)
 	dot.z = ft_atoi(sequence[x]);
 	if (ft_strchr(sequence[x], ','))
 		color = ft_strchr(sequence[x], 'x') + 1;
+	else
+		color = vars->hexcolor + 2;
 	col = ft_btou(color, "0123456789ABCDEF");
 	dot.blue = col & 0xFF;
 	dot.green = (col >> 8) & 0xFF;
 	dot.red = (col >> 16) & 0xFF;
 	ft_full_free((void **)sequence);
 	return (dot);
-}///////////
+}
+
+t_spot	*ft_standard(char *buffer, t_vars *vars, int y)
+{
+	t_spot	*row;
+	int		x;
+
+	x = 0;
+	row = (t_spot *)malloc(sizeof(t_spot) * vars->len);
+	while (x < vars->len)
+	{
+		row[x] = ft_fdf_setup_dot(buffer, x, y, vars);
+		x++;
+	}
+	return (row);
+}
+
+t_spot	**ft_map_to_matrix(t_vars *vars, char *filename)
+{
+	int		fd;
+	char	*buffer;
+	int		y;
+	t_spot	**matrix;
+
+	matrix = (t_spot **)malloc(sizeof(t_spot *) * vars->len);
+	y = 0;
+	fd = open(filename, O_RDONLY);
+	buffer = get_next_line(fd);
+	while (buffer)
+	{
+		buffer = ft_fdf_buffertrim(buffer);
+		matrix[y] = ft_standard(buffer, vars, y);
+		y++;
+		ft_true_free(&buffer);
+		buffer = get_next_line(fd);
+	}
+	close(fd);
+	return (matrix);
+}
+
+void	ft_view_dot(t_spot	dot)
+{
+	unsigned int	color;
+
+	color = (dot.red << 16) + (dot.green << 8) + (dot.blue);
+	ft_printf("y : %d; x : %d; z : %d\n", dot.y, dot.x, dot.z);
+	ft_printf("color = %x\n", color);
+}
+
+void	ft_view_matrix(t_spot **matrix, t_vars *vars)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (y < vars->rows)
+	{
+		while (x < vars->len)
+		{
+			ft_view_dot(matrix[y][x]);
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+}
 
 int	main(int ac, char **argv)
 {
 	t_vars	vars;
-	t_spot	dot;
-	int		fd;
-	int		x;
-	char	*buffer;
+	t_spot	**matrix;
 
-	fd = open(argv[ac - 1], O_RDONLY);
 	vars.mlx = mlx_init();
 	if (!vars.mlx)
 		return (MLX_ERROR);
@@ -62,10 +126,10 @@ int	main(int ac, char **argv)
 		free(vars.mlx);
 		return (MLX_ERROR);
 	}
-	vars.hexcolor = (char *)malloc(sizeof(char) * 6 + 1);
-	vars.hexcolor = ft_memset(vars.hexcolor, '0', 6);
-	vars.hexcolor[6] = '\0';
-	vars.color = 0x00FFFFFF;
+	vars.hexcolor = ft_fdf_initcol();
+	ft_printf("%s\n", vars.hexcolor);
+	vars.color = ft_btou(vars.hexcolor + 2, "0123456789ABCDEF");
+	ft_printf("%x\n", vars.color);
 	vars.img = mlx_new_image(vars.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	vars.addr = mlx_get_data_addr(vars.img, &vars.bits_per_pixel, \
 		&vars.line_length, &vars.endian);
@@ -74,30 +138,14 @@ int	main(int ac, char **argv)
 	mlx_loop_hook(vars.mlx, ft_frame, &vars);
 	vars.rows = ft_fdf_rowcount(argv[ac - 1]);
 	ft_fdf_lencheck(&vars, argv[ac - 1]);
-	buffer = get_next_line(fd);
-	x = 1;
-	buffer = ft_fdf_buffertrim(buffer);
-	dot = ft_fdf_setup_dot(buffer, x);
-	(void)dot;
-	while (buffer)
-	{
-		ft_true_free(&buffer);
-		buffer = get_next_line(fd);
-	}
-	//ft_standard(&vars, argv[ac - 1]);
-	//mlx_loop(vars.mlx);
-	close(fd);
+	matrix = ft_map_to_matrix(&vars, argv[ac - 1]);
+	ft_view_matrix(matrix, &vars);
+	ft_fdf_free_matrix(matrix, &vars);
 	ft_end_mlx(&vars);
 	return (0);
 }
 
 /*Votre programme doit afficher une image dans une fenêtre.
-(faut-il utiliser le mlx loop hook?)
-https://aurelienbrabant.fr/blog/pixel-drawing-with-the-minilibx
-
-https://aurelienbrabant.fr/blog/managing-events-with-the-minilibx
-
-L'evenement expose retrace ce qu'il y a dans la fenetre
 
 • La gestion de la fenêtre doit rester fluide (changer de fenêtre,
 la réduire, etc.).

@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 13:40:41 by zharzi            #+#    #+#              #
-#    Updated: 2022/09/15 22:29:22 by zharzi           ###   ########.fr        #
+#    Updated: 2022/09/18 14:48:31 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCSDIR = ./srcs/
 
 SRCS = ${SRCSDIR}ft_test.c \
 ${SRCSDIR}ft_fdf_free_matrix.c \
+${SRCSDIR}ft_fdf_initcol.c \
 ${SRCSDIR}ft_frame.c \
 ${SRCSDIR}ft_fdf_rowcount.c \
 ${SRCSDIR}ft_fdf_getlen.c \
