@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:48:56 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/18 18:53:42 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/19 16:24:29 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct s_vars {
 	int				rows;
 	int				len;
 	int				spacing;
+	int				xmid;
+	int				ymid;
 }					t_vars;
 
 typedef struct s_spot {

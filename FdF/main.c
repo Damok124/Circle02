@@ -6,11 +6,117 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:40:17 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/18 18:54:43 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/19 16:34:10 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	ft_print_grid(t_vars *vars, t_spot **matrix)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (j < vars->rows)
+	{
+		while (i < vars->len)
+		{
+			if (i != vars->len && j != vars->rows)
+			{
+				ft_link(vars, matrix[j][i], matrix[j][i + 1]);
+				ft_link(vars, matrix[j][i], matrix[j + 1][i]);
+			}
+			else if (i == vars->len && j != vars->rows)
+				ft_link(vars, matrix[j][i], matrix[j + 1][i]);
+			else if (i != vars->len && j == vars->rows)
+				ft_link(vars, matrix[j][i], matrix[j][i + 1]);
+			i++;
+		}
+		i = 0;
+		j++;
+	}
+}
+
+void	ft_get_center(t_vars *vars)
+{
+	int	xlast;
+	int xfirst;
+	int	ylast;
+	int	yfirst;
+
+	xlast = (vars->len - 1 * vars->spacing) + (WINDOW_WIDTH * 20 / 100 / 2);
+	xfirst = (WINDOW_WIDTH * 20 / 100 / 2);
+	vars->xmid = (xlast - xfirst) / 2;
+	ylast = (vars->rows - 1 * vars->spacing) + (WINDOW_HEIGHT * 10 / 100 / 2);
+	yfirst = (WINDOW_HEIGHT * 10 / 100 / 2);
+	vars->ymid = (ylast - yfirst) / 2;
+}
+
+void	ft_fdf_rotation(t_vars *vars, t_spot **matrix, int angle)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (j < vars->rows)
+	{
+		while (i < vars->len)
+		{
+			matrix[j][i].x *= ;//ajouter formules de rotation
+			matrix[j][i].y *= ;//
+			i++;
+		}
+		i = 0;
+		j++;
+	}
+}
+
+void	ft_fdf_vectorisation(t_vars *vars, t_spot **matrix, int direction)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (j < vars->rows)
+	{
+		while (i < vars->len)
+		{
+			matrix[j][i].x += vars->xmid * direction;
+			matrix[j][i].y += vars->ymid * direction;
+			i++;
+		}
+		i = 0;
+		j++;
+	}
+}
+
+void	ft_fdf(t_vars *vars, t_spot **matrix)
+{
+	int	i;
+	int	j;
+	int	hmargin;
+	int	wmargin;
+
+	i = 0;
+	j = 0;
+	hmargin = WINDOW_HEIGHT * 10 / 100 / 2;
+	wmargin = WINDOW_WIDTH * 20 / 100 / 2;
+	while (j < vars->rows)
+	{
+		while (i < vars->len)
+		{
+			matrix[j][i].x = (matrix[j][i].x * vars->spacing) + wmargin / 2;
+			matrix[j][i].y = (matrix[j][i].y * vars->spacing) + hmargin / 2;
+			i++;
+		}
+		i = 0;
+		j++;
+	}
+}
 
 int	main(int ac, char **argv)
 {

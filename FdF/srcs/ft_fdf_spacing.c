@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 18:49:39 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/18 18:49:49 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/19 16:07:22 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_fdf_spacing(t_vars *vars)
 	else if (vars->len == 1 && vars->rows == 1)
 		return (0);
 	ratio = (WINDOW_HEIGHT * 90 / 100) / (vars->rows - 1);
-	if (ratio > (WINDOW_WIDTH * 80 / 100) / (vars->len - 1))
+	if (ratio > (WINDOW_WIDTH * 1,5 * 80 / 100) / (vars->len - 1))
 		ratio = (WINDOW_WIDTH * 80 / 100) / (vars->len - 1);
 	return (ratio);
 }

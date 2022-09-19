@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 18:51:46 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/18 18:53:44 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/19 16:25:54 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ t_vars	*ft_fdf_initvars(char *filename)
 	vars->rows = ft_fdf_rowcount(filename);
 	ft_fdf_lencheck(vars, filename);
 	vars->spacing = ft_fdf_spacing(vars);
+	ft_get_center(vars);
 	return (vars);
 }
