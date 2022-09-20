@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:48:56 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/19 16:24:29 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/19 21:46:28 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,12 @@ int		ft_dot(int button, int x, int y, t_vars *vars);
 int		ft_frame(t_vars	*vars);
 int		ft_get_octant(int x1, int x2, int y1, int y2);
 int		ft_get_octant2(int x1, int x2, int y1, int y2);
-void	ft_trace_oct8(t_vars *vars, t_spot *a, t_spot *b);
-void	ft_trace_oct7(t_vars *vars, t_spot *a, t_spot *b);
-void	ft_trace_oct6(t_vars *vars, t_spot *a, t_spot *b);
-void	ft_trace_oct5(t_vars *vars, t_spot *a, t_spot *b);
+void	ft_trace_oct8(t_vars *vars, t_spot a, t_spot b);
+void	ft_trace_oct7(t_vars *vars, t_spot a, t_spot b);
+void	ft_trace_oct6(t_vars *vars, t_spot a, t_spot b);
+void	ft_trace_oct5(t_vars *vars, t_spot a, t_spot b);
 int		ft_pix_is_visible(int x, int y);
-int		ft_link(t_vars *vars, t_spot *a, t_spot *b);
+int		ft_link(t_vars *vars, t_spot a, t_spot b);
 int		ft_fdf_rowcount(char *filename);
 int		ft_fdf_getlen(char *str);
 int		ft_fdf_lencheck(t_vars *vars, char *str);
@@ -92,5 +92,6 @@ void	ft_print_dot(t_spot	dot);
 t_spot	**ft_map_to_matrix(t_vars *vars, char *filename);
 int		ft_fdf_spacing(t_vars *vars);
 t_vars	*ft_fdf_initvars(char *filename);
+void	ft_get_center(t_vars *vars);
 
 #endif

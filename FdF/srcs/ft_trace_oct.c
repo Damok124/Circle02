@@ -6,13 +6,13 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:23:29 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/14 13:50:33 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/19 21:45:47 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_trace_oct8(t_vars *vars, t_spot *a, t_spot *b)
+void	ft_trace_oct8(t_vars *vars, t_spot a, t_spot b)
 {
 	int	dx;
 	int	dy;
@@ -20,12 +20,12 @@ void	ft_trace_oct8(t_vars *vars, t_spot *a, t_spot *b)
 	int	y;
 	int	eps;
 
-	dx = b->x - a->x;
-	dy = b->y - a->y;
-	x = a->x;
-	y = a->y;
+	dx = b.x - a.x;
+	dy = b.y - a.y;
+	x = a.x;
+	y = a.y;
 	eps = 0;
-	while (x <= b->x)
+	while (x <= b.x)
 	{
 		if (ft_pix_is_visible(x, y))
 			ft_pixel_put(vars, x, y, vars->color);
@@ -39,7 +39,7 @@ void	ft_trace_oct8(t_vars *vars, t_spot *a, t_spot *b)
 	}
 }
 
-void	ft_trace_oct7(t_vars *vars, t_spot *a, t_spot *b)
+void	ft_trace_oct7(t_vars *vars, t_spot a, t_spot b)
 {
 	int	dx;
 	int	dy;
@@ -47,12 +47,12 @@ void	ft_trace_oct7(t_vars *vars, t_spot *a, t_spot *b)
 	int	y;
 	int	eps;
 
-	dx = b->x - a->x;
-	dy = b->y - a->y;
-	x = a->x;
-	y = a->y;
+	dx = b.x - a.x;
+	dy = b.y - a.y;
+	x = a.x;
+	y = a.y;
 	eps = 0;
-	while (y <= b->y)
+	while (y <= b.y)
 	{
 		if (ft_pix_is_visible(x, y))
 			ft_pixel_put(vars, x, y, vars->color);
@@ -66,7 +66,7 @@ void	ft_trace_oct7(t_vars *vars, t_spot *a, t_spot *b)
 	}
 }
 
-void	ft_trace_oct6(t_vars *vars, t_spot *a, t_spot *b)
+void	ft_trace_oct6(t_vars *vars, t_spot a, t_spot b)
 {
 	int	dx;
 	int	dy;
@@ -74,12 +74,12 @@ void	ft_trace_oct6(t_vars *vars, t_spot *a, t_spot *b)
 	int	y;
 	int	eps;
 
-	dx = b->x - a->x;
-	dy = (b->y - a->y) * -1;
-	x = a->x;
-	y = a->y;
+	dx = b.x - a.x;
+	dy = (b.y - a.y) * -1;
+	x = a.x;
+	y = a.y;
 	eps = 0;
-	while (y <= b->y)
+	while (y <= b.y)
 	{
 		if (ft_pix_is_visible(x, y))
 			ft_pixel_put(vars, x, y, vars->color);
@@ -93,7 +93,7 @@ void	ft_trace_oct6(t_vars *vars, t_spot *a, t_spot *b)
 	}
 }
 
-void	ft_trace_oct5(t_vars *vars, t_spot *a, t_spot *b)
+void	ft_trace_oct5(t_vars *vars, t_spot a, t_spot b)
 {
 	int	dx;
 	int	dy;
@@ -101,12 +101,12 @@ void	ft_trace_oct5(t_vars *vars, t_spot *a, t_spot *b)
 	int	y;
 	int	eps;
 
-	dx = b->x - a->x;
-	dy = (b->y - a->y) * -1;
-	x = a->x;
-	y = a->y;
+	dx = b.x - a.x;
+	dy = (b.y - a.y) * -1;
+	x = a.x;
+	y = a.y;
 	eps = 0;
-	while (x >= b->x)
+	while (x >= b.x)
 	{
 		if (ft_pix_is_visible(x, y))
 			ft_pixel_put(vars, x, y, vars->color);

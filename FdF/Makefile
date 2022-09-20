@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 13:40:41 by zharzi            #+#    #+#              #
-#    Updated: 2022/09/18 18:53:39 by zharzi           ###   ########.fr        #
+#    Updated: 2022/09/19 18:44:27 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCSDIR = ./srcs/
 SRCS = ${SRCSDIR}ft_test.c \
 ${SRCSDIR}ft_fdf_free_matrix.c \
 ${SRCSDIR}ft_fdf_spacing.c \
+${SRCSDIR}ft_fdf_get_center.c \
 ${SRCSDIR}ft_fdf_initvars.c \
 ${SRCSDIR}ft_print_matrix.c \
 ${SRCSDIR}ft_map_to_matrix.c \

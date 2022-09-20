@@ -6,18 +6,18 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:53:27 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/14 13:53:36 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/19 21:45:57 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	ft_link(t_vars *vars, t_spot *a, t_spot *b)
+int	ft_link(t_vars *vars, t_spot a, t_spot b)
 {
 	int	octant;
 
 	octant = 0;
-	octant = ft_get_octant(a->x, b->x, a->y, b->y);
+	octant = ft_get_octant(a.x, b.x, a.y, b.y);
 	ft_printf("octant actuel : %d\n", octant);
 	if (octant == 8)
 		ft_trace_oct8(vars, a, b);
