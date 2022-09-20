@@ -6,34 +6,43 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:23:29 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/19 21:45:47 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/20 16:30:05 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+unsigned int	ft_get_color(t_spot a, t_spot b, int x, int y)
+{
+	int r;
+	int g;
+	int b;
+
+	b.red - a.red
+}
+
 void	ft_trace_oct8(t_vars *vars, t_spot a, t_spot b)
 {
-	int	dx;
-	int	dy;
+	unsigned int	color;
 	int	x;
 	int	y;
 	int	eps;
 
-	dx = b.x - a.x;
-	dy = b.y - a.y;
 	x = a.x;
 	y = a.y;
 	eps = 0;
 	while (x <= b.x)
 	{
 		if (ft_pix_is_visible(x, y))
-			ft_pixel_put(vars, x, y, vars->color);
-		eps += dy;
-		if (eps * 2 >= dx)
+		{
+			color = ft_get_color(a, b, x, y);
+			ft_pixel_put(vars, x, y, vars->color);//
+		}
+		eps += (b.y - a.y);
+		if (eps * 2 >= (b.x - a.x))
 		{
 			y++;
-			eps -= dx;
+			eps -= (b.x - a.x);
 		}
 		x++;
 	}
