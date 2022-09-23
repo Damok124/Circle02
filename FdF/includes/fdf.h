@@ -6,15 +6,16 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:48:56 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/19 21:46:28 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/23 18:39:32 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-# define WINDOW_WIDTH 1280
-# define WINDOW_HEIGHT 720
+# define WINDOW_WIDTH 1920
+# define WINDOW_HEIGHT 1080
 
+# include <math.h>
 # include "X11/keysym.h"
 # include "X11/X.h"
 # include "mlx.h"
@@ -41,18 +42,18 @@ typedef struct s_vars {
 	int				line_length;
 	int				endian;
 	char			*hexcolor;
-	unsigned int	color;
+	int				red;
+	int				green;
+	int				blue;
 	int				rows;
 	int				len;
 	int				spacing;
-	int				xmid;
-	int				ymid;
 }					t_vars;
 
 typedef struct s_spot {
-	int				x;
-	int				y;
-	int				z;
+	float			x;
+	float			y;
+	float			z;
 	int				red;
 	int				green;
 	int				blue;
@@ -68,7 +69,7 @@ int		ft_renew_image(t_vars *vars);
 int		ft_keypress(int key, t_vars *vars);
 int		ft_click_cross(t_vars *vars);
 void	ft_end_mlx(t_vars **vars);
-void	ft_pixel_put(t_vars *vars, int x, int y, unsigned int color);
+void	ft_pixel_put(t_vars *vars, int x, int y);
 int		ft_dot(int button, int x, int y, t_vars *vars);
 int		ft_frame(t_vars	*vars);
 int		ft_get_octant(int x1, int x2, int y1, int y2);
@@ -82,16 +83,23 @@ int		ft_link(t_vars *vars, t_spot a, t_spot b);
 int		ft_fdf_rowcount(char *filename);
 int		ft_fdf_getlen(char *str);
 int		ft_fdf_lencheck(t_vars *vars, char *str);
-char	*ft_fdf_initcol(void);
+void	ft_fdf_initcol(t_vars *vars);
 void	ft_fdf_free_matrix(t_spot **matrix, t_vars *vars);
-char	*ft_fdf_buffertrim(char *buffer);
-t_spot	ft_fdf_setup_dot(char *buffer, int x, int y, t_vars *vars);
-t_spot	*ft_fdf_init_rows(char *buffer, t_vars *vars, int y);
-void	ft_print_matrix(t_spot **matrix, t_vars *vars);
-void	ft_print_dot(t_spot	dot);
+char	*ft_standard_buffer(char *buffer);
+t_spot	ft_fdf_setup_dot(char **buffer, int x, int y, t_vars *vars);
+t_spot	*ft_fdf_init_rows(char **buffer, t_vars *vars, int y);
 t_spot	**ft_map_to_matrix(t_vars *vars, char *filename);
 int		ft_fdf_spacing(t_vars *vars);
 t_vars	*ft_fdf_initvars(char *filename);
-void	ft_get_center(t_vars *vars);
+double	ft_hypotenuse(int a, int b);
+void	ft_fdf_first_position(t_vars *vars, t_spot **matrix);
+void	ft_fdf_last_position(t_vars *vars, t_spot **matrix);
+unsigned int	ft_fdf_btou(const char *nptr, char *base);
+void	ft_print_grid(t_vars *vars, t_spot **matrix);
+void	ft_print_dot(t_vars *vars, t_spot dot);
+void	ft_print_spots(t_vars *vars, t_spot **matrix);
+void	ft_fdf_get_color(t_vars *vars, t_spot a, t_spot b, double ratio);
+void	ft_fdf_rotation_z(t_vars *vars, t_spot **matrix, double angle);
+void	ft_fdf_rotation_x(t_vars *vars, t_spot **matrix, double angle);
 
 #endif

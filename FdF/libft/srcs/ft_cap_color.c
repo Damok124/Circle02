@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fdf_free_matrix.c                               :+:      :+:    :+:   */
+/*   ft_cap_color.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 21:52:57 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/20 22:32:45 by zharzi           ###   ########.fr       */
+/*   Created: 2022/09/23 18:32:29 by zharzi            #+#    #+#             */
+/*   Updated: 2022/09/23 18:32:45 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-void	ft_fdf_free_matrix(t_spot **matrix, t_vars *vars)
+int	ft_cap_color(int color)
 {
-	int	i;
-
-	i = 0;
-	while (i < vars->rows)
-	{
-		free(matrix[i]);
-		matrix[i] = NULL;
-		i++;
-	}
-	free(matrix);
-	matrix = NULL;
+	if (color > 255)
+		return (255);
+	else if (color < 0)
+		return (0);
+	else
+		return (color);
 }

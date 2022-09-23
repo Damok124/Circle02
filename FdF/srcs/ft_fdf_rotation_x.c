@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_matrix.c                                  :+:      :+:    :+:   */
+/*   ft_fdf_rotation_x.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/18 18:19:05 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/18 18:19:24 by zharzi           ###   ########.fr       */
+/*   Created: 2022/09/23 18:37:35 by zharzi            #+#    #+#             */
+/*   Updated: 2022/09/23 18:38:22 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_print_matrix(t_spot **matrix, t_vars *vars)
+void	ft_fdf_rotation_x(t_vars *vars, t_spot **matrix, double angle)
 {
-	int	x;
-	int	y;
+	int		i;
+	int		j;
+	double	x;
+	double	y;
+	double	z;
 
-	x = 0;
-	y = 0;
-	while (y < vars->rows)
+	i = 0;
+	j = 0;
+	while (j < vars->rows)
 	{
-		while (x < vars->len)
+		while (i < vars->len)
 		{
-			ft_print_dot(matrix[y][x]);
-			x++;
+			x = matrix[j][i].x;
+			y = matrix[j][i].y;
+			z = matrix[j][i].z;
+			matrix[j][i].x = 1 * x + 0 * y + 0 * z;
+			matrix[j][i].y = 0 * x + cos(angle) * y + -sin(angle) * z;
+			matrix[j][i].z = 0 * x + sin(angle) * y + cos(angle) * z;
+			i++;
 		}
-		x = 0;
-		y++;
+		i = 0;
+		j++;
 	}
 }

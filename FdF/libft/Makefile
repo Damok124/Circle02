@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/09/17 23:26:59 by zharzi           ###   ########.fr        #
+#    Updated: 2022/09/23 18:33:43 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = libft.a
 SRCSDIR = ./srcs/
 
 SRCS = $(SRCSDIR)ft_memset.c \
+$(SRCSDIR)ft_abs.c \
 $(SRCSDIR)ft_bzero.c \
 $(SRCSDIR)ft_memcpy.c \
 $(SRCSDIR)ft_memmove.c \
@@ -38,6 +39,8 @@ $(SRCSDIR)ft_strncmp.c \
 $(SRCSDIR)ft_strlcpy.c \
 $(SRCSDIR)ft_strlcat.c \
 $(SRCSDIR)ft_strnstr.c \
+$(SRCSDIR)ft_max.c \
+$(SRCSDIR)ft_min.c \
 $(SRCSDIR)ft_atoi.c \
 $(SRCSDIR)ft_atoi_base.c \
 $(SRCSDIR)ft_calloc.c \
@@ -55,6 +58,8 @@ $(SRCSDIR)ft_putnbr_fd.c \
 $(SRCSDIR)ft_putnbr_fd_itoa.c \
 $(SRCSDIR)ft_putnbr_base_fd.c \
 $(SRCSDIR)ft_striteri.c \
+$(SRCSDIR)ft_sqrt.c \
+$(SRCSDIR)ft_cap_color.c \
 $(SRCSDIR)ft_lstnew.c \
 $(SRCSDIR)ft_lstadd_front.c \
 $(SRCSDIR)ft_lstsize.c \

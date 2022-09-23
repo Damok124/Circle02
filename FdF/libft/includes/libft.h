@@ -6,14 +6,14 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:33:23 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/17 23:23:11 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/23 18:33:08 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 256
+#  define BUFFER_SIZE 2048
 # endif
 
 # include <sys/stat.h>
@@ -77,6 +77,8 @@ int						ft_memcmp(const void *s1, const void *s2, size_t n);
 int						ft_strncmp(const char *s1, const char *s2, size_t n);
 int						ft_check_dup_int(int len, int *tab);
 size_t					ft_strlen(const char *str);
+int						ft_max(int a, int b);
+int						ft_min(int a, int b);
 /////////////////////////
 //	INITIALIZATION
 /////////////////////////
@@ -111,6 +113,12 @@ char					*ft_strtrim(char const *s1, char const *set);
 int						ft_tolower(int c);
 int						ft_toupper(int c);
 int						*ft_strs_to_tab(int len, char **strs);
+int						ft_cap_color(int color);
+/////////////////////////
+//	MATHEMATIC
+/////////////////////////
+int						ft_abs(int x);
+int						ft_sqrt(int nb);
 /////////////////////////
 //	RESEARCH
 /////////////////////////

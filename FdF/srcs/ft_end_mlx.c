@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 17:59:58 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/18 17:10:03 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/23 16:54:51 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,4 @@ void	ft_end_mlx(t_vars **state)
 	free(vars->hexcolor);
 	free(vars->mlx);
 	free(vars);
-	exit(0);
 }

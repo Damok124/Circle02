@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 21:52:53 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/18 18:47:31 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/23 18:29:39 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,23 @@ t_spot	**ft_map_to_matrix(t_vars *vars, char *filename)
 {
 	int		fd;
 	char	*buffer;
+	char	*savebuff;
 	int		y;
 	t_spot	**matrix;
 
-	matrix = (t_spot **)malloc(sizeof(t_spot *) * vars->len);
+	matrix = (t_spot **)malloc(sizeof(t_spot *) * vars->rows);
 	y = 0;
 	fd = open(filename, O_RDONLY);
 	buffer = get_next_line(fd);
+	savebuff = buffer;
 	while (buffer)
 	{
-		buffer = ft_fdf_buffertrim(buffer);
-		matrix[y] = ft_fdf_init_rows(buffer, vars, y);
+		buffer = ft_standard_buffer(buffer);
+		matrix[y] = ft_fdf_init_rows(&buffer, vars, y);
 		y++;
-		ft_true_free(&buffer);
+		ft_true_free(&savebuff);
 		buffer = get_next_line(fd);
+		savebuff = buffer;
 	}
 	close(fd);
 	return (matrix);

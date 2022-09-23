@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fdf_free_matrix.c                               :+:      :+:    :+:   */
+/*   ft_hypotenuse.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 21:52:57 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/20 22:32:45 by zharzi           ###   ########.fr       */
+/*   Created: 2022/09/20 16:11:20 by zharzi            #+#    #+#             */
+/*   Updated: 2022/09/20 20:12:14 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_fdf_free_matrix(t_spot **matrix, t_vars *vars)
+double	ft_hypotenuse(int a, int b)
 {
-	int	i;
+	double	c;
+	double	asquare;
+	double	bsquare;
+	double	csquare;
 
-	i = 0;
-	while (i < vars->rows)
-	{
-		free(matrix[i]);
-		matrix[i] = NULL;
-		i++;
-	}
-	free(matrix);
-	matrix = NULL;
+	a = ft_abs(a);
+	b = ft_abs(b);
+	asquare = a * a;
+	bsquare = b * b;
+	csquare = asquare + bsquare;
+	c = sqrt(csquare);
+	return (c);
 }

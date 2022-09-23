@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 00:03:20 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/17 23:39:02 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/21 01:25:52 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ unsigned int	ft_btou(const char *nptr, char *base)
 {
 	unsigned int	ret;
 	int				i;
+	int				len;
 
+	len = ft_strlen(base);
 	i = 0;
 	ret = 0;
 	if (nptr)
@@ -27,7 +29,7 @@ unsigned int	ft_btou(const char *nptr, char *base)
 			nptr++;
 		while (*nptr && ft_strchr(base, *nptr))
 		{
-			ret *= ft_strlen(base);
+			ret *= len;
 			while (base[i] != *nptr)
 				i++;
 			ret += i;

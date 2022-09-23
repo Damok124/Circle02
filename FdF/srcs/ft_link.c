@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:53:27 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/19 21:45:57 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/22 22:17:50 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,21 @@ int	ft_link(t_vars *vars, t_spot a, t_spot b)
 
 	octant = 0;
 	octant = ft_get_octant(a.x, b.x, a.y, b.y);
-	ft_printf("octant actuel : %d\n", octant);
 	if (octant == 8)
 		ft_trace_oct8(vars, a, b);
-	if (octant == 7)
+	else if (octant == 7)
 		ft_trace_oct7(vars, a, b);
-	if (octant == 6)
+	else if (octant == 6)
 		ft_trace_oct6(vars, a, b);
-	if (octant == 5)
+	else if (octant == 5)
 		ft_trace_oct5(vars, a, b);
-	if (octant == 4)
+	else if (octant == 4)
 		ft_trace_oct8(vars, b, a);
-	if (octant == 3)
+	else if (octant == 3)
 		ft_trace_oct7(vars, b, a);
-	if (octant == 2)
+	else if (octant == 2)
 		ft_trace_oct6(vars, b, a);
-	if (octant == 1)
+	else if (octant == 1)
 		ft_trace_oct5(vars, b, a);
 	return (1);
 }

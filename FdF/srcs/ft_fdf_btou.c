@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fdf_free_matrix.c                               :+:      :+:    :+:   */
+/*   ft_fdf_btou.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 21:52:57 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/20 22:32:45 by zharzi           ###   ########.fr       */
+/*   Created: 2022/09/21 01:31:05 by zharzi            #+#    #+#             */
+/*   Updated: 2022/09/22 15:56:49 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_fdf_free_matrix(t_spot **matrix, t_vars *vars)
+unsigned int	ft_fdf_btou(const char *nptr, char *base)
 {
-	int	i;
+	unsigned int	ret;
+	int				i;
+	int				len;
 
+	len = ft_strlen(base);
 	i = 0;
-	while (i < vars->rows)
+	ret = 0;
+	if (nptr)
 	{
-		free(matrix[i]);
-		matrix[i] = NULL;
-		i++;
+		while ((*nptr >= '\t' && *nptr <= '\r') || *nptr == ' ')
+			nptr++;
+		if (*nptr == '+')
+			nptr++;
+		while (*nptr && (*nptr != ' ' && *nptr != '\n'))
+		{
+			ret *= len;
+			while (base[i] != *nptr)
+				i++;
+			ret += i;
+			i = 0;
+			nptr++;
+		}
 	}
-	free(matrix);
-	matrix = NULL;
+	return (ret);
 }

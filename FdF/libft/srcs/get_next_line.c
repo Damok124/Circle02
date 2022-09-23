@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 19:14:22 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/17 19:37:18 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/21 15:34:08 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_make_buff(int fd, char **ret, int *count)
 	char	*tret;
 
 	tret = *ret;
-	tbuff = (char *)ft_calloc(BUFFER_SIZE + 1, 1);
+	tbuff = (char *)malloc(BUFFER_SIZE + 1);
 	if (!tbuff)
 		return (NULL);
 	*count = read(fd, tbuff, BUFFER_SIZE);

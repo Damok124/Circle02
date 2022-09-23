@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fdf_buffertrim.c                                :+:      :+:    :+:   */
+/*   ft_min.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/18 18:10:11 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/18 18:10:38 by zharzi           ###   ########.fr       */
+/*   Created: 2022/09/20 22:53:56 by zharzi            #+#    #+#             */
+/*   Updated: 2022/09/20 22:56:33 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-char	*ft_fdf_buffertrim(char *buffer)
+int	ft_min(int a, int b)
 {
-	char	*tmp;
-
-	tmp = ft_strtrim(buffer, "\n");
-	ft_true_free(&buffer);
-	buffer = ft_strtrim(tmp, " ");
-	ft_true_free(&tmp);
-	return (buffer);
+	if (a < b)
+		return (a);
+	return (b);
 }

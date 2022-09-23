@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hypotenuse.c                                    :+:      :+:    :+:   */
+/*   ft_fdf_get_color.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 16:11:20 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/20 16:22:19 by zharzi           ###   ########.fr       */
+/*   Created: 2022/09/23 18:35:00 by zharzi            #+#    #+#             */
+/*   Updated: 2022/09/23 18:35:13 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-int	ft_hypotenuse(int a, int b)
+void	ft_fdf_get_color(t_vars *vars, t_spot a, t_spot b, double ratio)
 {
-	int	c;
-
-	a = ft_abs(a);
-	b = ft_abs(b);
-	c = ft_sqrt((a * a) + (b * b));
-	return (c);
+	vars->red = (b.red - a.red) * (ratio) + a.red;
+	vars->red = ft_cap_color(vars->red);
+	vars->green = (b.green - a.green) * (ratio) + a.green;
+	vars->green = ft_cap_color(vars->green);
+	vars->blue = (b.blue - a.blue) * (ratio) + a.blue;
+	vars->blue = ft_cap_color(vars->blue);
 }

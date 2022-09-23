@@ -6,13 +6,13 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 18:16:45 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/18 18:16:48 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/23 18:26:58 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_spot	*ft_fdf_init_rows(char *buffer, t_vars *vars, int y)
+t_spot	*ft_fdf_init_rows(char **buffer, t_vars *vars, int y)
 {
 	t_spot	*row;
 	int		x;

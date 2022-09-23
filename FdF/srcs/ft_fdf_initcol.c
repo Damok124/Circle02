@@ -6,22 +6,21 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 14:47:48 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/18 14:48:05 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/21 14:31:53 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-char	*ft_fdf_initcol(void)
+void	ft_fdf_initcol(t_vars *vars)
 {
-	char	*color;
+	unsigned int	color;
 
-	color = (char *)malloc(sizeof(char) * 11);
-	color = ft_memset(color, 'F', 10);
-	color[0] = '0';
-	color[1] = 'x';
-	color[2] = '0';
-	color[3] = '0';
-	color[10] = '\0';
-	return (color);
+	vars->hexcolor = (char *)malloc(sizeof(char) * 7);
+	vars->hexcolor = ft_memset(vars->hexcolor, 'F', 6);
+	vars->hexcolor[6] = '\0';
+	color = ft_fdf_btou(vars->hexcolor, "0123456789ABCDEF");
+	vars->red = color >> 16;
+	vars->green = (color >> 8) & 0xFF;
+	vars->blue = color & 0xFF;
 }

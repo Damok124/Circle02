@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fdf_free_matrix.c                               :+:      :+:    :+:   */
+/*   ft_standard_buffer.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 21:52:57 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/20 22:32:45 by zharzi           ###   ########.fr       */
+/*   Created: 2022/09/18 18:10:11 by zharzi            #+#    #+#             */
+/*   Updated: 2022/09/23 01:29:40 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_fdf_free_matrix(t_spot **matrix, t_vars *vars)
+char	*ft_standard_buffer(char *buffer)
 {
-	int	i;
+	int		i;
 
 	i = 0;
-	while (i < vars->rows)
+	while (buffer && buffer[i])
 	{
-		free(matrix[i]);
-		matrix[i] = NULL;
+		if (buffer[i] >= 'a' && buffer[i] <= 'f')
+			buffer[i] -= 32;
 		i++;
+		if (buffer && buffer[i] == '\n')
+			buffer[i] -= 10;
 	}
-	free(matrix);
-	matrix = NULL;
+	return (buffer);
 }

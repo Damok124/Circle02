@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 13:40:41 by zharzi            #+#    #+#              #
-#    Updated: 2022/09/19 18:44:27 by zharzi           ###   ########.fr        #
+#    Updated: 2022/09/23 18:42:03 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,17 +16,23 @@ BINARY = fdf
 
 SRCSDIR = ./srcs/
 
-SRCS = ${SRCSDIR}ft_test.c \
-${SRCSDIR}ft_fdf_free_matrix.c \
+SRCS = ${SRCSDIR}ft_fdf_free_matrix.c \
 ${SRCSDIR}ft_fdf_spacing.c \
-${SRCSDIR}ft_fdf_get_center.c \
+${SRCSDIR}ft_fdf_btou.c \
+${SRCSDIR}ft_fdf_rotation_x.c \
+${SRCSDIR}ft_fdf_rotation_z.c \
+${SRCSDIR}ft_fdf_get_color.c \
+${SRCSDIR}ft_fdf_first_position.c \
+${SRCSDIR}ft_fdf_last_position.c \
+${SRCSDIR}ft_hypotenuse.c \
 ${SRCSDIR}ft_fdf_initvars.c \
-${SRCSDIR}ft_print_matrix.c \
 ${SRCSDIR}ft_map_to_matrix.c \
 ${SRCSDIR}ft_print_dot.c \
+${SRCSDIR}ft_print_spots.c \
+${SRCSDIR}ft_print_grid.c \
 ${SRCSDIR}ft_fdf_init_rows.c \
 ${SRCSDIR}ft_fdf_setup_dot.c \
-${SRCSDIR}ft_fdf_buffertrim.c \
+${SRCSDIR}ft_standard_buffer.c \
 ${SRCSDIR}ft_fdf_initcol.c \
 ${SRCSDIR}ft_frame.c \
 ${SRCSDIR}ft_fdf_rowcount.c \
@@ -59,7 +65,7 @@ IFLAG = -I$(HEADERDIR) -Ift_printf/includes/ -Ilibft/includes/ -Imlx/
 
 all : libmlx.a libfdf.a libft_printf.a libft.a
 	$(CC) $(FLAGS) main.c $(IFLAG) -L. -lfdf -L./mlx -lmlx -lXext -lX11 \
-	-L./libft -lft -L./ft_printf -lft_printf -o $(BINARY)
+	-L./libft -lft -L./ft_printf -lft_printf -o $(BINARY) -lm
 
 %.o : %.c
 	$(CC) $(FLAGS) $(IFLAG) -o $@ -c $^
