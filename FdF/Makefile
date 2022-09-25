@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 13:40:41 by zharzi            #+#    #+#              #
-#    Updated: 2022/09/23 18:42:03 by zharzi           ###   ########.fr        #
+#    Updated: 2022/09/25 23:25:57 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ ${SRCSDIR}ft_fdf_spacing.c \
 ${SRCSDIR}ft_fdf_btou.c \
 ${SRCSDIR}ft_fdf_rotation_x.c \
 ${SRCSDIR}ft_fdf_rotation_z.c \
-${SRCSDIR}ft_fdf_get_color.c \
+${SRCSDIR}ft_fdf_get_col.c \
 ${SRCSDIR}ft_fdf_first_position.c \
 ${SRCSDIR}ft_fdf_last_position.c \
 ${SRCSDIR}ft_hypotenuse.c \

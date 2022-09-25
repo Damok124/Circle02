@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fdf_get_color.c                                 :+:      :+:    :+:   */
+/*   ft_fdf_get_col.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 18:35:00 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/23 18:35:13 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/25 23:12:44 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_fdf_get_color(t_vars *vars, t_spot a, t_spot b, double ratio)
+void	ft_fdf_get_col(t_vars *vars, t_spot a, t_spot b, double ratio)
 {
 	vars->red = (b.red - a.red) * (ratio) + a.red;
 	vars->red = ft_cap_color(vars->red);

@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:40:17 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/23 18:41:03 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/25 23:23:46 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_fdf(char *filename)
 	vars = ft_fdf_initvars(filename);
 	if (!vars)
 	{
-		ft_printf("Error\n");
+		ft_printf("Error. Check your map.\n");
 		return ;
 	}
 	matrix = ft_map_to_matrix(vars, filename);

@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:23:29 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/23 18:36:07 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/25 23:21:10 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_trace_oct8(t_vars *vars, t_spot a, t_spot b)
 	eps = 0;
 	while (x <= b.x)
 	{
-		ft_fdf_get_color(vars, a, b, current / distance);
+		ft_fdf_get_col(vars, a, b, current / distance);
 		if (ft_pix_is_visible(x, y))
 			ft_pixel_put(vars, x, y);
 		eps += (b.y - a.y);
@@ -56,7 +56,7 @@ void	ft_trace_oct7(t_vars *vars, t_spot a, t_spot b)
 	eps = 0;
 	while (y <= b.y)
 	{
-		ft_fdf_get_color(vars, a, b, current / distance);
+		ft_fdf_get_col(vars, a, b, current / distance);
 		if (ft_pix_is_visible(x, y))
 			ft_pixel_put(vars, x, y);
 		eps += (b.x - a.x);
@@ -85,7 +85,7 @@ void	ft_trace_oct6(t_vars *vars, t_spot a, t_spot b)
 	eps = 0;
 	while (y <= b.y)
 	{
-		ft_fdf_get_color(vars, a, b, current / distance);
+		ft_fdf_get_col(vars, a, b, current / distance);
 		if (ft_pix_is_visible(x, y))
 			ft_pixel_put(vars, x, y);
 		eps += (b.x - a.x);
@@ -114,7 +114,7 @@ void	ft_trace_oct5(t_vars *vars, t_spot a, t_spot b)
 	eps = 0;
 	while (x >= b.x)
 	{
-		ft_fdf_get_color(vars, a, b, current / distance);
+		ft_fdf_get_col(vars, a, b, current / distance);
 		if (ft_pix_is_visible(x, y))
 			ft_pixel_put(vars, x, y);
 		eps += -(b.y - a.y);
