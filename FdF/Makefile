@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 13:40:41 by zharzi            #+#    #+#              #
-#    Updated: 2022/09/25 23:25:57 by zharzi           ###   ########.fr        #
+#    Updated: 2022/09/26 00:57:24 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,6 @@ ${SRCSDIR}ft_hypotenuse.c \
 ${SRCSDIR}ft_fdf_initvars.c \
 ${SRCSDIR}ft_map_to_matrix.c \
 ${SRCSDIR}ft_print_dot.c \
-${SRCSDIR}ft_print_spots.c \
 ${SRCSDIR}ft_print_grid.c \
 ${SRCSDIR}ft_fdf_init_rows.c \
 ${SRCSDIR}ft_fdf_setup_dot.c \
@@ -48,8 +47,7 @@ ${SRCSDIR}ft_renew_image.c \
 ${SRCSDIR}ft_keypress.c \
 ${SRCSDIR}ft_click_cross.c \
 ${SRCSDIR}ft_end_mlx.c \
-${SRCSDIR}ft_pixel_put.c \
-${SRCSDIR}ft_dot.c
+${SRCSDIR}ft_pixel_put.c
 
 HEADERDIR = includes/
 

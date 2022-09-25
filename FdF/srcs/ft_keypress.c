@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 17:57:41 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/15 14:05:18 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/26 00:52:02 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,5 @@ int	ft_keypress(int key, t_vars *vars)
 	else if ((key >= 48 && key <= 57) || (key >= 97 && key <= 102) || \
 		(key >= 65429 && key <= 65438))
 		ft_manual_color(vars, key);
-	ft_printf("key : %d\n", key);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:48:56 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/25 23:24:05 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/26 01:07:36 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,45 +60,64 @@ typedef struct s_spot {
 }					t_spot;
 
 /////////////////////////
-//	CATEGORY
+//	INTERACTIONS
 /////////////////////////
-char			ft_base_key(int *tab, int key);
-int				ft_manual_color(t_vars *vars, int key);
-int				ft_renew_image(t_vars *vars);
 int				ft_keypress(int key, t_vars *vars);
+char			ft_base_key(int *tab, int key);
 int				ft_click_cross(t_vars *vars);
-void			ft_end_mlx(t_vars **vars);
-void			ft_pixel_put(t_vars *vars, int x, int y);
-int				ft_dot(int button, int x, int y, t_vars *vars);
-int				ft_frame(t_vars	*vars);
+int				ft_manual_color(t_vars *vars, int key);
+/////////////////////////
+//	OCTANTS
+/////////////////////////
 int				ft_get_octant(int x1, int x2, int y1, int y2);
 int				ft_get_octant2(int x1, int x2, int y1, int y2);
-void			ft_trace_oct8(t_vars *vars, t_spot a, t_spot b);
-void			ft_trace_oct7(t_vars *vars, t_spot a, t_spot b);
-void			ft_trace_oct6(t_vars *vars, t_spot a, t_spot b);
 void			ft_trace_oct5(t_vars *vars, t_spot a, t_spot b);
-int				ft_pix_is_visible(int x, int y);
-int				ft_link(t_vars *vars, t_spot a, t_spot b);
-int				ft_fdf_rowcount(char *filename);
-int				ft_fdf_getlen(char *str);
-int				ft_fdf_lencheck(t_vars *vars, char *str);
-void			ft_fdf_initcol(t_vars *vars);
-void			ft_fdf_free_matrix(t_spot **matrix, t_vars *vars);
-char			*ft_standard_buffer(char *buffer);
-t_spot			ft_fdf_setup_dot(char **buffer, int x, int y, t_vars *vars);
-t_spot			*ft_fdf_init_rows(char **buffer, t_vars *vars, int y);
-t_spot			**ft_map_to_matrix(t_vars *vars, char *filename);
-int				ft_fdf_spacing(t_vars *vars);
-t_vars			*ft_fdf_initvars(char *filename);
-double			ft_hypotenuse(int a, int b);
-void			ft_fdf_first_position(t_vars *vars, t_spot **matrix);
-void			ft_fdf_last_position(t_vars *vars, t_spot **matrix);
-unsigned int	ft_fdf_btou(const char *nptr, char *base);
+void			ft_trace_oct6(t_vars *vars, t_spot a, t_spot b);
+void			ft_trace_oct7(t_vars *vars, t_spot a, t_spot b);
+void			ft_trace_oct8(t_vars *vars, t_spot a, t_spot b);
+/////////////////////////
+//	PRINTING
+/////////////////////////
 void			ft_print_grid(t_vars *vars, t_spot **matrix);
 void			ft_print_dot(t_vars *vars, t_spot dot);
-void			ft_print_spots(t_vars *vars, t_spot **matrix);
+int				ft_link(t_vars *vars, t_spot a, t_spot b);
+void			ft_pixel_put(t_vars *vars, int x, int y);
+int				ft_renew_image(t_vars *vars);
+int				ft_frame(t_vars	*vars);
+/////////////////////////
+//	CHECKING
+/////////////////////////
+int				ft_pix_is_visible(int x, int y);
+int				ft_fdf_lencheck(t_vars *vars, char *str);
+/////////////////////////
+//	DATAS
+/////////////////////////
+int				ft_fdf_getlen(char *str);
+int				ft_fdf_rowcount(char *filename);
+void			ft_fdf_initcol(t_vars *vars);
+char			*ft_standard_buffer(char *buffer);
+t_spot			**ft_map_to_matrix(t_vars *vars, char *filename);
+t_spot			*ft_fdf_init_rows(char **buffer, t_vars *vars, int y);
+t_spot			ft_fdf_setup_dot(char **buffer, int x, int y, t_vars *vars);
+int				ft_fdf_spacing(t_vars *vars);
+t_vars			*ft_fdf_initvars(char *filename);
 void			ft_fdf_get_col(t_vars *vars, t_spot a, t_spot b, double ratio);
+/////////////////////////
+//	DOTS POSITION
+/////////////////////////
+void			ft_fdf_first_position(t_vars *vars, t_spot **matrix);
+void			ft_fdf_last_position(t_vars *vars, t_spot **matrix);
 void			ft_fdf_rotation_z(t_vars *vars, t_spot **matrix, double angle);
 void			ft_fdf_rotation_x(t_vars *vars, t_spot **matrix, double angle);
+/////////////////////////
+//	MATHEMATICS
+/////////////////////////
+double			ft_hypotenuse(int a, int b);
+unsigned int	ft_fdf_btou(const char *nptr, char *base);
+/////////////////////////
+//	ENDING
+/////////////////////////
+void			ft_fdf_free_matrix(t_spot **matrix, t_vars *vars);
+void			ft_end_mlx(t_vars **vars);
 
 #endif
