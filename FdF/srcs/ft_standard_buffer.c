@@ -6,11 +6,9 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 18:10:11 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/26 00:49:16 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/26 15:46:52 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "fdf.h"
 
 char	*ft_standard_buffer(char *buffer)
 {

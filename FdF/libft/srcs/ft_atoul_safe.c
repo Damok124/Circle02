@@ -1,16 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoul.c                                         :+:      :+:    :+:   */
+/*   ft_atoul_safe.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 00:03:22 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/06 17:59:08 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/26 11:49:09 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 unsigned long int	ft_atoul_safe2(const char *nptr, int *check, \
 	unsigned long long int i, unsigned long long int j)

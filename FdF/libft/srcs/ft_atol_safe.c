@@ -6,11 +6,9 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 23:59:19 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/06 15:55:05 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/26 11:49:04 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 long	ft_atol_safe2(const char *nptr, int *check, long long i, long long j)
 {

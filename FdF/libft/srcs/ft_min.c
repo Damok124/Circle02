@@ -6,11 +6,9 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 22:53:56 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/26 00:49:25 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/26 11:50:09 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_min(int a, int b)
 {

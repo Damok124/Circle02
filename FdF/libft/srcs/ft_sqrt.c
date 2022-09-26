@@ -6,11 +6,9 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 16:21:47 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/20 16:22:10 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/26 11:50:39 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_sqrt(int nb)
 {

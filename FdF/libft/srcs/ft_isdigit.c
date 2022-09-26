@@ -6,11 +6,9 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 11:12:17 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/26 16:38:53 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/26 11:49:56 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_isdigit(int c)
 {

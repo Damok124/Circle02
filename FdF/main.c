@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:40:17 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/26 00:48:07 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/26 15:26:06 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_fdf(char *filename)
 	vars = ft_fdf_initvars(filename);
 	if (!vars)
 	{
-		ft_printf("Error. Check your map.\n");
+		ft_printf("Map error.\n");
 		return ;
 	}
 	matrix = ft_map_to_matrix(vars, filename);
@@ -44,13 +44,17 @@ void	ft_fdf(char *filename)
 
 int	ft_fdf_error_management(int ac, char **argv)
 {
-	int	fd;
+	int		fd;
+	size_t	len;
 
-	if (ac != 2)
+	len = ft_strlen(argv[1]);
+	if (ac != 2 || len < 5)
 		return (1);
+	if (!ft_check_extension(argv[1], ".fdf"))
+		return (2);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		return (2);
+		return (3);
 	close(fd);
 	return (0);
 }
@@ -63,8 +67,6 @@ int	main(int ac, char **argv)
 	if (!error)
 		ft_fdf(argv[ac - 1]);
 	else
-	{
 		ft_printf("Error. Wrong argument(s).\n");
-	}
 	return (0);
 }

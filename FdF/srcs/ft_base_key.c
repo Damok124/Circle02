@@ -6,11 +6,9 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 17:51:36 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/12 17:51:51 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/26 15:46:55 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "fdf.h"
 
 char	ft_base_key(int *tab, int key)
 {

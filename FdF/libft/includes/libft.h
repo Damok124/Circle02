@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:33:23 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/23 18:33:08 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/26 14:47:53 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int						ft_check_dup_int(int len, int *tab);
 size_t					ft_strlen(const char *str);
 int						ft_max(int a, int b);
 int						ft_min(int a, int b);
+int						ft_check_extension(char *filename, char *extension);
 /////////////////////////
 //	INITIALIZATION
 /////////////////////////
