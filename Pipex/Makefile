@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/10/01 01:42:44 by zharzi           ###   ########.fr        #
+#    Updated: 2022/10/02 01:01:59 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,14 @@ BINARY = pipex
 
 SRCSDIR = ./srcs/
 
-SRCS = ${SRCSDIR}ft_exec_cmd.c \
+SRCS = \
 ${SRCSDIR}ft_get_fullpaths.c \
 ${SRCSDIR}ft_get_validpath.c \
 ${SRCSDIR}ft_get_paths.c \
+${SRCSDIR}ft_get_next_cmd.c \
 ${SRCSDIR}ft_free_data.c \
 ${SRCSDIR}ft_infile_to_stdin.c \
+${SRCSDIR}ft_outfile_to_stdout.c \
 ${SRCSDIR}ft_parse_cmd.c
 
 HEADERDIR = includes/
