@@ -6,30 +6,11 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 15:58:24 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/26 16:38:37 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/29 16:17:39 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-ssize_t	ft_count_strs(const char *s, char c)
-{
-	ssize_t	n;
-	ssize_t	i;
-
-	n = 0;
-	i = 0;
-	while (s && s[i])
-	{
-		while (s[i] && s[i] == c)
-			i++;
-		if (s[i] && s[i] != c)
-			n++;
-		while (s[i] && s[i] != c)
-			i++;
-	}
-	return (n);
-}
 
 void	ft_true_split(char const *s, char **strs, char c, ssize_t len)
 {

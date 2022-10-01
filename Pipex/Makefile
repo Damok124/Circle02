@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/09/27 12:09:26 by zharzi           ###   ########.fr        #
+#    Updated: 2022/10/01 01:42:44 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,13 @@ BINARY = pipex
 
 SRCSDIR = ./srcs/
 
-SRCS = ${SRCSDIR}test.c
+SRCS = ${SRCSDIR}ft_exec_cmd.c \
+${SRCSDIR}ft_get_fullpaths.c \
+${SRCSDIR}ft_get_validpath.c \
+${SRCSDIR}ft_get_paths.c \
+${SRCSDIR}ft_free_data.c \
+${SRCSDIR}ft_infile_to_stdin.c \
+${SRCSDIR}ft_parse_cmd.c
 
 HEADERDIR = includes/
 
@@ -33,6 +39,10 @@ IFLAG = -I$(HEADERDIR) -Ift_printf/includes/ -Ilibft/includes/
 all : libpipex.a libft_printf.a libft.a
 	$(CC) $(FLAGS) main.c $(IFLAG) -L. -lpipex -L./libft -lft -L./ft_printf \
 	-lft_printf -o $(BINARY)
+
+test : libpipex.a libft_printf.a libft.a
+	$(CC) $(FLAGS) test.c $(IFLAG) -L. -lpipex -L./libft -lft -L./ft_printf \
+	-lft_printf -o $(BINARY)_test
 
 %.o : %.c
 	$(CC) $(FLAGS) $(IFLAG) -o $@ -c $^

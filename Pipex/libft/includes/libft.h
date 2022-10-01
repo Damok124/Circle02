@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:33:23 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/26 14:47:53 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/30 00:54:29 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #  define BUFFER_SIZE 2048
 # endif
 
-# include <sys/stat.h>
 # include <stddef.h>
 # include <unistd.h>
 # include <string.h>
@@ -24,6 +23,9 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdarg.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/stat.h>
 # include <fcntl.h>
 
 typedef struct s_list
@@ -76,7 +78,6 @@ int						ft_strisdigit(char *str);
 int						ft_memcmp(const void *s1, const void *s2, size_t n);
 int						ft_strncmp(const char *s1, const char *s2, size_t n);
 int						ft_check_dup_int(int len, int *tab);
-size_t					ft_strlen(const char *str);
 int						ft_max(int a, int b);
 int						ft_min(int a, int b);
 int						ft_check_extension(char *filename, char *extension);
@@ -120,6 +121,8 @@ int						ft_cap_color(int color);
 /////////////////////////
 int						ft_abs(int x);
 int						ft_sqrt(int nb);
+size_t					ft_strlen(const char *str);
+ssize_t					ft_count_strs(const char *s, char c);
 /////////////////////////
 //	RESEARCH
 /////////////////////////

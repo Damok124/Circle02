@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/09/26 14:48:31 by zharzi           ###   ########.fr        #
+#    Updated: 2022/09/29 16:16:53 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCSDIR = ./srcs/
 SRCS = $(SRCSDIR)ft_memset.c \
 $(SRCSDIR)ft_abs.c \
 $(SRCSDIR)ft_bzero.c \
+$(SRCSDIR)ft_count_strs.c \
 $(SRCSDIR)ft_check_extension.c \
 $(SRCSDIR)ft_memcpy.c \
 $(SRCSDIR)ft_memmove.c \
