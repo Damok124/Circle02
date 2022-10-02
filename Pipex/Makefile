@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/10/02 01:01:59 by zharzi           ###   ########.fr        #
+#    Updated: 2022/10/02 02:22:42 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ clean :
 fclean : clean
 	rm -f $(NAME)
 	rm -f $(BINARY)
+	rm -f $(BINARY)_test
 	${MAKE} fclean -C ft_printf/
 	${MAKE} fclean -C libft/
 
