@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 18:26:47 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/02 00:33:46 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/02 02:24:09 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,8 @@
 void	ft_pipex(t_data *data)
 {
 	int	pfds[2];
-	int	fdof;
 
-	data->cmd = ft_parse_cmd(data->argv[data->cursor]);
-	data->paths = ft_get_paths(data->env);
-	data->fullpaths = ft_get_fullpaths(data->paths, data->cmd[0]);
-	data->validpath = ft_get_validpath(data);
-	data->cursor += 1;
+	ft_get_next_cmd(data);
 	pipe(pfds);
 	if (!fork())
 	{
@@ -35,27 +30,20 @@ void	ft_pipex(t_data *data)
 		close(pfds[WRITE_END]);
 		waitpid(0, NULL, 0);
 		ft_free_data(data);
-		data->cmd = ft_parse_cmd(data->argv[data->cursor]);
-		data->paths = ft_get_paths(data->env);
-		data->fullpaths = ft_get_fullpaths(data->paths, data->cmd[0]);
-		data->validpath = ft_get_validpath(data);
-		fdof = open(data->outfile, O_RDWR | O_TRUNC | O_CREAT, S_IRUSR | \
-			S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
-		dup2(fdof, 1);
-		if (!fork())
-			execve(data->validpath, data->cmd, data->env);
+		if (data->cursor < data->ac - 2)
+			ft_pipex(data);
 		else
-			waitpid(0, NULL, 0);
-		close(pfds[0]);
-		close(pfds[1]);
+			ft_outfile_to_stdout(data);
 	}
+	close(pfds[0]);
+	close(pfds[1]);
 }
 
 int	main(int ac, char **argv, char **env)
 {
 	t_data	data;
 
-	if (ac == 5)
+	if (ac > 4 )
 	{
 		data.ac = ac - 1;
 		data.cursor = 0;

@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/02 01:01:24 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/02 02:24:15 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(int ac, char **argv, char **env)
 {
 	t_data	data;
 
-	if (ac > 4)
+	if (ac > 4 )
 	{
 		data.ac = ac - 1;
 		data.cursor = 0;
