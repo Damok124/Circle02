@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/07/24 01:54:52 by zharzi           ###   ########.fr        #
+#    Updated: 2022/10/02 17:37:20 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRCSDIR = ./srcs/
 
 SRCS = $(SRCSDIR)ft_printf.c \
 $(SRCSDIR)ft_strprintf.c \
+$(SRCSDIR)ft_print_strs.c \
 $(SRCSDIR)ft_countnprintf.c
 
 HEADERDIR = includes/

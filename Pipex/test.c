@@ -6,12 +6,12 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 18:26:47 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/02 02:24:09 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/02 17:10:54 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
+/*
 void	ft_pipex(t_data *data)
 {
 	int	pfds[2];
@@ -38,11 +38,16 @@ void	ft_pipex(t_data *data)
 	close(pfds[0]);
 	close(pfds[1]);
 }
-
+*/
 int	main(int ac, char **argv, char **env)
 {
 	t_data	data;
 
+	(void)ac;
+	(void)argv;
+	(void)env;
+	(void)data;
+/*
 	if (ac > 4 )
 	{
 		data.ac = ac - 1;
@@ -55,30 +60,9 @@ int	main(int ac, char **argv, char **env)
 		ft_pipex(&data);
 
 		ft_free_data(&data);
-		close(STDIN);
-		close(STDOUT);
-		close(STDERR);
-	}
-	return (EXIT_SUCCESS);
+	}*/
+	//close(STDIN);
+	//close(STDOUT);
+	//close(STDERR);
+	return (0);
 }
-
-/*
-	open,//
-	close,//
-	write,//
-	malloc,//
-	free,//
-		perror,
-		strerror,
-	access,
-	dup2,
-	execve,
-	exit,
-	fork,
-	pipe,
-		unlink,
-	waitpid
-
-strjoin les paths avec les cmd
-execve
-*/

@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/02 02:24:15 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/02 17:16:42 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,14 @@ int	main(int ac, char **argv, char **env)
 		data.env = env;
 		ft_infile_to_stdin(&data);
 		ft_pipex(&data);
-
 		ft_free_data(&data);
 		close(STDIN);
 		close(STDOUT);
 		close(STDERR);
 	}
-	return (EXIT_SUCCESS);
+	else
+		perror("ERROR : wrong number of arguments.\n");
+	return (0);
 }
 
 /*

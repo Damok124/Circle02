@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_infile_to_stdin.c                               :+:      :+:    :+:   */
+/*   ft_print_strs.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 00:26:57 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/02 17:00:48 by zharzi           ###   ########.fr       */
+/*   Created: 2022/10/02 17:30:37 by zharzi            #+#    #+#             */
+/*   Updated: 2022/10/02 17:38:28 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "ft_printf.h"
 
-void	ft_infile_to_stdin(t_data *data)
+void	ft_print_strs(char **strs)
 {
-	int		fd;
+	int	i;
 
-	fd = open(data->infile, O_RDONLY);
-	dup2(fd, STDIN);
-	close(fd);
-	data->cursor += 1;
+	i = -1;
+	while (strs && strs[++i])
+		ft_printf("[%d>]%s\n", i, strs[i]);
 }
