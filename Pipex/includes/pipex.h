@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 12:11:56 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/02 16:27:01 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/11 18:35:41 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ char	**ft_get_paths(char **env);
 char	**ft_get_fullpaths(char **paths, char *cmd);
 char	*ft_get_validpath(t_data *data);
 void	ft_get_next_cmd(t_data *data);
+char	*ft_setup_limiter(const char *src);
+char	*ft_get_tmpname(char *basename, int pattern, int len);
+char	*ft_available_filename(char *basename);
+int		ft_pattern_count(char *basename);
 /////////////////////////
 //	EXECUTION
 /////////////////////////
@@ -57,7 +61,10 @@ void	ft_exec_cmd(char *validpath, char **cmd, char **env);
 //	FD MANAGEMENT
 /////////////////////////
 void	ft_infile_to_stdin(t_data *data);
+void	ft_infile_to_stdin_b(t_data *data);
 void	ft_outfile_to_stdout(t_data *data);
+void	ft_outfile_to_stdout_b(t_data *data);
+void	ft_clean_connect(int std, int toconnect, int toclose);
 /////////////////////////
 //	FREE
 /////////////////////////

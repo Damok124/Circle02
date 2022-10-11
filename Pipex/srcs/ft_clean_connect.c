@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_next_cmd.c                                  :+:      :+:    :+:   */
+/*   ft_clean_connect.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 00:31:05 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/09 22:05:07 by zharzi           ###   ########.fr       */
+/*   Created: 2022/10/07 16:31:29 by zharzi            #+#    #+#             */
+/*   Updated: 2022/10/09 02:31:28 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_get_next_cmd(t_data *data)
+void	ft_clean_connect(int std, int toconnect, int toclose)
 {
-	data->cmd = ft_parse_cmd(data->argv[data->cursor]);
-	data->paths = ft_get_paths(data->env);
-	data->fullpaths = ft_get_fullpaths(data->paths, data->cmd[0]);
-	data->validpath = ft_get_validpath(data);
-	ft_printf("%s\n", data->validpath);
-	data->cursor += 1;
+	dup2(toconnect, std);
+	close(toconnect);
+	close(toclose);
 }

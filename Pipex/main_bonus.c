@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/09 02:31:51 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/09 22:01:21 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_pipex(t_data *data)
 		if (data->cursor < data->ac - 2)
 			ft_pipex(data);
 		else
-			ft_outfile_to_stdout(data);
+			ft_outfile_to_stdout_b(data);
 		close(pfds[READ_END]);
 	}
 }
@@ -40,15 +40,15 @@ int	main(int ac, char **argv, char **env)
 {
 	t_data	data;
 
-	if (ac == 5)
+	if (ac > 5 && !ft_strncmp(argv[1], "here_doc", 8) && argv[2][0] != '\0')
 	{
 		data.ac = ac - 1;
-		data.cursor = 0;
-		data.infile = argv[1];
+		data.cursor = 1;
+		data.infile = argv[2];
 		data.outfile = argv[ac - 1];
 		data.argv = argv + 1;
 		data.env = env;
-		ft_infile_to_stdin(&data);
+		ft_infile_to_stdin_b(&data);
 		ft_pipex(&data);
 		ft_free_data(&data);
 		close(STDIN);
@@ -56,7 +56,7 @@ int	main(int ac, char **argv, char **env)
 		close(STDERR);
 	}
 	else
-		perror("ERROR : wrong number of arguments.\n");
+		perror("ERROR : wrong arguments.\n");
 	return (0);
 }
 

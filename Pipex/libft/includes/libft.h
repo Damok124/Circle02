@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:33:23 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/02 17:34:44 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/10 14:48:07 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void					ft_show_strs_fd(char **strs, int fd);
 //	FREE
 /////////////////////////
 void					ft_full_free(void **tobefree);
-void					*ft_true_free(void *ptr);
+void					ft_true_free(void **ptr);
 /////////////////////////
 //	CHECK
 /////////////////////////
@@ -104,7 +104,7 @@ unsigned int			ft_atou_safe(const char *nptr, int *check);
 unsigned int			ft_atou_base(const char *nptr, char *base);
 unsigned int			ft_atou_base_safe(const char *nptr, char *base, \
 	int *check);
-unsigned long int		ft_atoul_safe1(const char *nptr, int *check);
+unsigned long int		ft_atoul_safe(const char *nptr, int *check);
 unsigned long long int	ft_atoull_safe(const char *nptr, int *check);
 unsigned int			ft_btou(const char *nptr, char *base);
 char					*ft_itoa(int n);

@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_next_cmd.c                                  :+:      :+:    :+:   */
+/*   ft_setup_limiter_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 00:31:05 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/09 22:05:07 by zharzi           ###   ########.fr       */
+/*   Created: 2022/10/09 21:39:55 by zharzi            #+#    #+#             */
+/*   Updated: 2022/10/09 21:41:52 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_get_next_cmd(t_data *data)
+char	*ft_setup_limiter(const char *src)
 {
-	data->cmd = ft_parse_cmd(data->argv[data->cursor]);
-	data->paths = ft_get_paths(data->env);
-	data->fullpaths = ft_get_fullpaths(data->paths, data->cmd[0]);
-	data->validpath = ft_get_validpath(data);
-	ft_printf("%s\n", data->validpath);
-	data->cursor += 1;
+	size_t	i;
+	size_t	size;
+	char	*dst;
+
+	i = 0;
+	size = ft_strlen(src);
+	dst = ft_calloc(size + 2, sizeof(char));
+	if (size == 0)
+		return (NULL);
+	while (src[i] && i < (size))
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\n';
+	dst[i + 1] = '\0';
+	return (dst);
 }

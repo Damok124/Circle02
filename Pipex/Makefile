@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/10/02 02:22:42 by zharzi           ###   ########.fr        #
+#    Updated: 2022/10/11 18:37:19 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,18 @@ SRCSDIR = ./srcs/
 SRCS = \
 ${SRCSDIR}ft_get_fullpaths.c \
 ${SRCSDIR}ft_get_validpath.c \
+${SRCSDIR}ft_available_filename.c \
+${SRCSDIR}ft_get_tmpname.c \
+${SRCSDIR}ft_pattern_count.c \
 ${SRCSDIR}ft_get_paths.c \
 ${SRCSDIR}ft_get_next_cmd.c \
 ${SRCSDIR}ft_free_data.c \
 ${SRCSDIR}ft_infile_to_stdin.c \
+${SRCSDIR}ft_infile_to_stdin_bonus.c \
 ${SRCSDIR}ft_outfile_to_stdout.c \
+${SRCSDIR}ft_outfile_to_stdout_bonus.c \
+${SRCSDIR}ft_setup_limiter_bonus.c \
+${SRCSDIR}ft_clean_connect.c \
 ${SRCSDIR}ft_parse_cmd.c
 
 HEADERDIR = includes/
@@ -45,6 +52,10 @@ all : libpipex.a libft_printf.a libft.a
 test : libpipex.a libft_printf.a libft.a
 	$(CC) $(FLAGS) test.c $(IFLAG) -L. -lpipex -L./libft -lft -L./ft_printf \
 	-lft_printf -o $(BINARY)_test
+
+bonus : libpipex.a libft_printf.a libft.a
+	$(CC) $(FLAGS) main_bonus.c $(IFLAG) -L. -lpipex -L./libft -lft -L./ft_printf \
+	-lft_printf -o $(BINARY)
 
 %.o : %.c
 	$(CC) $(FLAGS) $(IFLAG) -o $@ -c $^

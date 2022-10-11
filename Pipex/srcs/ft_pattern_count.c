@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_next_cmd.c                                  :+:      :+:    :+:   */
+/*   ft_pattern_count.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 00:31:05 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/09 22:05:07 by zharzi           ###   ########.fr       */
+/*   Created: 2022/10/11 18:34:59 by zharzi            #+#    #+#             */
+/*   Updated: 2022/10/11 18:35:11 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_get_next_cmd(t_data *data)
+int	ft_pattern_count(char *basename)
 {
-	data->cmd = ft_parse_cmd(data->argv[data->cursor]);
-	data->paths = ft_get_paths(data->env);
-	data->fullpaths = ft_get_fullpaths(data->paths, data->cmd[0]);
-	data->validpath = ft_get_validpath(data);
-	ft_printf("%s\n", data->validpath);
-	data->cursor += 1;
+	int	len;
+	int	pattern;
+	int	i;
+
+	pattern = 0;
+	len = ft_strlen(basename);
+	i = len - 1;
+	while (len && i >= 0 && basename[i] == basename[len - 1])
+	{
+		pattern++;
+		i--;
+	}
+	return (pattern);
 }

@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_next_cmd.c                                  :+:      :+:    :+:   */
+/*   ft_available_filename.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 00:31:05 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/09 22:05:07 by zharzi           ###   ########.fr       */
+/*   Created: 2022/10/11 18:28:57 by zharzi            #+#    #+#             */
+/*   Updated: 2022/10/11 18:29:16 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_get_next_cmd(t_data *data)
+char	*ft_available_filename(char *basename)
 {
-	data->cmd = ft_parse_cmd(data->argv[data->cursor]);
-	data->paths = ft_get_paths(data->env);
-	data->fullpaths = ft_get_fullpaths(data->paths, data->cmd[0]);
-	data->validpath = ft_get_validpath(data);
-	ft_printf("%s\n", data->validpath);
-	data->cursor += 1;
+	int		pattern;
+	char	*buildedname;
+	int		len;
+
+	len = ft_strlen(basename);
+	pattern = ft_pattern_count(basename);
+	buildedname = ft_get_tmpname(basename, pattern, len);
+	if (buildedname)
+		return (buildedname);
+	return (NULL);
 }
