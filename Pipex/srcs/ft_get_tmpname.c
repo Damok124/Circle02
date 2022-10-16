@@ -6,11 +6,11 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 18:29:55 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/11 18:31:31 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/16 21:02:04 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 int	ft_check_tmpname(char *tmpname)
 {
@@ -19,78 +19,52 @@ int	ft_check_tmpname(char *tmpname)
 	return (0);
 }
 
-int	ft_pattern_count(char *basename)
+char	*ft_get_tmpname(char **basename)
 {
-	int	len;
-	int	pattern;
-	int	i;
-
-	pattern = 0;
-	len = ft_strlen(basename);
-	i = len - 1;
-	while (len && i >= 0 && basename[i] == basename[len - 1])
-	{
-		pattern++;
-		i--;
-	}
-	return (pattern);
-}
-
-char	*ft_join_iteration(char *basename, int pattern, int len, char *nb)
-{
-	int	delta;
-	int	i;
-	int	j;
-	int	nblen;
-
-	nblen = ft_strlen(nb);
-	delta = len - pattern;
-	j = 0;
-	i = delta;
-	while (j < nblen)
-	{
-		basename[i] = nb[j];
-		i++;
-		j++;
-	}
-	basename[i] = '\0';
-	return (basename);
-}
-
-int	ft_max_value(int pattern)
-{
-	int	max;
-
-	max = 0;
-	if (pattern)
-	{
-		max = 10;
-		while (--pattern)
-			max *= 10;
-	}
-	return (max);
-}
-
-char	*ft_get_tmpname(char *basename, int pattern, int len)
-{
+	char	*tmpname;
+	char	*nb;
+	int		test;
 	int		max;
 	int		i;
-	char	*nb;
-	char	*tmpname;
-	int		test;
 
 	i = 1;
 	test = 0;
-	max = ft_max_value(pattern);
+	max = 100000000;
 	tmpname = NULL;
 	while (!test && i < max)
 	{
-		nb = ft_itoa(i);
-		tmpname = ft_join_iteration(basename, pattern, len, nb);
+		nb = ft_itoa(-i);
+		tmpname = ft_strjoin(*basename, nb);
 		test = ft_check_tmpname(tmpname);
 		if (!test)
-			tmpname = NULL;
+			ft_true_free((void **)&tmpname);
+		i++;
+	}
+	ft_true_free((void **)basename);
+	return (tmpname);
+}
+/*
+char	*ft_get_tmpname(char *basename)
+{
+	char	*tmpname;
+	char	*nb;
+	int		test;
+	int		max;
+	int		i;
+
+	i = 1;
+	test = 0;
+	max = 100000000;
+	tmpname = NULL;
+	while (!test && i < max)
+	{
+		nb = ft_itoa(-i);
+		tmpname = ft_strjoin(basename, nb);
+		test = ft_check_tmpname(tmpname);
+		if (!test)
+			ft_true_free((void **)&tmpname);
 		i++;
 	}
 	return (tmpname);
 }
+*/

@@ -6,11 +6,11 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 00:59:35 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/07 19:23:30 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/16 18:15:31 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 void	ft_outfile_to_stdout_b(t_data *data)
 {

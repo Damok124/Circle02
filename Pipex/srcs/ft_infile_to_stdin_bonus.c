@@ -6,26 +6,26 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 00:26:57 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/11 19:00:14 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/16 21:01:42 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 
-int	ft_here_doc(char **infile)
+int	ft_here_doc(t_data *data, char *limiter)
 {
 	int		fd;
 	int		stop;
 	char	*buffer;
-	char	*limiter;
 
 	stop = 0;
-	limiter = ft_setup_limiter(*infile);
-	*infile = ft_available_filename("tmp_pipex-XXXXXXXX");
-	fd = open(*infile, O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR | S_IRGRP | \
+	buffer = NULL;
+	if (data->infile && access(data->infile, F_OK) == 0)
+		data->infile = ft_get_tmpname(&data->infile);
+	fd = open(data->infile, O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR | S_IRGRP | \
 		S_IWGRP | S_IROTH);
 	while (!stop)
 	{
@@ -45,10 +45,16 @@ int	ft_here_doc(char **infile)
 void	ft_infile_to_stdin_b(t_data *data)
 {
 	int		fd;
+	char	*limiter;
+	char	*basename;
 
-	fd = ft_here_doc(&data->infile);
+	basename = "tmp_pipex";
+	data->infile = ft_strdup(basename);
+	limiter = ft_setup_limiter(data->argv[1]);
+	fd = ft_here_doc(data, limiter);
+	close(fd);
+	fd = open(data->infile, O_RDONLY);
 	dup2(fd, STDIN);
 	close(fd);
-	ft_printf("test");
 	data->cursor += 1;
 }

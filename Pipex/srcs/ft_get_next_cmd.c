@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 00:31:05 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/09 22:05:07 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/16 21:06:37 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,5 @@ void	ft_get_next_cmd(t_data *data)
 	data->paths = ft_get_paths(data->env);
 	data->fullpaths = ft_get_fullpaths(data->paths, data->cmd[0]);
 	data->validpath = ft_get_validpath(data);
-	ft_printf("%s\n", data->validpath);
 	data->cursor += 1;
 }

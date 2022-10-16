@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 12:11:56 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/16 14:42:06 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/16 21:01:51 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef PIPEX_BONUS_H
+# define PIPEX_BONUS_H
 
 # include "libft.h"
 # include "ft_printf.h"
@@ -50,7 +50,7 @@ char	**ft_get_fullpaths(char **paths, char *cmd);
 char	*ft_get_validpath(t_data *data);
 void	ft_get_next_cmd(t_data *data);
 char	*ft_setup_limiter(const char *src);
-char	*ft_get_tmpname(char *basename);
+char	*ft_get_tmpname(char **basename);
 /////////////////////////
 //	EXECUTION
 /////////////////////////

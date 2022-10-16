@@ -6,11 +6,11 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 21:39:55 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/09 21:41:52 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/16 18:15:45 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 char	*ft_setup_limiter(const char *src)
 {

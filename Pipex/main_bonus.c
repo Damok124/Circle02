@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/09 22:01:21 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/16 20:58:43 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int	main(int ac, char **argv, char **env)
 		ft_infile_to_stdin_b(&data);
 		ft_pipex(&data);
 		ft_free_data(&data);
+		unlink(data.infile);
+		ft_true_free((void **)&data.infile);
 		close(STDIN);
 		close(STDOUT);
 		close(STDERR);
