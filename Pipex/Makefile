@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/10/16 18:25:47 by zharzi           ###   ########.fr        #
+#    Updated: 2022/10/17 00:37:40 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,17 +17,17 @@ BINARY = pipex
 SRCSDIR = ./srcs/
 
 SRCS = \
+${SRCSDIR}ft_get_tmpname_bonus.c \
+${SRCSDIR}ft_infile_to_stdin_bonus.c \
+${SRCSDIR}ft_outfile_to_stdout_bonus.c \
+${SRCSDIR}ft_setup_limiter_bonus.c \
 ${SRCSDIR}ft_get_fullpaths.c \
 ${SRCSDIR}ft_get_validpath.c \
-${SRCSDIR}ft_get_tmpname.c \
 ${SRCSDIR}ft_get_paths.c \
 ${SRCSDIR}ft_get_next_cmd.c \
 ${SRCSDIR}ft_free_data.c \
 ${SRCSDIR}ft_infile_to_stdin.c \
-${SRCSDIR}ft_infile_to_stdin_bonus.c \
 ${SRCSDIR}ft_outfile_to_stdout.c \
-${SRCSDIR}ft_outfile_to_stdout_bonus.c \
-${SRCSDIR}ft_setup_limiter_bonus.c \
 ${SRCSDIR}ft_clean_connect.c \
 ${SRCSDIR}ft_parse_cmd.c
 
@@ -45,15 +45,15 @@ IFLAG = -I$(HEADERDIR) -Ift_printf/includes/ -Ilibft/includes/
 
 all : libpipex.a libft_printf.a libft.a
 	$(CC) $(FLAGS) main.c $(IFLAG) -L. -lpipex -L./libft -lft -L./ft_printf \
-	-lft_printf -o $(BINARY)
+		-lft_printf -o $(BINARY)
 
 test : libpipex.a libft_printf.a libft.a
 	$(CC) $(FLAGS) test.c $(IFLAG) -L. -lpipex -L./libft -lft -L./ft_printf \
-	-lft_printf -o $(BINARY)_test
+		-lft_printf -o $(BINARY)_test
 
 bonus : libpipex_bonus.a libft_printf.a libft.a
-	$(CC) $(FLAGS) main_bonus.c $(IFLAG) -L. -lpipex_bonus -L./libft -lft -L./ft_printf \
-	-lft_printf -o $(BINARY)
+	$(CC) $(FLAGS) main_bonus.c $(IFLAG) -L. -lpipex_bonus -L./libft -lft \
+		-L./ft_printf -lft_printf -o $(BINARY)
 
 %.o : %.c
 	$(CC) $(FLAGS) $(IFLAG) -o $@ -c $^
@@ -78,7 +78,7 @@ clean :
 fclean : clean
 	rm -f $(NAME)
 	rm -f $(BINARY)
-	rm -f $(BINARY)_test
+	rm -f libpipex_bonus.a
 	${MAKE} fclean -C ft_printf/
 	${MAKE} fclean -C libft/
 

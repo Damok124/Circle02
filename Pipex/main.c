@@ -6,11 +6,20 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/09 02:31:51 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/17 02:52:43 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	ft_init_data(t_data *data, int ac, char **argv, char **env)
+{
+	data->ac = ac - 1;
+	data->infile = argv[1];
+	data->outfile = argv[ac - 1];
+	data->argv = argv + 1;
+	data->env = env;
+}
 
 void	ft_pipex(t_data *data)
 {
@@ -42,12 +51,8 @@ int	main(int ac, char **argv, char **env)
 
 	if (ac == 5)
 	{
-		data.ac = ac - 1;
 		data.cursor = 0;
-		data.infile = argv[1];
-		data.outfile = argv[ac - 1];
-		data.argv = argv + 1;
-		data.env = env;
+		ft_init_data(&data, ac, argv, env);
 		ft_infile_to_stdin(&data);
 		ft_pipex(&data);
 		ft_free_data(&data);
