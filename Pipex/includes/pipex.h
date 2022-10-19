@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 12:11:56 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/17 01:19:43 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/19 21:44:42 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,10 @@ void	ft_exec_cmd(char *validpath, char **cmd, char **env);
 void	ft_infile_to_stdin(t_data *data);
 void	ft_outfile_to_stdout(t_data *data);
 void	ft_clean_connect(int std, int toconnect, int toclose);
+/////////////////////////
+//	ERROR
+/////////////////////////
+void	ft_cmd_not_found(char *str);
 /////////////////////////
 //	FREE
 /////////////////////////
