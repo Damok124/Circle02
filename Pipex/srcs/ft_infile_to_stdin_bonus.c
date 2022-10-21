@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 00:26:57 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/16 21:01:42 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/20 23:55:42 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_infile_to_stdin_b(t_data *data)
 
 	basename = "tmp_pipex";
 	data->infile = ft_strdup(basename);
-	limiter = ft_setup_limiter(data->argv[1]);
+	limiter = ft_setup_limiter(data->argv[1], &data->cursor);
 	fd = ft_here_doc(data, limiter);
 	close(fd);
 	fd = open(data->infile, O_RDONLY);

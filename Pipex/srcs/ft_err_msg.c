@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_outfile_to_stdout.c                             :+:      :+:    :+:   */
+/*   ft_err_msg.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 00:59:35 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/20 17:42:18 by zharzi           ###   ########.fr       */
+/*   Created: 2022/10/20 15:19:42 by zharzi            #+#    #+#             */
+/*   Updated: 2022/10/20 15:29:12 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_outfile_to_stdout(t_data *data)
+void	ft_err_msg(char *filename, char *str)
 {
-	int	fdof;
-
-	ft_get_next_cmd(data);
-	fdof = open(data->outfile, O_RDWR | O_TRUNC | O_CREAT, S_IRUSR | \
-		S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
-	if (fdof > 0)
-	{
-		dup2(fdof, 1);
-		if (data->validpath && !fork())
-			execve(data->validpath, data->cmd, data->env);
-		else if (ft_strncmp(data->infile, "/dev/urandom", 12))
-			waitpid(0, NULL, 0);
-	}
-	else
-		perror(data->outfile);
+	write(2, "bash: ", ft_strlen("bash: "));
+	write(2, filename, ft_strlen(filename));
+	write(2, str, ft_strlen(str));
 }

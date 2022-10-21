@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 12:11:56 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/19 21:44:42 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/21 00:11:50 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_data {
 //	PARSING
 /////////////////////////
 char	**ft_parse_cmd(char *arg);
+void	ft_init_data(t_data *data, int ac, char **argv, char **env);
 char	**ft_get_paths(char **env);
 char	**ft_get_fullpaths(char **paths, char *cmd);
 char	*ft_get_validpath(t_data *data);
@@ -65,6 +66,8 @@ void	ft_clean_connect(int std, int toconnect, int toclose);
 //	ERROR
 /////////////////////////
 void	ft_cmd_not_found(char *str);
+void	ft_err_msg(char *filename, char *str);
+int		ft_print_error_msg(t_data *data);
 /////////////////////////
 //	FREE
 /////////////////////////

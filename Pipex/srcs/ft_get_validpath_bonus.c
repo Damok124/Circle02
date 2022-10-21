@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_setup_limiter_bonus.c                           :+:      :+:    :+:   */
+/*   ft_get_validpath_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/09 21:39:55 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/20 22:56:07 by zharzi           ###   ########.fr       */
+/*   Created: 2022/10/20 23:24:26 by zharzi            #+#    #+#             */
+/*   Updated: 2022/10/20 23:26:27 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-char	*ft_setup_limiter(const char *src, int *cursor)
+char	*ft_get_validpath_b(t_data *data)
 {
-	size_t	i;
-	size_t	size;
-	char	*dst;
+	int	i;
 
 	i = 0;
-	size = ft_strlen(src);
-	dst = ft_calloc(size + 2, sizeof(char));
-	while (src[i] && i < (size))
-	{
-		dst[i] = src[i];
+	if (!access(data->cmd[0], F_OK | X_OK))
+		return (data->cmd[0]);
+	while (data->fullpaths && data->fullpaths[i] && access(data->fullpaths[i], \
+		F_OK | X_OK))
 		i++;
-	}
-	dst[i] = '\n';
-	dst[i + 1] = '\0';
-	*cursor += 1;
-	return (dst);
+	if (data->fullpaths && data->fullpaths[i])
+		return (data->fullpaths[i]);
+	else
+		ft_cmd_not_found(data->cmd[0]);
+	return (NULL);
 }
