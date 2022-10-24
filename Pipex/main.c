@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/21 16:07:40 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/24 14:41:03 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	ft_pipex(t_data *data)
 	else
 	{
 		ft_clean_connect(STDIN, pfds[READ_END], pfds[WRITE_END]);
-		//if (ft_strncmp(data->infile, "/dev/urandom", 12))
 		ft_free_data(data);
 		if (data->cursor < data->ac - 2)
 			ft_pipex(data);
@@ -37,7 +36,7 @@ void	ft_pipex(t_data *data)
 	}
 }
 
-//syscall quand infile pas ok, fd ouvert restant
+//fd ouvert restant
 
 int	main(int ac, char **argv, char **env)
 {

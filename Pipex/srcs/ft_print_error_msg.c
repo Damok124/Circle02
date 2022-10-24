@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 15:20:06 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/21 14:23:43 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/24 14:15:12 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int	ft_print_error_msg(t_data *data)
 	int	test;
 
 	test = -1;
-	if (!access(data->infile, F_OK) && access(data->infile, R_OK))
+	if (!access(data->argv[0], F_OK) && access(data->argv[0], R_OK))
 	{
-		ft_err_msg(data->infile, ": Permission denied\n");
+		ft_err_msg(data->argv[0], ": Permission denied\n");
 		test = 0;
 	}
-	else if (!data->infile && access(data->infile, F_OK))
+	else if (!data->infile && access(data->argv[0], F_OK))
 	{
 		ft_err_msg(data->argv[0], ": No such file or directory\n");
 		test = 1;
