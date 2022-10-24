@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 15:20:06 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/24 14:15:12 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/24 16:49:20 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	ft_print_error_msg(t_data *data)
 	int	test;
 
 	test = -1;
+	ft_printf("f%d, r%d\n", access(data->argv[0], F_OK), access(data->argv[0], R_OK));
 	if (!access(data->argv[0], F_OK) && access(data->argv[0], R_OK))
 	{
 		ft_err_msg(data->argv[0], ": Permission denied\n");

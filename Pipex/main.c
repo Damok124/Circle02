@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/24 14:41:03 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/24 16:39:42 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,12 @@ int	main(int ac, char **argv, char **env)
 	{
 		ft_init_data(&data, ac, argv, env);
 		ft_infile_to_stdin(&data);
-		if (ft_print_error_msg(&data))
-		{
+		ft_print_error_msg(&data);
+		//if (ft_print_error_msg(&data))
+		//{
 			ft_pipex(&data);
 			ft_free_data(&data);
-		}
+		//}
 	}
 	else
 		write(2, "ERROR : wrong number of arguments.\n", 35);
