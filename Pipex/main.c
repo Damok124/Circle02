@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/30 16:26:26 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/31 00:30:11 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,8 +147,8 @@ void	ft_outfile_to_out(char *path, char **cmd, char **env, char *outfile)
 		if (path && !fork())
 			execve(path, cmd, env);
 	}
-	//			else
-	//				perror(data->outfile);
+	else
+		perror(outfile);
 	ft_full_free((void **)cmd);
 }
 
@@ -159,7 +159,7 @@ void	ft_pipex(int ac, char **argv, char **env, char **validpaths)
 	static int	i;
 
 	i++;
-	cmd_args = ft_split(argv[i + 1], ' ');//decoupe du nom de la cmd et des args
+	cmd_args = ft_split(argv[i + 1], ' ');
 	pipe(pfds);
 	if (validpaths[i - 1] && !fork())
 	{
@@ -175,10 +175,11 @@ void	ft_pipex(int ac, char **argv, char **env, char **validpaths)
 		else
 		{
 			cmd_args = ft_split(argv[i + 2], ' ');
-			ft_outfile_to_out(validpaths[i], cmd_args, env, argv[ac - 1]);
+			ft_outfile_to_out(validpaths[i - 1], cmd_args, env, argv[ac - 1]);
 		}
 		close(pfds[READ_END]);
 	}
+	(void)ac;
 }
 
 int	ft_test_files(char **argv, int ac)
@@ -204,9 +205,6 @@ void	ft_infile_to_in(char **argv)
 			close(fd);
 		}
 	}
-	//else
-	//	data->infile = NULL;
-	//data->cursor += 1;
 }
 
 int	main(int ac, char **argv, char **env)
@@ -223,6 +221,7 @@ int	main(int ac, char **argv, char **env)
 			ft_infile_to_in(argv);
 			ft_pipex(ac, argv, env, validpaths);
 		}
+		waitpid(-1, NULL, 0);
 		ft_full_free((void **)paths);
 		ft_full_free_nb((void **)validpaths, ac - 3);
 	}
