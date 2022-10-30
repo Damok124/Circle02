@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 19:21:48 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/20 23:27:35 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/27 13:32:38 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	**ft_get_paths(char **env)
 		i++;
 	tmp = ft_split(env[i] + 5, ':');
 	len = ft_count_strs(env[i], ':');
-	paths = (char **)malloc(sizeof(char *) * (len + 1));////////////////
+	paths = (char **)malloc(sizeof(char *) * (len + 1));
 	paths[len] = NULL;
 	i = 0;
 	while (tmp[i])

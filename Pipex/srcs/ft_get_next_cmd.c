@@ -6,12 +6,12 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 00:31:05 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/20 20:22:41 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/28 12:35:42 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
+/*
 void	ft_get_next_cmd(t_data *data)
 {
 	data->cmd = ft_parse_cmd(data->argv[data->cursor]);
@@ -30,3 +30,4 @@ void	ft_get_next_cmd(t_data *data)
 	}
 	data->cursor += 1;
 }
+*/

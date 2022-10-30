@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:33:23 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/10 14:48:07 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/28 14:13:12 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void					ft_show_strs_fd(char **strs, int fd);
 /////////////////////////
 //	FREE
 /////////////////////////
+void					ft_full_free_nb(void **tobefreed, int nb);
 void					ft_full_free(void **tobefree);
 void					ft_true_free(void **ptr);
 /////////////////////////

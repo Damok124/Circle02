@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/09/29 16:16:53 by zharzi           ###   ########.fr        #
+#    Updated: 2022/10/28 14:13:31 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ $(SRCSDIR)ft_lstclear.c \
 $(SRCSDIR)ft_lstiter.c \
 $(SRCSDIR)ft_lstmap.c \
 $(SRCSDIR)ft_full_free.c \
+$(SRCSDIR)ft_full_free_nb.c \
 $(SRCSDIR)ft_true_free.c \
 $(SRCSDIR)ft_atoi_safe.c \
 $(SRCSDIR)ft_atoi_base_safe.c \
