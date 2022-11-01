@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_fullpaths.c                                 :+:      :+:    :+:   */
+/*   ft_double_fullfree.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 19:51:25 by zharzi            #+#    #+#             */
-/*   Updated: 2022/11/01 19:51:27 by zharzi           ###   ########.fr       */
+/*   Created: 2022/11/01 19:42:09 by zharzi            #+#    #+#             */
+/*   Updated: 2022/11/01 19:42:11 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	**ft_get_fullpaths(char **paths, char *cmd)
+void	ft_double_fullfree(char **strs1, char **strs2)
 {
-	char	**fullpaths;
-	int		i;
-
-	i = 0;
-	while (*paths && paths[i])
-		i++;
-	fullpaths = (char **)malloc(sizeof(char *) * (i + 1));
-	if (!fullpaths)
-		return (0);
-	fullpaths[i] = NULL;
-	while (--i >= 0)
-		fullpaths[i] = ft_strjoin(paths[i], cmd);
-	return (fullpaths);
+	ft_full_free((void **)strs1);
+	ft_full_free((void **)strs2);
 }

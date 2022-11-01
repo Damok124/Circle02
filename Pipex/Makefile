@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/10/21 17:04:18 by zharzi           ###   ########.fr        #
+#    Updated: 2022/11/01 21:13:46 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,28 +19,48 @@ SRCSDIR = ./srcs/
 SRCSBONUSDIR = ./srcs_bonus/
 
 SRCS = \
-${SRCSDIR}ft_err_msg.c \
-${SRCSDIR}ft_print_error_msg.c \
-${SRCSDIR}ft_init_data.c \
-${SRCSDIR}ft_cmd_not_found.c \
-${SRCSDIR}ft_get_fullpaths.c \
-${SRCSDIR}ft_get_validpath.c \
 ${SRCSDIR}ft_get_paths.c \
-${SRCSDIR}ft_get_next_cmd.c \
-${SRCSDIR}ft_free_data.c \
-${SRCSDIR}ft_infile_to_stdin.c \
-${SRCSDIR}ft_outfile_to_stdout.c \
+${SRCSDIR}ft_parse_cmd.c \
 ${SRCSDIR}ft_clean_connect.c \
-${SRCSDIR}ft_parse_cmd.c
+${SRCSDIR}ft_cmd_not_found.c \
+${SRCSDIR}ft_such_file.c \
+${SRCSDIR}ft_infile_permission.c \
+${SRCSDIR}ft_outfile_permission.c \
+${SRCSDIR}ft_close_stdfds.c \
+${SRCSDIR}ft_double_fullfree.c \
+${SRCSDIR}ft_infile_to_in.c \
+${SRCSDIR}ft_get_goodpath.c \
+${SRCSDIR}ft_get_fullpaths.c \
+${SRCSDIR}ft_get_validpaths.c \
+${SRCSDIR}ft_outfile_to_out.c \
+${SRCSDIR}ft_test_files.c \
+${SRCSDIR}ft_print_cmderr.c \
+${SRCSDIR}ft_init_data.c
 
 SRCSBONUS = \
-${SRCSDIR}ft_get_tmpname_bonus.c \
-${SRCSDIR}ft_init_data_bonus.c \
-${SRCSDIR}ft_infile_to_stdin_bonus.c \
-${SRCSDIR}ft_outfile_to_stdout_bonus.c \
-${SRCSDIR}ft_setup_limiter_bonus.c \
-${SRCSDIR}ft_get_validpath_bonus.c \
-${SRCSDIR}ft_get_next_cmd_bonus.c
+${SRCSBONUSDIR}ft_clean_connect_bonus.c \
+${SRCSBONUSDIR}ft_close_stdfds_bonus.c \
+${SRCSBONUSDIR}ft_cmd_not_found_bonus.c \
+${SRCSBONUSDIR}ft_double_fullfree_bonus.c \
+${SRCSBONUSDIR}ft_get_fullpaths_bonus.c \
+${SRCSBONUSDIR}ft_get_goodpath_bonus.c \
+${SRCSBONUSDIR}ft_get_next_cmd_bonus.c \
+${SRCSBONUSDIR}ft_get_paths_bonus.c \
+${SRCSBONUSDIR}ft_get_tmpname_bonus.c \
+${SRCSBONUSDIR}ft_get_validpath_bonus.c \
+${SRCSBONUSDIR}ft_get_validpaths_bonus.c \
+${SRCSBONUSDIR}ft_infile_permission_bonus.c \
+${SRCSBONUSDIR}ft_infile_to_in_bonus.c \
+${SRCSBONUSDIR}ft_infile_to_stdin_bonus.c \
+${SRCSBONUSDIR}ft_init_data_bonus.c \
+${SRCSBONUSDIR}ft_outfile_permission_bonus.c \
+${SRCSBONUSDIR}ft_outfile_to_out_bonus.c \
+${SRCSBONUSDIR}ft_outfile_to_stdout_bonus.c \
+${SRCSBONUSDIR}ft_parse_cmd_bonus.c \
+${SRCSBONUSDIR}ft_print_cmderr_bonus.c \
+${SRCSBONUSDIR}ft_setup_limiter_bonus.c \
+${SRCSBONUSDIR}ft_such_file_bonus.c \
+${SRCSBONUSDIR}ft_test_files_bonus.c
 
 HEADERDIR = includes/
 
@@ -63,10 +83,6 @@ all : libpipex.a libft_printf.a libft.a $(BINARY)
 $(BINARY):
 	$(CC) $(FLAGS) main.c $(IFLAG) -L. -lpipex -L./libft -lft -L./ft_printf \
 		-lft_printf -o $(BINARY)
-
-test : libpipex.a libft_printf.a libft.a
-	$(CC) $(FLAGS) test.c $(IFLAG) -L. -lpipex -L./libft -lft -L./ft_printf \
-		-lft_printf -o $(BINARY)_test
 
 bonus : libpipex_bonus.a libft_printf.a libft.a
 	$(CC) $(FLAGS) main_bonus.c $(IFLAG) -L. -lpipex_bonus -L./libft -lft \

@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_fullpaths.c                                 :+:      :+:    :+:   */
+/*   ft_print_cmderr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 19:51:25 by zharzi            #+#    #+#             */
-/*   Updated: 2022/11/01 19:51:27 by zharzi           ###   ########.fr       */
+/*   Created: 2022/11/01 20:08:44 by zharzi            #+#    #+#             */
+/*   Updated: 2022/11/01 20:08:46 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	**ft_get_fullpaths(char **paths, char *cmd)
+void	ft_print_cmderr(char **validpaths, char **argv)
 {
-	char	**fullpaths;
+	char	**cmd_args;
 	int		i;
 
 	i = 0;
-	while (*paths && paths[i])
+	while (validpaths && validpaths[i])
+	{
+		if (validpaths[i][0] == '\0')
+		{
+			cmd_args = ft_split(argv[i + 2], ' ');
+			ft_cmd_not_found(cmd_args[0]);
+			ft_full_free((void **)cmd_args);
+		}
 		i++;
-	fullpaths = (char **)malloc(sizeof(char *) * (i + 1));
-	if (!fullpaths)
-		return (0);
-	fullpaths[i] = NULL;
-	while (--i >= 0)
-		fullpaths[i] = ft_strjoin(paths[i], cmd);
-	return (fullpaths);
+	}
 }

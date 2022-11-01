@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_data_bonus.c                               :+:      :+:    :+:   */
+/*   ft_such_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/20 14:38:38 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/20 23:56:23 by zharzi           ###   ########.fr       */
+/*   Created: 2022/11/01 19:40:37 by zharzi            #+#    #+#             */
+/*   Updated: 2022/11/01 19:40:39 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "pipex.h"
 
-void	ft_init_data_b(t_data *data, int ac, char **argv, char **env)
+int	ft_such_file(char *filename)
 {
-	data->cursor = 0;
-	data->ac = ac - 1;
-	data->infile = NULL;
-	data->outfile = argv[ac - 1];
-	data->argv = argv + 1;
-	data->env = env;
+	char	*msg;
+
+	if (access(filename, F_OK))
+	{
+		msg = ft_strjoin("pipex: ", filename);
+		perror(msg);
+		ft_true_free((void **)&msg);
+		return (0);
+	}
+	return (1);
 }

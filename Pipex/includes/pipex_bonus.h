@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 12:11:56 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/20 23:40:54 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/11/01 22:46:54 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include "ft_printf.h"
 # include <sys/wait.h>
+# include <sys/types.h>
 # include <stdio.h>
 
 /////////////////////////
@@ -33,14 +34,8 @@ typedef struct s_data {
 	int		ac;
 	char	**argv;
 	char	**env;
-	char	**paths;
-	char	**fullpaths;
-	char	*validpath;
-	char	*infile;
-	char	*outfile;
-	char	**cmd;
-	int		cursor;
 }			t_data;
+/*
 /////////////////////////
 //	PARSING
 /////////////////////////
@@ -77,5 +72,5 @@ void	ft_print_error_msg(t_data *data);
 //	FREE
 /////////////////////////
 void	ft_free_data(t_data *data);
-
+*/
 #endif
