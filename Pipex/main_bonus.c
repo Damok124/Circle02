@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/11/03 23:30:31 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/11/04 16:05:20 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -464,12 +464,11 @@ char	*ft_pipex_heredoc(t_data *data, char **validpaths, char *infile)
 	i++;
 	cmd_args = ft_split(data->argv[i + 2], ' ');
 	pipe(pfds);
+	if (i == 1 && !infile)
+		infile = ft_heredoc_to_in(data->argv, cmd_args, validpaths, i);
 	if (validpaths[i - 1] && validpaths[i - 1][0] != '\0' && !fork())
 	{
 		ft_clean_connect(STDOUT, pfds[WRITE_END], pfds[READ_END]);
-		if (!infile)
-			infile = ft_heredoc_to_in(data->argv, cmd_args, validpaths, i);
-		ft_unlink(infile);
 		execve(validpaths[i - 1], cmd_args, data->env);
 	}
 	else
@@ -484,8 +483,7 @@ char	*ft_pipex_heredoc(t_data *data, char **validpaths, char *infile)
 	return (infile);
 }
 
-int	main_bonus(t_data *data)// regler la gestion cpu lorsque le pipe est broken
-//ET AUSSI les fichiers tmp créés mais pas détruit
+int	main_bonus(t_data *data)
 {
 	char	**paths;
 	char	**validpaths;
@@ -499,6 +497,8 @@ int	main_bonus(t_data *data)// regler la gestion cpu lorsque le pipe est broken
 		infile = ft_pipex_heredoc(data, validpaths, infile);
 	ft_print_cmderr(validpaths, data->argv);
 	waitpid(-1, NULL, 0);
+	ft_unlink(infile);
+	ft_true_free((void **)&infile);
 	ft_full_free((void **)validpaths);
 	ft_close_stdfds();
 	exit(1);
