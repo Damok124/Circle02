@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_parent_hdoc_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 14:56:52 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/26 00:49:39 by zharzi           ###   ########.fr       */
+/*   Created: 2022/11/08 00:00:11 by zharzi            #+#    #+#             */
+/*   Updated: 2022/11/08 00:14:24 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pipex_bonus.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	ft_parent_hdoc(t_data *data, char **cmd_args, char **validpaths, int i)
 {
-	int	i;
-
-	i = ft_strlen(s);
-	while (i != -1)
-	{
-		if (s[i] == (unsigned char) c)
-			return ((char *)&s[i]);
-		else
-			i--;
-	}
-	return (NULL);
+	cmd_args = ft_split(data->argv[i + 3], ' ');
+	ft_append_to_outfile(validpaths, i, cmd_args, data);
 }

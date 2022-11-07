@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_infile_to_stdin_bonus.c                         :+:      :+:    :+:   */
+/*   ft_heredoc_to_file_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 00:26:57 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/20 23:55:42 by zharzi           ###   ########.fr       */
+/*   Created: 2022/11/07 23:59:59 by zharzi            #+#    #+#             */
+/*   Updated: 2022/11/08 00:12:43 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 
-int	ft_here_doc(t_data *data, char *limiter)
+int	ft_heredoc_to_file(char **infile, char *limiter)
 {
 	int		fd;
 	int		stop;
@@ -23,9 +20,9 @@ int	ft_here_doc(t_data *data, char *limiter)
 
 	stop = 0;
 	buffer = NULL;
-	if (data->infile && access(data->infile, F_OK) == 0)
-		data->infile = ft_get_tmpname(&data->infile);
-	fd = open(data->infile, O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR | S_IRGRP | \
+	if (*infile && access(*infile, F_OK) == 0)
+		*infile = ft_get_tmpname(infile);
+	fd = open(*infile, O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR | S_IRGRP | \
 		S_IWGRP | S_IROTH);
 	while (!stop)
 	{
@@ -35,26 +32,9 @@ int	ft_here_doc(t_data *data, char *limiter)
 		else if (buffer)
 			write(fd, buffer, ft_strlen(buffer));
 		if (buffer)
-			free(buffer);
+			ft_true_free((void **)&buffer);
 	}
-	buffer = get_next_line(1025);
+	buffer = get_next_line(1024 + (STDIN + 1));
 	ft_true_free((void **)&limiter);
 	return (fd);
-}
-
-void	ft_infile_to_stdin_b(t_data *data)
-{
-	int		fd;
-	char	*limiter;
-	char	*basename;
-
-	basename = "tmp_pipex";
-	data->infile = ft_strdup(basename);
-	limiter = ft_setup_limiter(data->argv[1], &data->cursor);
-	fd = ft_here_doc(data, limiter);
-	close(fd);
-	fd = open(data->infile, O_RDONLY);
-	dup2(fd, STDIN);
-	close(fd);
-	data->cursor += 1;
 }

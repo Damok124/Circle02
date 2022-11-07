@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_outfile_to_stdout_bonus.c                       :+:      :+:    :+:   */
+/*   ft_append_to_outfile_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 00:59:35 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/16 18:15:31 by zharzi           ###   ########.fr       */
+/*   Created: 2022/11/07 23:59:07 by zharzi            #+#    #+#             */
+/*   Updated: 2022/11/08 00:04:01 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-void	ft_outfile_to_stdout_b(t_data *data)
+void	ft_append_to_outfile(char **paths, int i, char **cmd_a, t_data *data)
 {
-	int	fdof;
+	int		fdof;
+	char	*outfile;
 
-	ft_get_next_cmd(data);
-	fdof = open(data->outfile, O_RDWR | O_APPEND | O_CREAT, S_IRUSR | \
+	outfile = data->argv[data->ac - 1];
+	fdof = open(outfile, O_WRONLY | O_APPEND | O_CREAT, S_IRUSR | \
 		S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
-	dup2(fdof, 1);
-	if (!fork())
-		execve(data->validpath, data->cmd, data->env);
+	if (fdof > 0)
+	{
+		dup2(fdof, 1);
+		close(fdof);
+		if (paths[i] && paths[i][0] != '\0')
+		{
+			if (!fork())
+				execve(paths[i], cmd_a, data->env);
+		}
+	}
 	else
-		waitpid(0, NULL, 0);
+		perror(outfile);
+	ft_full_free((void **)cmd_a);
 }

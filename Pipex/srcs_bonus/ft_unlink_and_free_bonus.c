@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_index_intlist.c                                 :+:      :+:    :+:   */
+/*   ft_unlink_and_free_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/10 17:40:43 by zharzi            #+#    #+#             */
-/*   Updated: 2022/09/06 18:48:55 by zharzi           ###   ########.fr       */
+/*   Created: 2022/11/08 00:00:21 by zharzi            #+#    #+#             */
+/*   Updated: 2022/11/08 00:14:49 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pipex_bonus.h"
 
-void	ft_index_intlst(t_list **astack, int *sortedav, int ac)
+void	ft_unlink_and_free(char *filename)
 {
-	t_list	*tmp;
-	int		i;
-
-	i = 0;
-	tmp = *astack;
-	while (tmp)
+	if (filename)
 	{
-		tmp->index = 0;
-		while (i < ac && tmp->index == 0)
-		{
-			if (*(int *)tmp->content == sortedav[i])
-				tmp->index = i;
-			i++;
-		}
-		tmp = tmp->next;
-		i = 0;
+		unlink(filename);
+		ft_true_free((void **)&filename);
 	}
 }

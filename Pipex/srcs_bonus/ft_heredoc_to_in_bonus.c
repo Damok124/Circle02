@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_infile_to_in_bonus.c                            :+:      :+:    :+:   */
+/*   ft_heredoc_to_in_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 00:00:04 by zharzi            #+#    #+#             */
-/*   Updated: 2022/11/08 00:05:45 by zharzi           ###   ########.fr       */
+/*   Created: 2022/11/08 00:00:00 by zharzi            #+#    #+#             */
+/*   Updated: 2022/11/08 00:13:42 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-void	ft_infile_to_in(char **argv, char **cmd_args, char **validpaths, int i)
+char	*ft_heredoc_to_in(char **argv, char **cmd_args, char **vpaths, int i)
 {
 	int		fd;
+	char	*limiter;
+	char	*infile;
 
-	fd = -1;
-	if (i == 1 && argv[1] && !access(argv[1], F_OK))
+	if (i == 1)
 	{
-		fd = open(argv[1], O_RDONLY);
+		infile = ft_strdup("tmp_pipex");
+		limiter = ft_setup_limiter(argv[2]);
+		fd = ft_heredoc_to_file(&infile, limiter);
 		if (fd > 0)
 		{
+			close(fd);
+			fd = open(infile, O_RDONLY);
+			if (fd < 0)
+				ft_clean_exit(vpaths, cmd_args);
 			dup2(fd, STDIN);
 			close(fd);
+			return (infile);
 		}
 		else
-			ft_clean_exit(validpaths, cmd_args);
+			ft_clean_exit(vpaths, cmd_args);
 	}
-	else if (i == 1 && argv[1] && access(argv[1], F_OK))
-		ft_clean_exit(validpaths, cmd_args);
+	return (NULL);
 }

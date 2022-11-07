@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse_cmd.c                                     :+:      :+:    :+:   */
+/*   ft_clean_exit_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 19:22:24 by zharzi            #+#    #+#             */
-/*   Updated: 2022/10/25 23:04:51 by zharzi           ###   ########.fr       */
+/*   Created: 2022/11/07 23:59:42 by zharzi            #+#    #+#             */
+/*   Updated: 2022/11/08 00:03:06 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
-char	**ft_parse_cmd(char *arg)
+void	ft_clean_exit(char **validpaths, char **cmd_args)
 {
-	char	**cmd;
-
-	cmd = ft_split(arg, ' ');
-	return (cmd);
+	ft_double_fullfree(validpaths, cmd_args);
+	ft_close_stdfds();
+	exit(1);
 }
