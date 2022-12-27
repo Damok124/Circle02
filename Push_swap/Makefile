@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/08/30 15:08:10 by zharzi           ###   ########.fr        #
+#    Updated: 2022/12/27 00:26:11 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,66 +14,54 @@ NAME = libpswap.a
 
 BINARY = push_swap
 
+BINARY_BONUS = checker
+
 SRCSDIR = ./srcs/
 
-SRCS = ${SRCSDIR}ft_move_sa.c \
-${SRCSDIR}ft_move_sb.c \
-${SRCSDIR}ft_move_ss.c \
-${SRCSDIR}ft_move_pa.c \
-${SRCSDIR}ft_move_pb.c \
-${SRCSDIR}ft_move_ra.c \
-${SRCSDIR}ft_move_rb.c \
-${SRCSDIR}ft_move_rr.c \
-${SRCSDIR}ft_move_rra.c \
-${SRCSDIR}ft_move_rrb.c \
-${SRCSDIR}ft_move_rrr.c \
-${SRCSDIR}ft_pswap_join.c \
-${SRCSDIR}ft_pswap_check_args.c \
-${SRCSDIR}ft_pswap_intfinder.c \
-${SRCSDIR}ft_pswap_parsing.c \
-$(SRCSDIR)ft_ending_bstack.c \
-$(SRCSDIR)ft_ending_eastack.c \
-$(SRCSDIR)ft_fill_controlval.c \
-$(SRCSDIR)ft_pswap_final.c \
-$(SRCSDIR)ft_moves_forward.c \
-$(SRCSDIR)ft_swap_top_test.c \
-$(SRCSDIR)ft_swap_test_b.c \
-$(SRCSDIR)ft_test_index.c \
-$(SRCSDIR)ft_first_estack.c \
-$(SRCSDIR)ft_stack_check_order.c \
-$(SRCSDIR)ft_lock_elem.c \
-$(SRCSDIR)ft_homing_max.c \
-$(SRCSDIR)ft_homing_booster.c \
-$(SRCSDIR)ft_is_lock.c \
-$(SRCSDIR)ft_small.c \
-$(SRCSDIR)ft_get_back_if.c \
-$(SRCSDIR)ft_get_back_eb.c \
-$(SRCSDIR)ft_index_comp.c \
-$(SRCSDIR)ft_moves_backward.c \
-$(SRCSDIR)ft_series_length.c \
-$(SRCSDIR)ft_put_end.c
+SRCSBONUSDIR = ./srcs_bonus/
+
+SRCS = \
+${SRCSDIR}test.c
+
+SRCSBONUS = \
+${SRCSBONUSDIR}test.c
 
 HEADERDIR = includes/
 
 HEADER = pswap.h
 
+HEADERBONUS = pswap_bonus.h
+
 OBJ = $(SRCS:.c=.o)
 
-CC = gcc
+OBJBONUS = $(SRCSBONUS:.c=.o)
 
-FLAGS = -Wall -Wextra -Werror -g
+CC = clang
+
+FLAGS = -Wall -Wextra -Werror -g3
 
 IFLAG = -I$(HEADERDIR) -Ift_printf/includes/ -Ilibft/includes/
 
-all : libpswap.a libft_printf.a libft.a
+all : ${BINARY}
+
+${BINARY} : ${NAME} libft_printf.a libft.a
 	-@$(CC) $(FLAGS) main.c $(IFLAG) -L. -lpswap -L./libft -lft -L./ft_printf \
 	-lft_printf -o $(BINARY)
+
+bonus : ${BINARY_BONUS}
+
+${BINARY_BONUS} : libpswap_bonus.a libft_printf.a libft.a
+	-@$(CC) $(FLAGS) main_bonus.c $(IFLAG) -L. -lpswap_bonus -L./libft -lft \
+	-L./ft_printf -lft_printf -o $(BINARY_BONUS)
 
 %.o : %.c
 	-@$(CC) $(FLAGS) $(IFLAG) -o $@ -c $^
 
-libpswap.a : $(OBJ) $(HEADERDIR)$(HEADER)
+${NAME} : $(OBJ) $(HEADERDIR)$(HEADER)
 	-@ar -rcs $(NAME) $^
+
+libpswap_bonus.a : $(OBJBONUS) $(HEADERDIR)$(HEADERBONUS)
+	ar -rcs libpswap_bonus.a $^
 
 libft_printf.a :
 	-@${MAKE} -C ft_printf/
@@ -83,15 +71,20 @@ libft.a :
 
 clean :
 	-@rm -f $(OBJ)
+	-@rm -f $(OBJBONUS)
 	-@${MAKE} clean -C ft_printf/
 	-@${MAKE} clean -C libft/
 
 fclean : clean
 	-@rm -f $(NAME)
 	-@rm -f $(BINARY)
+	-@rm -f $(BINARY_BONUS)
+	-@rm -f libpswap_bonus.a
 	-@${MAKE} fclean -C ft_printf/
 	-@${MAKE} fclean -C libft/
 
 re : fclean all
 
-.PHONY : all clean fclean re
+bre : fclean bonus
+
+.PHONY : all bonus clean fclean re bre

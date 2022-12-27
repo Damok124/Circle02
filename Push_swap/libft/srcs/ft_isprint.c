@@ -6,11 +6,9 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 14:12:53 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/07 21:22:45 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/26 11:50:01 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_isprint(int c)
 {

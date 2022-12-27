@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 11:57:27 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/30 15:06:44 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/12/27 13:19:27 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,7 @@
 # include "libft.h"
 # include "ft_printf.h"
 
-typedef struct s_control {
-	int	ac;
-	int	max;
-	int	firstthird;
-	int	lastthird;
-	int	pop_a;
-	int	pop_ea;
-	int	pop_b;
-	int	pop_eb;
-	int	lock;
-	int	total;
-}	t_control;
-
+/*
 /////////////////////////
 //	MOVES
 /////////////////////////
@@ -85,5 +73,6 @@ int			*ft_pswap_parsing(int *ac, char **av);
 t_control	ft_fill_controlval(int ac);
 t_list		*ft_first_estack(t_list **stack, int pop);
 int			ft_is_lock(t_list *elem, t_list **astack, t_control *val);
+*/
 
 #endif

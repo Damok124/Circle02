@@ -6,11 +6,9 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 00:25:52 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/26 16:38:23 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/26 11:49:39 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_check_dup_int(int len, int *tab)
 {

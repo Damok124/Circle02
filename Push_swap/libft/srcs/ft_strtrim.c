@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 15:55:26 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/07 23:02:57 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/12/27 01:42:25 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ char	*ft_strtrim(char const *s1, char const *set)
 	ssize_t	i;
 	ssize_t	j;
 
-	i = -1;
+	i = 0;
 	j = ft_strlen(s1);
 	if (s1)
 	{
-		while (ft_strchr(set, s1[++i]))
-			;
-		while (ft_strrchr(set, s1[--j]) && j >= 0)
-			;
+		while (s1 && s1[i] && ft_strchr(set, s1[i]))
+			i++;
+		while (s1 && s1[i] && ft_strrchr(set, s1[j]))
+			j--;
 		str = ft_substr(s1, i, (j - i + 1));
 		if (str)
 			return (str);

@@ -6,17 +6,17 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 04:05:07 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/26 16:41:53 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/08 21:56:02 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stdlib.h"
 
-void	ft_true_free(void *ptr)
+void	ft_true_free(void **ptr)
 {
-	if (ptr)
+	if (*ptr)
 	{
-		free(ptr);
-		ptr = NULL;
+		free(*ptr);
+		*ptr = NULL;
 	}
 }

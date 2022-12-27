@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 21:33:56 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/07 21:51:26 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/18 17:18:32 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,5 @@ void	ft_putnbr_fd_itoa(int n, int fd)
 	s = ft_itoa(n);
 	ft_putstr_fd(s, fd);
 	free(s);
+	s = NULL;
 }

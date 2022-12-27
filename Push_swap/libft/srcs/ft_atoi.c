@@ -6,11 +6,9 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 22:48:01 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/07 21:21:50 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/09/26 11:48:58 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_atoi(const char *nptr)
 {
