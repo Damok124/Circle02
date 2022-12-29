@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/12/29 00:34:23 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/12/29 23:31:16 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ typedef struct s_stack {
 	struct s_stack	*next;
 }	t_stack;
 
+int	g_counter = 0;
+
 //////////////////////////////////////////////////////////////////
 
 void	ft_move_pa(t_stack **astack, t_stack **bstack)
@@ -34,7 +36,9 @@ void	ft_move_pa(t_stack **astack, t_stack **bstack)
 		*bstack = (*bstack)->next;
 		tmp1->next = *astack;
 		*astack = tmp1;
-		ft_printf("pa\n");
+		g_counter++;
+		ft_printf("pa\t%d\n", g_counter);
+		//ft_printf("pa\n");
 	}
 }
 
@@ -48,7 +52,9 @@ void	ft_move_pb(t_stack **astack, t_stack **bstack)
 		*astack = (*astack)->next;
 		tmp1->next = *bstack;
 		*bstack = tmp1;
-		ft_printf("pb\n");
+		g_counter++;
+		ft_printf("pb\t%d\n", g_counter);
+		// ft_printf("pb\n");
 	}
 }
 
@@ -66,7 +72,9 @@ void	ft_move_ra(t_stack **astack)
 		while (tmp1 && tmp1->next)
 			tmp1 = tmp1->next;
 		tmp1->next = tmp2;
-		ft_printf("ra\n");
+		g_counter++;
+		ft_printf("ra\t%d\n", g_counter);
+		// ft_printf("ra\n");
 	}
 }
 
@@ -84,7 +92,9 @@ void	ft_move_rb(t_stack **bstack)
 		while (tmp1 && tmp1->next)
 			tmp1 = tmp1->next;
 		tmp1->next = tmp2;
-		ft_printf("rb\n");
+		g_counter++;
+		ft_printf("rb\t%d\n", g_counter);
+		// ft_printf("rb\n");
 	}
 }
 
@@ -104,7 +114,9 @@ void	ft_move_rra(t_stack **astack)
 		tmp1->next = NULL;
 		tmp2->next = *astack;
 		*astack = tmp2;
-		ft_printf("rra\n");
+		g_counter++;
+		ft_printf("rra\t%d\n", g_counter);
+		// ft_printf("rra\n");
 	}
 }
 
@@ -124,7 +136,9 @@ void	ft_move_rrb(t_stack **bstack)
 		tmp1->next = NULL;
 		tmp2->next = *bstack;
 		*bstack = tmp2;
-		ft_printf("rrb\n");
+		g_counter++;
+		ft_printf("rrb\t%d\n", g_counter);
+		// ft_printf("rrb\n");
 	}
 }
 
@@ -149,7 +163,9 @@ void	ft_move_rr(t_stack **astack, t_stack **bstack)
 		while (tmp1 && tmp1->next)
 			tmp1 = tmp1->next;
 		tmp1->next = tmp2;
-		ft_printf("rr\n");
+		g_counter++;
+		ft_printf("rr\t%d\n", g_counter);
+		// ft_printf("rr\n");
 	}
 }
 
@@ -178,7 +194,9 @@ void	ft_move_rrr(t_stack **astack, t_stack **bstack)
 		tmp1->next = NULL;
 		tmp2->next = *bstack;
 		*bstack = tmp2;
-		ft_printf("rrr\n");
+		g_counter++;
+		ft_printf("rrr\t%d\n", g_counter);
+		// ft_printf("rrr\n");
 	}
 }
 
@@ -195,7 +213,9 @@ void	ft_move_sa(t_stack **astack)
 		elem2->next = *astack;
 		(*astack)->next = elem3;
 		*astack = elem2;
-		ft_printf("sa\n");
+		g_counter++;
+		ft_printf("sa\t%d\n", g_counter);
+		// ft_printf("sa\n");
 	}
 }
 
@@ -212,7 +232,9 @@ void	ft_move_sb(t_stack **bstack)
 		elem2->next = *bstack;
 		(*bstack)->next = elem3;
 		*bstack = elem2;
-		ft_printf("sb\n");
+		g_counter++;
+		ft_printf("sb\t%d\n", g_counter);
+		// ft_printf("sb\n");
 	}
 }
 
@@ -235,7 +257,9 @@ void	ft_move_ss(t_stack **astack, t_stack **bstack)
 		elem2->next = *bstack;
 		(*bstack)->next = elem3;
 		*bstack = elem2;
-		ft_printf("ss\n");
+		g_counter++;
+		ft_printf("ss\t%d\n", g_counter);
+		// ft_printf("ss\n");
 	}
 }
 
@@ -375,6 +399,42 @@ void	ft_show_it_all(t_stack **top_a, t_stack **top_b)//done
 
 //////////////////////////////////////////////////////////////////
 
+void	ft_solve_b_in_a(t_stack **top_a, t_stack **top_b)
+{
+	;
+}
+
+void	ft_chunk_a_in_b(t_stack **top_a, t_stack **top_b)
+{
+	int	step;
+	int	chunk_size;
+	int	b_size;
+
+	step = 1;
+	b_size = 0;
+	chunk_size = (*top_a)->size / 8;
+	while (step != 9)
+	{
+		if ((*top_a)->index < chunk_size * (step + 1))
+		{
+			ft_move_pb(top_a, top_b);
+			if ((*top_b)->index < (chunk_size * step))
+				ft_move_rb(top_b);
+			b_size++;
+		}
+		else
+			ft_move_ra(top_a);
+		if (b_size == chunk_size * (step + 1))
+		{///////////////////////////////////////
+			step += 2;
+			ft_show_it_all(top_a, top_b);///////////////////////
+		}/////////////////////////////////////
+		while (step == 9 && *top_a)
+			ft_move_pb(top_a, top_b);
+		usleep(1000);/////////////////////////////////////////
+	}
+}
+
 void	ft_sort_trio(t_stack **top_a)
 {
 	t_stack *tmp;
@@ -433,10 +493,11 @@ void	ft_sort_quintet(t_stack **top_a, t_stack **top_b)
 	ft_sort_trio(top_a);
 }
 
+
 void	ft_sort_more(t_stack **top_a, t_stack **top_b)
 {
-	(void)top_a;
-	(void)top_b;
+	ft_chunk_a_in_b(top_a, top_b);
+	ft_solve_b_in_a(top_a, top_b);
 }
 
 //////////////////////////////////////////////////////////////////
@@ -455,7 +516,7 @@ void	ft_push_swap(int *tab, int size)//done
 	top_b = &b;
 	if (size > 1 && !ft_check_stack_order(a, ASCENDING))
 	{
-		//ft_show_it_all(top_a, top_b);
+		ft_show_it_all(top_a, top_b);
 		if (size == 2)
 			ft_move_sa(top_a);
 		else if (size == 3)
@@ -466,9 +527,10 @@ void	ft_push_swap(int *tab, int size)//done
 			ft_sort_quintet(top_a, top_b);
 		else
 			ft_sort_more(top_a, top_b);
-		ft_drain_b(top_a, top_b);
-		//ft_show_it_all(top_a, top_b);
+		//ft_drain_b(top_a, top_b);
+		ft_show_it_all(top_a, top_b);
 	}
+	ft_printf("final\t%d\n", g_counter);
 	ft_free_stack(top_a);
 	ft_free_stack(top_b);
 }
