@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_sb.c                                       :+:      :+:    :+:   */
+/*   ft_rrb_loop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:58:22 by zharzi            #+#    #+#             */
-/*   Updated: 2022/12/31 12:15:40 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/12/31 12:36:53 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_move_sb(t_stack **bstack, int print)
+void	ft_rrb_loop(t_stack **top_a, t_stack **top_b, int target, int *bonus)
 {
-	t_stack	*elem3;
-	t_stack	*elem2;
-
-	if (*bstack && (*bstack)->next)
+	while ((*top_b)->index != target)
 	{
-		elem3 = (*bstack)->next;
-		elem2 = elem3;
-		elem3 = elem3->next;
-		elem2->next = *bstack;
-		(*bstack)->next = elem3;
-		*bstack = elem2;
-		if (print)
-			ft_printf("sb\n");
+		if ((*top_b)->index == target - 1)
+		{
+			ft_move_pa(top_a, top_b, PRINT_OK);
+			*bonus += 1;
+		}
+		else
+			ft_move_rrb(top_b, PRINT_OK);
 	}
 }

@@ -5,18 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/13 10:25:06 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/26 17:44:40 by zharzi           ###   ########.fr       */
+/*   Created: 2022/12/31 11:58:22 by zharzi            #+#    #+#             */
+/*   Updated: 2022/12/31 12:31:39 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-int	ft_test_index(t_list *tmp1, t_list *tmp2)
+int	ft_test_index(t_stack *elem1, t_stack *elem2)
 {
-	if (tmp1 && tmp2 && tmp1->index == (tmp2->index) - 1)
-		return (-1);
-	if (tmp1 && tmp2 && tmp1->index == (tmp2->index) + 1)
-		return (1);
+	if (elem1 && elem2 && elem1->index == (elem2->index) - 1)
+		return (ASCENDING);
+	if (elem1 && elem2 && elem1->index == (elem2->index) + 1)
+		return (DESCENDING);
 	return (0);
 }

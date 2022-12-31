@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_sb.c                                       :+:      :+:    :+:   */
+/*   ft_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:58:22 by zharzi            #+#    #+#             */
-/*   Updated: 2022/12/31 12:15:40 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/12/31 12:47:55 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_move_sb(t_stack **bstack, int print)
+void	ft_sort(t_stack **top_a, t_stack **top_b, int *ratio)
 {
-	t_stack	*elem3;
-	t_stack	*elem2;
+	int	i;
 
-	if (*bstack && (*bstack)->next)
+	i = -1;
+	if ((*top_a)->size <= 100)
 	{
-		elem3 = (*bstack)->next;
-		elem2 = elem3;
-		elem3 = elem3->next;
-		elem2->next = *bstack;
-		(*bstack)->next = elem3;
-		*bstack = elem2;
-		if (print)
-			ft_printf("sb\n");
+		ft_chunk_a_in_b(top_a, top_b);
+		ft_solve_chunks(top_a, top_b);
+	}
+	else
+	{
+		while (i < 8)
+			ft_thirds_a_in_b(top_a, top_b, ft_stack_len(top_a), ratio[++i]);
+		ft_solve_all(top_a, top_b);
 	}
 }

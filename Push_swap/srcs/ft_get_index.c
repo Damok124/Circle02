@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_sb.c                                       :+:      :+:    :+:   */
+/*   ft_get_index.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:58:22 by zharzi            #+#    #+#             */
-/*   Updated: 2022/12/31 12:15:40 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/12/31 12:32:23 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_move_sb(t_stack **bstack, int print)
+int	ft_get_index(int value, int *ordered)
 {
-	t_stack	*elem3;
-	t_stack	*elem2;
+	int	i;
 
-	if (*bstack && (*bstack)->next)
+	i = 0;
+	while (ordered)
 	{
-		elem3 = (*bstack)->next;
-		elem2 = elem3;
-		elem3 = elem3->next;
-		elem2->next = *bstack;
-		(*bstack)->next = elem3;
-		*bstack = elem2;
-		if (print)
-			ft_printf("sb\n");
+		if (ordered[i] == value)
+			return (i);
+		i++;
 	}
+	return (-1);
 }

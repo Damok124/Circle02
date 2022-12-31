@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:33:23 by zharzi            #+#    #+#             */
-/*   Updated: 2022/12/27 02:08:55 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/12/31 11:18:46 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ char					**ft_alloc_strs(int size);
 void					ft_full_free_nb(void **tobefreed, int nb);
 void					ft_full_free(void **tobefree);
 void					ft_true_free(void **ptr);
+void					ft_triple_free(char ***tobefreed);
 /////////////////////////
 //	CHECK
 /////////////////////////
@@ -120,6 +121,7 @@ char					*ft_strtrim(char const *s1, char const *set);
 int						ft_tolower(int c);
 int						ft_toupper(int c);
 int						*ft_strs_to_tab(int len, char **strs);
+char					**ft_strs_triple_into_double(char ***triple);
 int						ft_cap_color(int color);
 /////////////////////////
 //	MATHEMATIC
@@ -128,6 +130,7 @@ int						ft_abs(int x);
 int						ft_sqrt(int nb);
 size_t					ft_strlen(const char *str);
 int						ft_strslen(char **strs);
+int						ft_triple_strslen(char ***strs);
 ssize_t					ft_count_strs(const char *s, char c);
 ssize_t					ft_count_strs_set(const char *s, char *set);
 /////////////////////////

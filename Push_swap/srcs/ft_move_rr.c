@@ -5,30 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 04:58:04 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/22 15:55:26 by zharzi           ###   ########.fr       */
+/*   Created: 2022/12/31 11:58:22 by zharzi            #+#    #+#             */
+/*   Updated: 2022/12/31 12:54:34 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_move_rr(t_list **astack, t_list **bstack, t_control *val)
+void	ft_move_rr(t_stack **astack, t_stack **bstack, int print)
 {
 	if (*astack && (*astack)->next && *bstack && (*bstack)->next)
 	{
-		ft_ra_details(astack);
-		ft_rb_details(bstack);
-		if (val->pop_a)
-		{
-			val->pop_a--;
-			val->pop_ea++;
-		}
-		if (val->pop_b)
-		{
-			val->pop_b--;
-			val->pop_eb++;
-			val->total++;
-		}
-		ft_printf("rr\n");
+		ft_move_ra(astack, NO_PRINT);
+		ft_move_rb(bstack, NO_PRINT);
+		if (print)
+			ft_printf("rr\n");
 	}
 }

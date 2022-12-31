@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_sb.c                                       :+:      :+:    :+:   */
+/*   ft_sort_trio.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:58:22 by zharzi            #+#    #+#             */
-/*   Updated: 2022/12/31 12:15:40 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/12/31 12:34:08 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_move_sb(t_stack **bstack, int print)
+void	ft_sort_trio(t_stack **top_a)
 {
-	t_stack	*elem3;
-	t_stack	*elem2;
+	t_stack	*tmp;
 
-	if (*bstack && (*bstack)->next)
-	{
-		elem3 = (*bstack)->next;
-		elem2 = elem3;
-		elem3 = elem3->next;
-		elem2->next = *bstack;
-		(*bstack)->next = elem3;
-		*bstack = elem2;
-		if (print)
-			ft_printf("sb\n");
-	}
+	if ((*top_a)->index == (*top_a)->size - 1)
+		ft_move_ra(top_a, PRINT_OK);
+	tmp = ft_get_last_elem(*top_a);
+	if (!ft_check_stack_order(*top_a, ASCENDING) && tmp->index != tmp->size - 1)
+		ft_move_rra(top_a, PRINT_OK);
+	tmp = ft_get_last_elem(*top_a);
+	if (!ft_check_stack_order(*top_a, ASCENDING) && tmp->index == tmp->size - 1)
+		ft_move_sa(top_a, PRINT_OK);
 }

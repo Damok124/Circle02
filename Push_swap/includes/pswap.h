@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 11:57:27 by zharzi            #+#    #+#             */
-/*   Updated: 2022/12/28 00:28:55 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/12/31 12:09:57 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,63 +16,86 @@
 # include "libft.h"
 # include "ft_printf.h"
 
-/*
+# define ASCENDING -1
+# define DESCENDING 1
+# define PRINT_OK 1
+# define NO_PRINT 0
+
+typedef struct s_stack {
+	int				size;
+	int				value;
+	int				index;
+	struct s_stack	*next;
+}	t_stack;
+
 /////////////////////////
 //	MOVES
 /////////////////////////
-void		ft_move_sa(t_list **astack, t_control *val);
-void		ft_move_sb(t_list **bstack, t_control *val);
-void		ft_move_ss(t_list **astack, t_list **bstack, t_control *val);
-void		ft_move_pa(t_list **astack, t_list **bstack, t_control *val);
-void		ft_move_pb(t_list **astack, t_list **bstack, t_control *val);
-void		ft_move_ra(t_list **astack, t_control *val);
-void		ft_move_rb(t_list **bstack, t_control *val);
-void		ft_move_rr(t_list **astack, t_list **bstack, t_control *val);
-void		ft_move_rra(t_list **astack, t_control *val);
-void		ft_move_rrb(t_list **bstack, t_control *val);
-void		ft_move_rrr(t_list **astack, t_list **bstack, t_control *val);
-void		ft_ra_details(t_list **astack);
-void		ft_rb_details(t_list **bstack);
-void		ft_rra_details(t_list **astack);
-void		ft_rrb_details(t_list **bstack);
+void	ft_move_pa(t_stack **astack, t_stack **bstack, int print);
+void	ft_move_pb(t_stack **astack, t_stack **bstack, int print);
+void	ft_move_ra(t_stack **astack, int print);
+void	ft_move_rb(t_stack **bstack, int print);
+void	ft_move_rr(t_stack **astack, t_stack **bstack, int print);
+void	ft_move_rra(t_stack **astack, int print);
+void	ft_move_rrb(t_stack **bstack, int print);
+void	ft_move_rrr(t_stack **astack, t_stack **bstack, int print);
+void	ft_move_sa(t_stack **astack, int print);
+void	ft_move_sb(t_stack **bstack, int print);
+void	ft_move_ss(t_stack **astack, t_stack **bstack, int print);
+
 /////////////////////////
-//	COMBINED MOVES
+//	INFORMATIONS
 /////////////////////////
-void		ft_push_to_ea(t_list **astack, t_control *val);
-void		ft_push_to_b(t_list **astack, t_list **bstack, t_control *val);
-void		ft_push_to_eb(t_list **astack, t_list **bstack, t_control *val);
-void		ft_get_from_ea(t_list **astack, t_control *val);
-void		ft_get_from_b(t_list **astack, t_list **bstack, t_control *val);
-void		ft_get_from_eb(t_list **astack, t_list **bstack, t_control *val);
-void		ft_ending_bstack(t_list **astack, t_list **bstack, t_control *val);
-void		ft_ending_eastack(t_list **astack, t_list **bstack, t_control *val);
-void		ft_small(t_list **astack, t_list **bstack, t_control *val);
-void		ft_get_back_if(t_list **astack, t_list **bstack, t_control *val);
-void		ft_get_back_eb(t_list **astack, t_list **bstack, t_control *val);
-void		ft_put_end(t_list **astack, t_control *val, int position);
+int		ft_up_cost(t_stack **stack, int target);
+int		ft_down_cost(t_stack **stack, int target);
+t_stack	*ft_get_last_elem(t_stack *lst);
+int		ft_stack_len(t_stack **stack);
+int		ft_get_index(int value, int *ordered);
+
 /////////////////////////
-//	CONTROL
+//	PARSING
 /////////////////////////
-int			ft_pswap_check_args(int *ac, char *full);
-int			ft_pswap_intfinder(char **av);
-int			ft_pswap_final(t_list **astack, t_list **bstack, t_control *val);
-int			ft_test_index(t_list *tmp1, t_list *tmp2);
-int			ft_swap_test_b(t_list **astack, t_list **bstack, t_control *val);
-void		ft_swap_top_test(t_list **astack, t_list **bstack, t_control *val);
-int			ft_stack_check_order(t_list *stack, int pop, int order);
-int			ft_lock_elem(t_list **astack, t_control **val);
-void		ft_homing_max(t_list **astack, t_list **bstack, t_control *val);
-int			ft_homing_booster(t_list **astack, t_list **bstack, t_control *val);
-int			ft_index_comp(t_list *elem1, t_list *elem2);
+t_stack	*ft_shape_stack_lst(int size);
+void	ft_init_stack_a(t_stack **a, int *tab, int size);
+int		ft_check_valid_char_only(char *str);
+int		ft_check_valid_sign(char *str);
+int		ft_check_empty_arg(char *str);
+int		ft_check_overflow(char *str);
+char	***ft_disjoin_args(char **argv);
+int		*ft_get_parsed_tab(char **argv);
+int		ft_pswap_args_check(char **argv);
+
 /////////////////////////
-//	DATAS
+//	CHECKERS
 /////////////////////////
-int			ft_series_length(t_list *stack, int order, int position);
-char		*ft_pswap_join(char **av);
-int			*ft_pswap_parsing(int *ac, char **av);
-t_control	ft_fill_controlval(int ac);
-t_list		*ft_first_estack(t_list **stack, int pop);
-int			ft_is_lock(t_list *elem, t_list **astack, t_control *val);
-*/
+int		ft_swap_test_a(t_stack **top_a);
+int		ft_test_index(t_stack *elem1, t_stack *elem2);
+int		ft_check_stack_order(t_stack *stack, int order);
+
+/////////////////////////
+//	SORTERS
+/////////////////////////
+void	ft_sort_trio(t_stack **top_a);
+void	ft_sort_quartet(t_stack **top_a, t_stack **top_b);
+void	ft_sort_quintet(t_stack **top_a, t_stack **top_b);
+void	ft_solve_chunks(t_stack **top_a, t_stack **top_b);
+void	ft_rb_loop(t_stack **top_a, t_stack **top_b, int target, int *bonus);
+void	ft_rrb_loop(t_stack **top_a, t_stack **top_b, int target, int *bonus);
+void	ft_solve_all(t_stack **top_a, t_stack **top_b);
+void	ft_thirds_a_in_b(t_stack **top_a, t_stack **top_b, int size, int ratio);
+void	ft_chunk_a_in_b(t_stack **top_a, t_stack **top_b);
+void	ft_sort(t_stack **top_a, t_stack **top_b, int *ratio);
+void	ft_drain_b(t_stack **astack, t_stack **bstack);
+
+/////////////////////////
+//	VIZUALIZERS
+/////////////////////////
+void	ft_show_stack(t_stack **lst);
+void	ft_show_it_all(t_stack **top_a, t_stack **top_b);
+
+/////////////////////////
+//	FREERS
+/////////////////////////
+void	ft_free_stack(t_stack **stack);
 
 #endif

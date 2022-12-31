@@ -5,17 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 04:58:13 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/22 16:11:11 by zharzi           ###   ########.fr       */
+/*   Created: 2022/12/31 11:58:22 by zharzi            #+#    #+#             */
+/*   Updated: 2022/12/31 12:13:16 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_rra_details(t_list **astack)
+void	ft_move_rra(t_stack **astack, int print)
 {
-	t_list	*tmp1;
-	t_list	*tmp2;
+	t_stack	*tmp1;
+	t_stack	*tmp2;
 
 	if (*astack && (*astack)->next)
 	{
@@ -28,20 +28,7 @@ void	ft_rra_details(t_list **astack)
 		tmp1->next = NULL;
 		tmp2->next = *astack;
 		*astack = tmp2;
-	}
-}
-
-void	ft_move_rra(t_list **astack, t_control *val)
-{
-	if (*astack && (*astack)->next)
-	{
-		ft_rra_details(astack);
-		if (val->pop_ea)
-		{
-			val->pop_a++;
-			val->pop_ea--;
-		}
-		val->total++;
-		ft_printf("rra\n");
+		if (print)
+			ft_printf("rra\n");
 	}
 }

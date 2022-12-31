@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_sb.c                                       :+:      :+:    :+:   */
+/*   ft_get_parsed_tab.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:58:22 by zharzi            #+#    #+#             */
-/*   Updated: 2022/12/31 12:15:40 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/12/31 12:50:50 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_move_sb(t_stack **bstack, int print)
+int	*ft_get_parsed_tab(char **argv)
 {
-	t_stack	*elem3;
-	t_stack	*elem2;
+	char	***splited;
+	char	**aligned;
+	int		*tab;
+	int		*ordered;
 
-	if (*bstack && (*bstack)->next)
-	{
-		elem3 = (*bstack)->next;
-		elem2 = elem3;
-		elem3 = elem3->next;
-		elem2->next = *bstack;
-		(*bstack)->next = elem3;
-		*bstack = elem2;
-		if (print)
-			ft_printf("sb\n");
-	}
+	splited = ft_disjoin_args(argv);
+	aligned = ft_strs_triple_into_double(splited);
+	tab = ft_strs_to_tab(ft_strslen(aligned), aligned);
+	ordered = ft_sort_int_tab(tab, ft_strslen(aligned));
+	if (!ft_check_dup_int(ft_strslen(aligned), ordered))
+		ft_true_free((void **)&tab);
+	ft_full_free((void **)aligned);
+	ft_true_free((void **)&ordered);
+	return (tab);
 }

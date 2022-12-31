@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_sb.c                                       :+:      :+:    :+:   */
+/*   ft_down_cost.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:58:22 by zharzi            #+#    #+#             */
-/*   Updated: 2022/12/31 12:15:40 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/12/31 12:35:17 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_move_sb(t_stack **bstack, int print)
+int	ft_down_cost(t_stack **stack, int target)
 {
-	t_stack	*elem3;
-	t_stack	*elem2;
+	t_stack	*lst;
+	int		i;
 
-	if (*bstack && (*bstack)->next)
+	i = 0;
+	lst = *stack;
+	while (lst && lst->index != target)
+		lst = lst->next;
+	if (!lst)
+		return (INT_MAX);
+	if (lst->index == target)
+		lst = lst->next;
+	while (lst && lst->index != target)
 	{
-		elem3 = (*bstack)->next;
-		elem2 = elem3;
-		elem3 = elem3->next;
-		elem2->next = *bstack;
-		(*bstack)->next = elem3;
-		*bstack = elem2;
-		if (print)
-			ft_printf("sb\n");
+		i++;
+		lst = lst->next;
 	}
+	return (i);
 }

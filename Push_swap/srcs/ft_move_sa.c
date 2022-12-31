@@ -5,17 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 04:49:14 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/26 16:42:09 by zharzi           ###   ########.fr       */
+/*   Created: 2022/12/31 11:58:22 by zharzi            #+#    #+#             */
+/*   Updated: 2022/12/31 12:15:25 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_move_sa(t_list **astack, t_control *val)
+void	ft_move_sa(t_stack **astack, int print)
 {
-	t_list	*elem3;
-	t_list	*elem2;
+	t_stack	*elem3;
+	t_stack	*elem2;
 
 	if (*astack && (*astack)->next)
 	{
@@ -25,7 +25,7 @@ void	ft_move_sa(t_list **astack, t_control *val)
 		elem2->next = *astack;
 		(*astack)->next = elem3;
 		*astack = elem2;
-		val->total++;
-		ft_printf("sa\n");
+		if (print)
+			ft_printf("sa\n");
 	}
 }

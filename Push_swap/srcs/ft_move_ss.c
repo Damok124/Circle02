@@ -5,33 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 05:00:32 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/22 15:56:16 by zharzi           ###   ########.fr       */
+/*   Created: 2022/12/31 11:58:22 by zharzi            #+#    #+#             */
+/*   Updated: 2022/12/31 12:54:43 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_move_ss(t_list **astack, t_list **bstack, t_control *val)
+void	ft_move_ss(t_stack **astack, t_stack **bstack, int print)
 {
-	t_list	*elem3;
-	t_list	*elem2;
-
 	if (*astack && (*astack)->next && *bstack && (*bstack)->next)
 	{
-		elem3 = (*astack)->next;
-		elem2 = elem3;
-		elem3 = elem3->next;
-		elem2->next = *astack;
-		(*astack)->next = elem3;
-		*astack = elem2;
-		elem3 = (*bstack)->next;
-		elem2 = elem3;
-		elem3 = elem3->next;
-		elem2->next = *bstack;
-		(*bstack)->next = elem3;
-		*bstack = elem2;
-		val->total++;
-		ft_printf("ss\n");
+		ft_move_sa(astack, NO_PRINT);
+		ft_move_sb(bstack, NO_PRINT);
+		if (print)
+			ft_printf("ss\n");
 	}
 }

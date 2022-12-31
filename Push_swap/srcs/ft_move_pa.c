@@ -5,16 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 04:57:16 by zharzi            #+#    #+#             */
-/*   Updated: 2022/08/26 16:41:56 by zharzi           ###   ########.fr       */
+/*   Created: 2022/12/31 11:58:22 by zharzi            #+#    #+#             */
+/*   Updated: 2022/12/31 12:11:38 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void	ft_move_pa(t_list **astack, t_list **bstack, t_control *val)
+void	ft_move_pa(t_stack **astack, t_stack **bstack, int print)
 {
-	t_list	*tmp1;
+	t_stack	*tmp1;
 
 	if (*bstack)
 	{
@@ -22,12 +22,7 @@ void	ft_move_pa(t_list **astack, t_list **bstack, t_control *val)
 		*bstack = (*bstack)->next;
 		tmp1->next = *astack;
 		*astack = tmp1;
-		if (val->pop_b)
-			val->pop_b--;
-		else
-			val->pop_eb--;
-		val->pop_a++;
-		val->total++;
-		ft_printf("pa\n");
+		if (print)
+			ft_printf("pa\n");
 	}
 }
