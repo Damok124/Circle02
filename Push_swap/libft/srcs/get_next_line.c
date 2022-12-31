@@ -6,13 +6,13 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 19:14:22 by zharzi            #+#    #+#             */
-/*   Updated: 2022/12/27 02:24:41 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/10/09 18:35:48 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_check_stash(char *stash)
+int	ft_check_stash(char *stash)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ static int	ft_check_stash(char *stash)
 	return (0);
 }
 
-static char	*ft_make_buff(int fd, char **ret, int *count)
+char	*ft_make_buff(int fd, char **ret, int *count)
 {
 	char	*tbuff;
 	char	*tret;
@@ -45,7 +45,7 @@ static char	*ft_make_buff(int fd, char **ret, int *count)
 	return (tbuff);
 }
 
-static char	*ft_next_line(char **stash)
+char	*ft_next_line(char **stash)
 {
 	t_tools1	x;
 
@@ -67,7 +67,7 @@ static char	*ft_next_line(char **stash)
 	return (x.line);
 }
 
-static char	*gnl_core(t_tools2 *x, char **stash, int fd)
+char	*gnl_core(t_tools2 *x, char **stash, int fd)
 {
 	x->buff = ft_make_buff(fd, &x->ret, &x->count);
 	if (!x->buff)

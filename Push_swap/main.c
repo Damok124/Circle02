@@ -6,7 +6,7 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/12/31 12:53:14 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/12/31 20:05:53 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	ft_push_swap(int *tab, int size)
 		else
 			ft_sort(top_a, top_b, (int [9]){19, 22, 28, 37, 50, 60, 79, 100});
 	}
+	ft_drain_b(top_a, top_b);
 	ft_free_stack(top_a);
 	ft_free_stack(top_b);
 }

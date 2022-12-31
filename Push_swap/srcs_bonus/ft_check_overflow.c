@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_drain_b.c                                       :+:      :+:    :+:   */
+/*   ft_check_overflow.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:58:22 by zharzi            #+#    #+#             */
-/*   Updated: 2022/12/31 19:57:23 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/12/31 15:32:20 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pswap.h"
+#include "pswap_bonus.h"
 
-void	ft_drain_b(t_stack **astack, t_stack **bstack)
+int	ft_check_overflow(char *str)
 {
-	while (*bstack)
+	char	**tmp;
+	int		check;
+	int		i;
+
+	i = 0;
+	check = 1;
+	tmp = NULL;
+	tmp = ft_split_set(str, " \b\t\n\v\f\r");
+	while (tmp && tmp[i])
 	{
-		ft_move_pa(astack, bstack, PRINT_OK);
-		if (ft_swap_test_a(astack))
-			ft_move_sa(astack, PRINT_OK);
+		ft_atoi_safe(tmp[i], &check);
+		if (!check)
+		{
+			ft_full_free((void **)tmp);
+			return (0);
+		}
+		i++;
 	}
+	ft_full_free((void **)tmp);
+	return (1);
 }

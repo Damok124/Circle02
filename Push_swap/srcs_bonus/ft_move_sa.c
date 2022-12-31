@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_drain_b.c                                       :+:      :+:    :+:   */
+/*   ft_move_sa.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:58:22 by zharzi            #+#    #+#             */
-/*   Updated: 2022/12/31 19:57:23 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/12/31 15:31:54 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pswap.h"
+#include "pswap_bonus.h"
 
-void	ft_drain_b(t_stack **astack, t_stack **bstack)
+void	ft_move_sa(t_stack **astack, int print)
 {
-	while (*bstack)
+	t_stack	*elem3;
+	t_stack	*elem2;
+
+	if (*astack && (*astack)->next)
 	{
-		ft_move_pa(astack, bstack, PRINT_OK);
-		if (ft_swap_test_a(astack))
-			ft_move_sa(astack, PRINT_OK);
+		elem3 = (*astack)->next;
+		elem2 = elem3;
+		elem3 = elem3->next;
+		elem2->next = *astack;
+		(*astack)->next = elem3;
+		*astack = elem2;
+		if (print)
+			ft_printf("sa\n");
 	}
 }

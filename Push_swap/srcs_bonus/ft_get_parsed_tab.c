@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_drain_b.c                                       :+:      :+:    :+:   */
+/*   ft_get_parsed_tab.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:58:22 by zharzi            #+#    #+#             */
-/*   Updated: 2022/12/31 19:57:23 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/12/31 15:32:05 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pswap.h"
+#include "pswap_bonus.h"
 
-void	ft_drain_b(t_stack **astack, t_stack **bstack)
+int	*ft_get_parsed_tab(char **argv)
 {
-	while (*bstack)
-	{
-		ft_move_pa(astack, bstack, PRINT_OK);
-		if (ft_swap_test_a(astack))
-			ft_move_sa(astack, PRINT_OK);
-	}
+	char	***splited;
+	char	**aligned;
+	int		*tab;
+	int		*ordered;
+
+	splited = ft_disjoin_args(argv);
+	aligned = ft_strs_triple_into_double(splited);
+	tab = ft_strs_to_tab(ft_strslen(aligned), aligned);
+	ordered = ft_sort_int_tab(tab, ft_strslen(aligned));
+	if (!ft_check_dup_int(ft_strslen(aligned), ordered))
+		ft_true_free((void **)&tab);
+	ft_full_free((void **)aligned);
+	ft_true_free((void **)&ordered);
+	return (tab);
 }

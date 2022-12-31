@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_drain_b.c                                       :+:      :+:    :+:   */
+/*   ft_get_index.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:58:22 by zharzi            #+#    #+#             */
-/*   Updated: 2022/12/31 19:57:23 by zharzi           ###   ########.fr       */
+/*   Updated: 2022/12/31 15:32:07 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pswap.h"
+#include "pswap_bonus.h"
 
-void	ft_drain_b(t_stack **astack, t_stack **bstack)
+int	ft_get_index(int value, int *ordered)
 {
-	while (*bstack)
+	int	i;
+
+	i = 0;
+	while (ordered)
 	{
-		ft_move_pa(astack, bstack, PRINT_OK);
-		if (ft_swap_test_a(astack))
-			ft_move_sa(astack, PRINT_OK);
+		if (ordered[i] == value)
+			return (i);
+		i++;
 	}
+	return (-1);
 }

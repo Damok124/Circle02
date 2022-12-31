@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/12/29 01:47:15 by zharzi           ###   ########.fr        #
+#    Updated: 2022/10/02 17:37:20 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRCSDIR = ./srcs/
 
 SRCS = $(SRCSDIR)ft_printf.c \
 $(SRCSDIR)ft_strprintf.c \
+$(SRCSDIR)ft_print_strs.c \
 $(SRCSDIR)ft_countnprintf.c
 
 HEADERDIR = includes/
@@ -24,9 +25,9 @@ HEADER = ft_printf.h
 
 OBJ = $(SRCS:.c=.o)
 
-CC = clang
+CC = gcc
 
-FLAGS = -Wall -Wextra -Werror -g3 -gdwarf-4
+FLAGS = -Wall -Wextra -Werror
 
 IFLAG = -I$(HEADERDIR)
 

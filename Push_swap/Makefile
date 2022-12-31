@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/12/31 12:56:17 by zharzi           ###   ########.fr        #
+#    Updated: 2022/12/31 21:34:00 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,31 @@ ${SRCSDIR}ft_show_it_all.c \
 ${SRCSDIR}ft_free_stack.c
 
 SRCSBONUS = \
-${SRCSBONUSDIR}test.c
+${SRCSBONUSDIR}ft_checker.c \
+${SRCSBONUSDIR}ft_move_pa.c \
+${SRCSBONUSDIR}ft_move_pb.c \
+${SRCSBONUSDIR}ft_move_ra.c \
+${SRCSBONUSDIR}ft_move_rb.c \
+${SRCSBONUSDIR}ft_move_rr.c \
+${SRCSBONUSDIR}ft_move_rra.c \
+${SRCSBONUSDIR}ft_move_rrb.c \
+${SRCSBONUSDIR}ft_move_rrr.c \
+${SRCSBONUSDIR}ft_move_sa.c \
+${SRCSBONUSDIR}ft_move_sb.c \
+${SRCSBONUSDIR}ft_move_ss.c \
+${SRCSBONUSDIR}ft_get_index.c \
+${SRCSBONUSDIR}ft_shape_stack_lst.c \
+${SRCSBONUSDIR}ft_init_stack_a.c \
+${SRCSBONUSDIR}ft_check_valid_char_only.c \
+${SRCSBONUSDIR}ft_check_valid_sign.c \
+${SRCSBONUSDIR}ft_check_empty_arg.c \
+${SRCSBONUSDIR}ft_check_overflow.c \
+${SRCSBONUSDIR}ft_disjoin_args.c \
+${SRCSBONUSDIR}ft_get_parsed_tab.c \
+${SRCSBONUSDIR}ft_pswap_args_check.c \
+${SRCSBONUSDIR}ft_show_stack.c \
+${SRCSBONUSDIR}ft_show_it_all.c \
+${SRCSBONUSDIR}ft_free_stack.c
 
 HEADERDIR = includes/
 
@@ -102,7 +126,7 @@ ${NAME} : $(OBJ) $(HEADERDIR)$(HEADER)
 	-@ar -rcs $(NAME) $^
 
 libpswap_bonus.a : $(OBJBONUS) $(HEADERDIR)$(HEADERBONUS)
-	ar -rcs libpswap_bonus.a $^
+	-@ar -rcs libpswap_bonus.a $^
 
 libft_printf.a :
 	-@${MAKE} -C ft_printf/
