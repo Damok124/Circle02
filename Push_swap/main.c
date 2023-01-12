@@ -6,11 +6,17 @@
 /*   By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 06:22:33 by zharzi            #+#    #+#             */
-/*   Updated: 2022/12/31 20:05:53 by zharzi           ###   ########.fr       */
+/*   Updated: 2023/01/07 20:44:08 by zharzi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
+
+void	ft_free_stacks(t_stack **top_a, t_stack **top_b)
+{
+	ft_free_stack(top_a);
+	ft_free_stack(top_b);
+}
 
 void	ft_push_swap(int *tab, int size)
 {
@@ -38,8 +44,7 @@ void	ft_push_swap(int *tab, int size)
 			ft_sort(top_a, top_b, (int [9]){19, 22, 28, 37, 50, 60, 79, 100});
 	}
 	ft_drain_b(top_a, top_b);
-	ft_free_stack(top_a);
-	ft_free_stack(top_b);
+	ft_free_stacks(top_a, top_b);
 }
 
 int	main(int ac, char **argv)

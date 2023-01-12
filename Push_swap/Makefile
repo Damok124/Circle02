@@ -6,7 +6,7 @@
 #    By: zharzi <zharzi@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 17:12:24 by zharzi            #+#    #+#              #
-#    Updated: 2022/12/31 21:34:00 by zharzi           ###   ########.fr        #
+#    Updated: 2023/01/07 21:24:50 by zharzi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,50 +103,50 @@ OBJBONUS = $(SRCSBONUS:.c=.o)
 
 CC = clang
 
-FLAGS = -Wall -Wextra -Werror -g3 -gdwarf-4
+FLAGS = -Wall -Wextra -Werror -g3
 
 IFLAG = -I$(HEADERDIR) -Ift_printf/includes/ -Ilibft/includes/
 
-all : ${BINARY}
+all : ${NAME} libft_printf.a libft.a ${BINARY}
 
-${BINARY} : ${NAME} libft_printf.a libft.a
-	-@$(CC) $(FLAGS) main.c $(IFLAG) -L. -lpswap -L./libft -lft -L./ft_printf \
+${BINARY} :
+	$(CC) $(FLAGS) main.c $(IFLAG) -L. -lpswap -L./libft -lft -L./ft_printf \
 	-lft_printf -o $(BINARY)
 
-bonus : ${BINARY_BONUS}
+bonus : libpswap_bonus.a libft_printf.a libft.a ${BINARY_BONUS}
 
-${BINARY_BONUS} : libpswap_bonus.a libft_printf.a libft.a
-	-@$(CC) $(FLAGS) main_bonus.c $(IFLAG) -L. -lpswap_bonus -L./libft -lft \
+${BINARY_BONUS} :
+	$(CC) $(FLAGS) main_bonus.c $(IFLAG) -L. -lpswap_bonus -L./libft -lft \
 	-L./ft_printf -lft_printf -o $(BINARY_BONUS)
 
 %.o : %.c
-	-@$(CC) $(FLAGS) $(IFLAG) -o $@ -c $^
+	$(CC) $(FLAGS) $(IFLAG) -o $@ -c $^
 
 ${NAME} : $(OBJ) $(HEADERDIR)$(HEADER)
-	-@ar -rcs $(NAME) $^
+	ar -rcs $(NAME) $^
 
 libpswap_bonus.a : $(OBJBONUS) $(HEADERDIR)$(HEADERBONUS)
-	-@ar -rcs libpswap_bonus.a $^
+	ar -rcs libpswap_bonus.a $^
 
 libft_printf.a :
-	-@${MAKE} -C ft_printf/
+	-@${MAKE} -sC ft_printf/
 
 libft.a :
-	-@${MAKE} -C libft/
+	-@${MAKE} -sC libft/
 
 clean :
 	-@rm -f $(OBJ)
 	-@rm -f $(OBJBONUS)
-	-@${MAKE} clean -C ft_printf/
-	-@${MAKE} clean -C libft/
+	-@${MAKE} clean -sC ft_printf/
+	-@${MAKE} clean -sC libft/
 
 fclean : clean
 	-@rm -f $(NAME)
 	-@rm -f $(BINARY)
 	-@rm -f $(BINARY_BONUS)
 	-@rm -f libpswap_bonus.a
-	-@${MAKE} fclean -C ft_printf/
-	-@${MAKE} fclean -C libft/
+	-@${MAKE} fclean -sC ft_printf/
+	-@${MAKE} fclean -sC libft/
 
 re : fclean all
 
